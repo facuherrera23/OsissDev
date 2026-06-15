@@ -1301,104 +1301,175 @@ section {
   margin-top: 12px;
 }
 
-/* ========================================
-   CALCULADORA DE PROYECTOS
-   ======================================== */
-#calculadora {
-  background: var(--bg2);
-}
-.calculator-wrap {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  margin-top: 56px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 48px;
-}
-.calc-options {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-.calc-group label {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-bottom: 8px;
-  display: block;
-}
-.calc-type {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.calc-type-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.calc-type-btn.active {
-  background: var(--red);
-  border-color: var(--red);
-  color: #fff;
-}
-.calc-slider {
-  width: 100%;
-  height: 4px;
-  background: var(--border);
-  border-radius: 2px;
-  appearance: none;
-}
-.calc-slider::-webkit-slider-thumb {
-  appearance: none;
-  width: 16px;
-  height: 16px;
-  background: var(--red);
-  border-radius: 50%;
-  cursor: pointer;
-}
-.calc-modules {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-.calc-module {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-}
-.calc-module input {
-  accent-color: var(--red);
-}
-.calc-result {
-  padding: 32px;
-  background: linear-gradient(135deg, var(--bg3), var(--bg));
-  border-radius: 20px;
-  text-align: center;
-}
-.calc-price {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 48px;
-  font-weight: 800;
-  color: #fff;
-  margin: 20px 0;
-}
-.calc-price span {
-  font-size: 20px;
-  color: var(--text-muted);
-}
-.calc-note {
-  font-size: 11px;
-  color: var(--text-dim);
-  margin-top: 16px;
-}
+// ========================================
+// CALCULADORA (PRECIOS REALISTAS USD)
+// ========================================
+const typeBtns = document.querySelectorAll('.calc-type-btn');
+const complexityBtns = document.querySelectorAll('.calc-complexity');
+const deadlineBtns = document.querySelectorAll('.calc-deadline');
+const userSlider = document.getElementById('user-slider');
+const userVal = document.getElementById('user-value');
+const calcPrice = document.getElementById('calc-price');
+const calcBaseSpan = document.getElementById('calc-base');
+const calcModulesSpan = document.getElementById('calc-modules');
+const calcScaleSpan = document.getElementById('calc-scale');
 
+let currentType = 'landing';
+let currentBase = 400;
+let currentComplexity = 1.0;
+let currentDeadline = 1.0;
+let modulesCost = 0;
+
+// Tipo de proyecto
+typeBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    typeBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentType = btn.dataset.type;
+    currentBase = parseInt(btn.dataset.base);
+    updatePrice();
+  });
+});
+
+// Complejidad
+complexityBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    complexityBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentComplexity = parseFloat(btn.dataset.complexity);
+    updatePrice();
+  });
+});
+
+// Plazo
+deadlineBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    deadlineBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentDeadline = parseFloat(btn.dataset.deadline);
+    updatePrice();
+  });
+});
+
+// Slider de usuarios
+userSlider.addEventListener('input', () => {
+  let val = parseInt(userSlider.value);
+  userVal.innerText = val.toLocaleString();
+  updatePrice();
+});
+
+// Módulos adicionales
+document.querySelectorAll('.calc-module input').forEach(cb => {
+  cb.addEventListener('change', () => {
+    const cost = parseInt(cb.dataset.cost);
+    if (cb.checked) {
+      modulesCost += cost;
+    } else {
+      modulesCost -= cost;
+    }
+    updatePrice();
+  });
+});
+
+function updatePrice() {
+  // Factor de escala por usuarios (máximo +25% para 100K usuarios)
+  let users = parseInt(userSlider.value);
+  let scaleFactor = 1 + (Math.log10(Math.max(users, 10)) - 1) * 0.1;
+  scaleFactor = Math.min(scaleFactor, 1.25);
+  
+  // Cálculo
+  let basePrice = currentBase * currentComplexity * currentDeadline;
+  let scaleCost = basePrice * (scaleFactor - 1);
+  let total = basePrice + modulesCost + scaleCost;
+  
+  // Mostrar desglose
+  calcBaseSpan.innerText = `Base: $${Math.round(basePrice).toLocaleString()}`;
+  calcModulesSpan.innerText = `+ Módulos: $${modulesCost.toLocaleString()}`;
+  calcScaleSpan.innerText = `+ Escala: $${Math.round(scaleCost).toLocaleString()}`;
+  
+  calcPrice.innerText = Math.round(total).toLocaleString();
+}
+updatePrice();
+
+<!-- ========================================
+   CALCULADORA DE PROYECTOS (PRECIOS REALISTAS USD)
+   ======================================== -->
+<section id="calculadora">
+  <div class="section-label reveal">Presupuesto</div>
+  <h2 class="section-title reveal reveal-delay-1">Estimá tu proyecto</h2>
+  <div class="calculator-wrap">
+    <div class="calc-options">
+      <div class="calc-group">
+        <label>Tipo de proyecto</label>
+        <div class="calc-type">
+          <div class="calc-type-btn active" data-type="landing" data-base="400">Landing Page</div>
+          <div class="calc-type-btn" data-type="web" data-base="2500">Sistema Web</div>
+          <div class="calc-type-btn" data-type="app" data-base="3500">App Móvil</div>
+          <div class="calc-type-btn" data-type="saas" data-base="6000">Plataforma SaaS</div>
+        </div>
+        <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
+          Landing: $300-$800 | Web: $1,500-$5,000 | App: $2,500-$7,000 | SaaS: $4,000-$12,000
+        </div>
+      </div>
+      
+      <div class="calc-group">
+        <label>Complejidad del proyecto</label>
+        <div class="calc-type">
+          <div class="calc-complexity active" data-complexity="1.0">Baja</div>
+          <div class="calc-complexity" data-complexity="1.3">Media</div>
+          <div class="calc-complexity" data-complexity="1.6">Alta</div>
+        </div>
+      </div>
+      
+      <div class="calc-group">
+        <label>Plazo de entrega</label>
+        <div class="calc-type">
+          <div class="calc-deadline active" data-deadline="1.0">Normal (4-8 semanas)</div>
+          <div class="calc-deadline" data-deadline="1.2">Express (2-3 semanas, +20%)</div>
+        </div>
+      </div>
+      
+      <div class="calc-group">
+        <label>Usuarios estimados: <span id="user-value">1,000</span></label>
+        <input type="range" class="calc-slider" id="user-slider" min="10" max="100000" step="10" value="1000">
+        <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--text-muted); margin-top: 6px;">
+          <span>10</span><span>1K</span><span>10K</span><span>100K</span>
+        </div>
+      </div>
+      
+      <div class="calc-group">
+        <label>Módulos adicionales</label>
+        <div class="calc-modules">
+          <label class="calc-module"><input type="checkbox" value="login" data-cost="150"> Login / Autenticación</label>
+          <label class="calc-module"><input type="checkbox" value="dashboard" data-cost="300"> Dashboard / Analytics</label>
+          <label class="calc-module"><input type="checkbox" value="reportes" data-cost="200"> Reportes avanzados</label>
+          <label class="calc-module"><input type="checkbox" value="integraciones" data-cost="500"> Integraciones (API, WhatsApp)</label>
+          <label class="calc-module"><input type="checkbox" value="ia" data-cost="800"> Inteligencia Artificial</label>
+          <label class="calc-module"><input type="checkbox" value="multitenant" data-cost="1000"> Multitenencia / Multiempresa</label>
+          <label class="calc-module"><input type="checkbox" value="mobile" data-cost="1500"> Versión móvil nativa adicional</label>
+        </div>
+      </div>
+    </div>
+    
+    <div class="calc-result">
+      <div class="calc-price">
+        <span style="font-size: 20px;">USD</span> 
+        <span id="calc-price" style="font-size: 52px;">400</span>
+      </div>
+      <div class="calc-breakdown" style="font-size: 12px; color: var(--text-muted); margin: 16px 0;">
+        <span id="calc-base">Base: $400</span> 
+        <span id="calc-modules">+ Módulos: $0</span>
+        <span id="calc-scale">+ Escala: $0</span>
+      </div>
+      <div class="calc-note">
+        Estimación orientativa en USD (dólares americanos). Incluye: desarrollo, testing, deploy y 1 mes de soporte.<br>
+        <span style="color: var(--red-vivid);">Presupuesto final gratuito sin compromiso.</span>
+      </div>
+      <a href="#cta" class="btn-primary" style="margin-top: 24px; display: inline-block;">Solicitar presupuesto →</a>
+    </div>
+  </div>
+</section>
+                                             
 /* ========================================
    FAQ ACCORDION
    ======================================== */
