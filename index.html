@@ -534,6 +534,211 @@ section{padding:120px 60px;position:relative}
 }
 .work-card:hover .work-link{border-color:var(--red);color:var(--red-vivid);transform:rotate(45deg)}
 
+/* ── ABOUT ── */
+#about{background:var(--bg2)}
+.about-layout{
+  display:grid;
+  grid-template-columns:1fr 1.4fr;
+  gap:100px;
+  align-items:center;
+  margin-top:72px;
+}
+.about-avatar-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:32px;
+}
+.about-avatar{
+  position:relative;
+  width:260px;height:260px;
+}
+.about-avatar-bg{
+  position:absolute;inset:0;
+  border-radius:24px;
+  background:var(--red-dim);
+  border:1px solid var(--border-red);
+}
+.about-avatar-inner{
+  position:absolute;inset:12px;
+  border-radius:16px;
+  background:var(--card);
+  border:1px solid rgba(255,255,255,0.05);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.about-initials{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:72px;font-weight:700;
+  letter-spacing:-4px;
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--red-vivid);
+  user-select:none;
+  position:relative;z-index:1;
+}
+.about-initials-glow{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 55%, rgba(204,22,22,0.18) 0%, transparent 70%);
+}
+.about-avatar::before,
+.about-avatar::after{
+  content:'';
+  position:absolute;
+  width:20px;height:20px;
+  border-color:var(--red-vivid);
+  border-style:solid;
+}
+.about-avatar::before{top:-6px;left:-6px;border-width:2px 0 0 2px;border-radius:4px 0 0 0}
+.about-avatar::after{bottom:-6px;right:-6px;border-width:0 2px 2px 0;border-radius:0 0 4px 4px}
+.about-corner-tr,
+.about-corner-bl{
+  position:absolute;
+  width:20px;height:20px;
+  border-color:var(--red-vivid);
+  border-style:solid;
+}
+.about-corner-tr{top:-6px;right:-6px;border-width:2px 2px 0 0;border-radius:0 4px 0 0}
+.about-corner-bl{bottom:-6px;left:-6px;border-width:0 0 2px 2px;border-radius:0 0 0 4px}
+
+.about-badges{
+  display:flex;flex-direction:column;gap:10px;
+  width:100%;
+}
+.about-badge-item{
+  display:flex;align-items:center;gap:12px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:12px 16px;
+  transition:border-color .25s;
+}
+.about-badge-item:hover{border-color:var(--border-red)}
+.about-badge-icon{
+  width:32px;height:32px;
+  background:var(--red-dim);
+  border:1px solid var(--border-red);
+  border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;
+}
+.about-badge-label{font-size:13px;font-weight:500;color:var(--text-muted)}
+.about-badge-val{font-size:13px;font-weight:600;color:#fff;margin-left:auto}
+
+.about-text .section-label{margin-bottom:20px}
+.about-name{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(32px,3.5vw,48px);
+  font-weight:700;
+  line-height:1.05;
+  letter-spacing:-2px;
+  margin-bottom:10px;
+}
+.about-role{
+  font-family:'Space Mono',monospace;
+  font-size:13px;
+  color:var(--red-vivid);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:28px;
+}
+.about-bio{
+  font-size:16px;
+  color:rgba(255,255,255,.65);
+  line-height:1.85;
+  margin-bottom:36px;
+}
+.about-bio strong{color:#fff;font-weight:600}
+.about-tags{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-bottom:40px;
+}
+.about-tag{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:7px 14px;
+  font-size:12px;font-weight:500;
+  color:var(--text-muted);
+  letter-spacing:.5px;
+  transition:border-color .2s,color .2s;
+}
+.about-tag:hover{border-color:var(--border-red);color:#fff}
+.about-tag.accent{
+  background:rgba(204,22,22,.08);
+  border-color:var(--border-red);
+  color:rgba(255,80,80,.9);
+}
+.about-divider{
+  width:40px;height:2px;
+  background:var(--red);
+  margin-bottom:40px;
+  border-radius:2px;
+}
+
+/* ========== NUEVA SECCIÓN EQUIPO TÉCNICO PREMIUM ========== */
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:28px;
+  margin-top:56px;
+}
+.team-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  position:relative;
+  overflow:hidden;
+  transition:all 0.35s cubic-bezier(0.2,0.9,0.4,1.1);
+  cursor:default;
+}
+.team-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--red),var(--red-vivid),transparent);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform 0.5s ease;
+  z-index:2;
+}
+.team-card:hover::before{transform:scaleX(1)}
+.card-inner{padding:32px 24px 28px;transition:all 0.35s cubic-bezier(0.2,0.9,0.4,1.1);display:flex;flex-direction:column}
+.avatar-wrap{display:flex;justify-content:center;margin-bottom:28px}
+.avatar-circle{
+  width:110px;height:110px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 20%,var(--bg3),#0a0a0a);
+  border:1.5px solid var(--border-red);
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.3s;
+}
+.team-card:hover .avatar-circle{border-color:var(--red-vivid);box-shadow:0 0 18px var(--red-glow)}
+.avatar-initials{font-family:'Space Grotesk',sans-serif;font-size:38px;font-weight:700;color:rgba(255,255,255,0.85);letter-spacing:-1px}
+.member-name{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;text-align:center;margin-bottom:6px}
+.member-role{font-size:13px;font-weight:500;color:var(--red-vivid);text-align:center;margin-bottom:8px}
+.member-specialty{font-size:12px;color:var(--text-muted);text-align:center;border-top:1px dashed var(--border);padding-top:12px;margin-top:8px;font-family:'Space Mono',monospace}
+.expand-info{max-height:0;opacity:0;overflow:hidden;transition:all 0.45s cubic-bezier(0.2,0.9,0.4,1.2);margin-top:0;display:flex;flex-direction:column;gap:16px}
+.team-card:hover .expand-info{max-height:480px;opacity:1;margin-top:20px}
+.team-card:hover .card-inner{padding-bottom:32px}
+.hud-header{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1.8px;color:var(--red);text-transform:uppercase;background:rgba(204,22,22,0.08);display:inline-block;padding:4px 8px;border-radius:4px;border-left:2px solid var(--red);width:fit-content}
+.bio-text{font-size:12px;line-height:1.55;color:rgba(255,255,255,0.7)}
+.exp-row{display:flex;align-items:center;justify-content:space-between;font-size:12px;background:rgba(255,255,255,0.03);padding:6px 12px;border-radius:10px;border:1px solid var(--border)}
+.exp-label{display:flex;align-items:center;gap:6px;color:var(--text-muted)}
+.exp-value{font-family:'Space Grotesk',sans-serif;font-weight:700;color:#fff}
+.tech-badge-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.tech-badge{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:10px;font-weight:500;font-family:'Space Mono',monospace;color:rgba(255,255,255,0.75);transition:all 0.2s}
+.tech-badge:hover{border-color:var(--border-red);color:var(--red-vivid)}
+.level-row{display:flex;align-items:center;gap:12px;font-size:11px;font-weight:500}
+.level-bar-bg{flex:1;height:5px;background:rgba(255,255,255,0.1);border-radius:6px;overflow:hidden}
+.level-fill{height:100%;background:var(--red);width:0%;border-radius:6px;transition:width 0.5s ease-out}
+.team-card:hover .level-fill{width:var(--level-width)}
+.participation-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.participation-item{font-size:11px;background:rgba(204,22,22,0.08);padding:3px 8px;border-radius:20px;color:rgba(255,255,255,0.8);display:flex;align-items:center;gap:5px}
+.participation-item::before{content:"✓";color:var(--red-vivid);font-weight:bold}
+.metric-highlight{display:inline-flex;align-items:center;gap:12px;background:rgba(204,22,22,0.08);border:1px solid var(--border-red);border-radius:60px;padding:10px 24px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1rem;color:var(--text);margin-top:16px}
+.metric-number{font-size:1.6rem;font-weight:700;color:var(--red-vivid);letter-spacing:-1px}
+
 /* ── TESTIMONIALS ── */
 #testimonials{background:var(--bg)}
 .testimonials-grid{
@@ -700,211 +905,6 @@ footer{
   100%{clip-path:polygon(0 60%,100% 60%,100% 80%,0 80%);transform:translate(0)}
 }
 
-/* ── ABOUT ── */
-#about{background:var(--bg2)}
-.about-layout{
-  display:grid;
-  grid-template-columns:1fr 1.4fr;
-  gap:100px;
-  align-items:center;
-  margin-top:72px;
-}
-.about-avatar-wrap{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:32px;
-}
-.about-avatar{
-  position:relative;
-  width:260px;height:260px;
-}
-.about-avatar-bg{
-  position:absolute;inset:0;
-  border-radius:24px;
-  background:var(--red-dim);
-  border:1px solid var(--border-red);
-}
-.about-avatar-inner{
-  position:absolute;inset:12px;
-  border-radius:16px;
-  background:var(--card);
-  border:1px solid rgba(255,255,255,0.05);
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
-}
-.about-initials{
-  font-family:'Space Grotesk',sans-serif;
-  font-size:72px;font-weight:700;
-  letter-spacing:-4px;
-  color:transparent;
-  -webkit-text-stroke:1.5px var(--red-vivid);
-  user-select:none;
-  position:relative;z-index:1;
-}
-.about-initials-glow{
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 60% at 50% 55%, rgba(204,22,22,0.18) 0%, transparent 70%);
-}
-.about-avatar::before,
-.about-avatar::after{
-  content:'';
-  position:absolute;
-  width:20px;height:20px;
-  border-color:var(--red-vivid);
-  border-style:solid;
-}
-.about-avatar::before{top:-6px;left:-6px;border-width:2px 0 0 2px;border-radius:4px 0 0 0}
-.about-avatar::after{bottom:-6px;right:-6px;border-width:0 2px 2px 0;border-radius:0 0 4px 4px}
-.about-corner-tr,
-.about-corner-bl{
-  position:absolute;
-  width:20px;height:20px;
-  border-color:var(--red-vivid);
-  border-style:solid;
-}
-.about-corner-tr{top:-6px;right:-6px;border-width:2px 2px 0 0;border-radius:0 4px 0 0}
-.about-corner-bl{bottom:-6px;left:-6px;border-width:0 0 2px 2px;border-radius:0 0 0 4px}
-
-.about-badges{
-  display:flex;flex-direction:column;gap:10px;
-  width:100%;
-}
-.about-badge-item{
-  display:flex;align-items:center;gap:12px;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:12px 16px;
-  transition:border-color .25s;
-}
-.about-badge-item:hover{border-color:var(--border-red)}
-.about-badge-icon{
-  width:32px;height:32px;
-  background:var(--red-dim);
-  border:1px solid var(--border-red);
-  border-radius:6px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:16px;flex-shrink:0;
-}
-.about-badge-label{font-size:13px;font-weight:500;color:var(--text-muted)}
-.about-badge-val{font-size:13px;font-weight:600;color:#fff;margin-left:auto}
-
-.about-text .section-label{margin-bottom:20px}
-.about-name{
-  font-family:'Space Grotesk',sans-serif;
-  font-size:clamp(32px,3.5vw,48px);
-  font-weight:700;
-  line-height:1.05;
-  letter-spacing:-2px;
-  margin-bottom:10px;
-}
-.about-role{
-  font-family:'Space Mono',monospace;
-  font-size:13px;
-  color:var(--red-vivid);
-  letter-spacing:2px;
-  text-transform:uppercase;
-  margin-bottom:28px;
-}
-.about-bio{
-  font-size:16px;
-  color:rgba(255,255,255,.65);
-  line-height:1.85;
-  margin-bottom:36px;
-}
-.about-bio strong{color:#fff;font-weight:600}
-.about-tags{
-  display:flex;flex-wrap:wrap;gap:8px;
-  margin-bottom:40px;
-}
-.about-tag{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:6px;
-  padding:7px 14px;
-  font-size:12px;font-weight:500;
-  color:var(--text-muted);
-  letter-spacing:.5px;
-  transition:border-color .2s,color .2s;
-}
-.about-tag:hover{border-color:var(--border-red);color:#fff}
-.about-tag.accent{
-  background:rgba(204,22,22,.08);
-  border-color:var(--border-red);
-  color:rgba(255,80,80,.9);
-}
-.about-divider{
-  width:40px;height:2px;
-  background:var(--red);
-  margin-bottom:40px;
-  border-radius:2px;
-}
-
-/* ========== NUEVA SECCIÓN EQUIPO TÉCNICO ========== */
-.team-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:28px;
-  margin-top:56px;
-}
-.team-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:20px;
-  position:relative;
-  overflow:hidden;
-  transition:all 0.35s cubic-bezier(0.2,0.9,0.4,1.1);
-  cursor:default;
-}
-.team-card::before{
-  content:'';
-  position:absolute;
-  top:0;left:0;right:0;
-  height:2px;
-  background:linear-gradient(90deg,transparent,var(--red),var(--red-vivid),transparent);
-  transform:scaleX(0);
-  transform-origin:left;
-  transition:transform 0.5s ease;
-  z-index:2;
-}
-.team-card:hover::before{transform:scaleX(1)}
-.card-inner{padding:32px 24px 28px;transition:all 0.35s cubic-bezier(0.2,0.9,0.4,1.1);display:flex;flex-direction:column}
-.avatar-wrap{display:flex;justify-content:center;margin-bottom:28px}
-.avatar-circle{
-  width:110px;height:110px;
-  border-radius:50%;
-  background:radial-gradient(circle at 30% 20%,var(--bg3),#0a0a0a);
-  border:1.5px solid var(--border-red);
-  display:flex;align-items:center;justify-content:center;
-  transition:all 0.3s;
-}
-.team-card:hover .avatar-circle{border-color:var(--red-vivid);box-shadow:0 0 18px var(--red-glow)}
-.avatar-initials{font-family:'Space Grotesk',sans-serif;font-size:38px;font-weight:700;color:rgba(255,255,255,0.85);letter-spacing:-1px}
-.member-name{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;text-align:center;margin-bottom:6px}
-.member-role{font-size:13px;font-weight:500;color:var(--red-vivid);text-align:center;margin-bottom:8px}
-.member-specialty{font-size:12px;color:var(--text-muted);text-align:center;border-top:1px dashed var(--border);padding-top:12px;margin-top:8px;font-family:'Space Mono',monospace}
-.expand-info{max-height:0;opacity:0;overflow:hidden;transition:all 0.45s cubic-bezier(0.2,0.9,0.4,1.2);margin-top:0;display:flex;flex-direction:column;gap:16px}
-.team-card:hover .expand-info{max-height:480px;opacity:1;margin-top:20px}
-.team-card:hover .card-inner{padding-bottom:32px}
-.hud-header{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1.8px;color:var(--red);text-transform:uppercase;background:rgba(204,22,22,0.08);display:inline-block;padding:4px 8px;border-radius:4px;border-left:2px solid var(--red);width:fit-content}
-.bio-text{font-size:12px;line-height:1.55;color:rgba(255,255,255,0.7)}
-.exp-row{display:flex;align-items:center;justify-content:space-between;font-size:12px;background:rgba(255,255,255,0.03);padding:6px 12px;border-radius:10px;border:1px solid var(--border)}
-.exp-label{display:flex;align-items:center;gap:6px;color:var(--text-muted)}
-.exp-value{font-family:'Space Grotesk',sans-serif;font-weight:700;color:#fff}
-.tech-badge-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-.tech-badge{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:10px;font-weight:500;font-family:'Space Mono',monospace;color:rgba(255,255,255,0.75);transition:all 0.2s}
-.tech-badge:hover{border-color:var(--border-red);color:var(--red-vivid)}
-.level-row{display:flex;align-items:center;gap:12px;font-size:11px;font-weight:500}
-.level-bar-bg{flex:1;height:5px;background:rgba(255,255,255,0.1);border-radius:6px;overflow:hidden}
-.level-fill{height:100%;background:var(--red);width:0%;border-radius:6px;transition:width 0.5s ease-out}
-.team-card:hover .level-fill{width:var(--level-width)}
-.participation-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.participation-item{font-size:11px;background:rgba(204,22,22,0.08);padding:3px 8px;border-radius:20px;color:rgba(255,255,255,0.8);display:flex;align-items:center;gap:5px}
-.participation-item::before{content:"✓";color:var(--red-vivid);font-weight:bold}
-.metric-highlight{display:inline-flex;align-items:center;gap:12px;background:rgba(204,22,22,0.08);border:1px solid var(--border-red);border-radius:60px;padding:10px 24px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1rem;color:var(--text);margin-top:16px}
-.metric-number{font-size:1.6rem;font-weight:700;color:var(--red-vivid);letter-spacing:-1px}
-
 @media(max-width:1100px){
   .team-grid{grid-template-columns:repeat(2,1fr)}
   section{padding:80px 32px}
@@ -956,23 +956,23 @@ footer{
 <div class="marquee-wrap"><div class="marquee-track"><span class="marquee-item"><span class="dot"></span>React & React Native</span><span class="marquee-item"><span class="dot"></span>Node.js & Django</span><span class="marquee-item"><span class="dot"></span>PostgreSQL & MongoDB</span><span class="marquee-item"><span class="dot"></span>Flutter & Dart</span><span class="marquee-item"><span class="dot"></span>Sistemas a Medida</span><span class="marquee-item"><span class="dot"></span>APIs REST & GraphQL</span><span class="marquee-item"><span class="dot"></span>Hosting & Deploy</span><span class="marquee-item"><span class="dot"></span>Soporte Técnico</span><span class="marquee-item"><span class="dot"></span>React & React Native</span><span class="marquee-item"><span class="dot"></span>Node.js & Django</span><span class="marquee-item"><span class="dot"></span>PostgreSQL & MongoDB</span><span class="marquee-item"><span class="dot"></span>Flutter & Dart</span><span class="marquee-item"><span class="dot"></span>Sistemas a Medida</span><span class="marquee-item"><span class="dot"></span>APIs REST & GraphQL</span><span class="marquee-item"><span class="dot"></span>Hosting & Deploy</span><span class="marquee-item"><span class="dot"></span>Soporte Técnico</span></div></div>
 
 <section id="services"><div class="services-header"><div><div class="section-label reveal">Servicios</div><h2 class="section-title reveal reveal-delay-1">Lo que<br>construimos</h2></div><div><p class="services-intro reveal reveal-delay-2">Desde landing pages hasta sistemas empresariales complejos. Cada línea de código pensada para escalar y durar.</p><a href="#cta" class="btn-ghost reveal reveal-delay-3">Ver todos los servicios →</a></div></div>
-  <div class="services-grid"><div class="service-card reveal"><div class="service-num">01</div><div class="service-icon">🌐</div><h3 class="service-name">Desarrollo Web</h3><p class="service-desc">Sitios y aplicaciones web con React, Vue o tecnologías a medida.</p><div class="service-arrow">↗</div></div>
-  <div class="service-card reveal reveal-delay-1"><div class="service-num">02</div><div class="service-icon">📱</div><h3 class="service-name">Apps Móviles</h3><p class="service-desc">Aplicaciones iOS y Android con React Native y Flutter.</p><div class="service-arrow">↗</div></div>
-  <div class="service-card reveal reveal-delay-2"><div class="service-num">03</div><div class="service-icon">⚙️</div><h3 class="service-name">Sistemas a Medida</h3><p class="service-desc">CRM, ERP, POS, gestión de inventario.</p><div class="service-arrow">↗</div></div>
-  <div class="service-card reveal reveal-delay-3"><div class="service-num">04</div><div class="service-icon">🔌</div><h3 class="service-name">APIs & Backend</h3><p class="service-desc">Arquitecturas escalables con Node.js y Django.</p><div class="service-arrow">↗</div></div>
-  <div class="service-card reveal reveal-delay-4"><div class="service-num">05</div><div class="service-icon">☁️</div><h3 class="service-name">Hosting & Deploy</h3><p class="service-desc">Servidores configurados, dominios, SSL y monitoreo.</p><div class="service-arrow">↗</div></div>
-  <div class="service-card reveal reveal-delay-4"><div class="service-num">06</div><div class="service-icon">🛠️</div><h3 class="service-name">Soporte Técnico</h3><p class="service-desc">Mantenimiento, actualizaciones y resolución de bugs.</p><div class="service-arrow">↗</div></div></div>
+  <div class="services-grid"><div class="service-card reveal"><div class="service-num">01</div><div class="service-icon">🌐</div><h3 class="service-name">Desarrollo Web</h3><p class="service-desc">Sitios y aplicaciones web con React, Vue o tecnologías a medida. Performance, SEO y diseño que convierte visitantes en clientes.</p><div class="service-arrow">↗</div></div>
+  <div class="service-card reveal reveal-delay-1"><div class="service-num">02</div><div class="service-icon">📱</div><h3 class="service-name">Apps Móviles</h3><p class="service-desc">Aplicaciones iOS y Android con React Native y Flutter. Una sola codebase, experiencia nativa. Tu negocio en el bolsillo de tus clientes.</p><div class="service-arrow">↗</div></div>
+  <div class="service-card reveal reveal-delay-2"><div class="service-num">03</div><div class="service-icon">⚙️</div><h3 class="service-name">Sistemas a Medida</h3><p class="service-desc">CRM, ERP, POS, gestión de inventario. Software específico para tu industria construido desde cero, no templates adaptados.</p><div class="service-arrow">↗</div></div>
+  <div class="service-card reveal reveal-delay-3"><div class="service-num">04</div><div class="service-icon">🔌</div><h3 class="service-name">APIs & Backend</h3><p class="service-desc">Arquitecturas escalables con Node.js y Django. REST APIs, autenticación robusta, bases de datos optimizadas para el crecimiento.</p><div class="service-arrow">↗</div></div>
+  <div class="service-card reveal reveal-delay-4"><div class="service-num">05</div><div class="service-icon">☁️</div><h3 class="service-name">Hosting & Deploy</h3><p class="service-desc">Servidores configurados, dominios, SSL y monitoreo 24/7. Tu aplicación siempre disponible, rápida y segura.</p><div class="service-arrow">↗</div></div>
+  <div class="service-card reveal reveal-delay-4"><div class="service-num">06</div><div class="service-icon">🛠️</div><h3 class="service-name">Soporte Técnico</h3><p class="service-desc">Mantenimiento, actualizaciones y resolución de bugs. Soporte continuo para que tu sistema nunca te falle en el momento menos indicado.</p><div class="service-arrow">↗</div></div></div>
 </section>
 
 <section id="process"><div class="section-label reveal">Proceso</div><h2 class="section-title reveal reveal-delay-1">Cómo trabajamos</h2>
-  <div class="process-layout"><div class="process-steps"><div class="step reveal"><div class="step-num">01</div><div><h3 class="step-title">Descubrimiento</h3><p class="step-desc">Entendemos tu negocio, objetivos y contexto técnico.</p></div></div>
-  <div class="step reveal reveal-delay-1"><div class="step-num">02</div><div><h3 class="step-title">Diseño & Arquitectura</h3><p class="step-desc">Definimos la stack tecnológica, UX/UI y la arquitectura del sistema.</p></div></div>
-  <div class="step reveal reveal-delay-2"><div class="step-num">03</div><div><h3 class="step-title">Desarrollo Iterativo</h3><p class="step-desc">Sprints cortos con entregas frecuentes.</p></div></div>
-  <div class="step reveal reveal-delay-3"><div class="step-num">04</div><div><h3 class="step-title">Deploy & Entrega</h3><p class="step-desc">Lanzamiento, documentación y capacitación incluidos.</p></div></div></div>
+  <div class="process-layout"><div class="process-steps"><div class="step reveal"><div class="step-num">01</div><div><h3 class="step-title">Descubrimiento</h3><p class="step-desc">Entendemos tu negocio, objetivos y contexto técnico. Sin tecnicismos innecesarios, foco en el problema real.</p></div></div>
+  <div class="step reveal reveal-delay-1"><div class="step-num">02</div><div><h3 class="step-title">Diseño & Arquitectura</h3><p class="step-desc">Definimos la stack tecnológica, UX/UI y la arquitectura del sistema. Te mostramos antes de escribir una línea.</p></div></div>
+  <div class="step reveal reveal-delay-2"><div class="step-num">03</div><div><h3 class="step-title">Desarrollo Iterativo</h3><p class="step-desc">Sprints cortos con entregas frecuentes. Siempre estás al tanto del progreso y podés dar feedback real.</p></div></div>
+  <div class="step reveal reveal-delay-3"><div class="step-num">04</div><div><h3 class="step-title">Deploy & Entrega</h3><p class="step-desc">Lanzamiento, documentación y capacitación incluidos. No te dejamos solo con el sistema: te enseñamos a usarlo.</p></div></div></div>
   <div class="process-visual reveal reveal-delay-2"><div class="pv-card float-1"><div class="pv-label">Sprint actual</div><div class="pv-title">Módulo de pagos</div><div class="pv-bar"><div class="pv-fill" style="width:72%"></div></div><div class="pv-small">72% completado · 3 días restantes</div></div>
   <div class="pv-card main"><div class="pv-label">Rendimiento del proyecto</div><div class="pv-num"><sup>$</sup>280k</div><div class="pv-small" style="margin-bottom:20px">valor generado para clientes en 2024</div><div class="pv-bar" style="height:6px"><div class="pv-fill" style="width:88%"></div></div><div class="pv-small" style="margin-bottom:16px">88% satisfacción · 24 proyectos</div><div class="pv-status">En producción · OsisDev</div></div>
   <div class="pv-card float-2"><div class="pv-label">Tiempo promedio</div><div class="pv-num" style="font-size:24px">4–8 <span style="font-size:14px;color:var(--text-muted)">semanas</span></div><div class="pv-small">de MVP a producción</div></div>
-  <div class="pv-card float-3" style="padding:20px"><div class="pv-label" style="margin-bottom:8px">Stack recomendado</div><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:10px">React</span><span style="background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:10px">Django</span><span style="background:rgba(204,22,22,.15);border:1px solid var(--border-red);border-radius:4px;padding:3px 8px;font-size:10px;color:var(--red-vivid)">+3</span></div></div></div></div>
+  <div class="pv-card float-3" style="padding:20px"><div class="pv-label" style="margin-bottom:8px">Stack recomendado</div><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:10px;color:var(--text-muted)">React</span><span style="background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:10px;color:var(--text-muted)">Django</span><span style="background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:10px;color:var(--text-muted)">PG</span><span style="background:rgba(204,22,22,.15);border:1px solid var(--border-red);border-radius:4px;padding:3px 8px;font-size:10px;color:var(--red-vivid)">+3</span></div></div></div></div>
 </section>
 
 <section id="tech"><div class="tech-header"><div class="section-label reveal">Stack Tecnológico</div><h2 class="section-title reveal reveal-delay-1">Las herramientas<br>que dominamos</h2></div>
@@ -981,41 +981,41 @@ footer{
 </section>
 
 <section id="works"><div class="works-header"><div><div class="section-label reveal">Proyectos</div><h2 class="section-title reveal reveal-delay-1">Trabajo real,<br>resultados reales</h2></div><a href="#cta" class="btn-ghost reveal reveal-delay-2">Ver todos →</a></div>
-  <div class="works-grid"><div class="work-card featured reveal"><div class="work-bg"></div><div class="work-bg-accent"></div><a href="#" class="work-link">↗</a><div class="work-content"><div class="work-tag"><span class="tag">Flask</span><span class="tag">PostgreSQL</span></div><h3 class="work-title">Bienenhaus Propiedades</h3><p class="work-desc">Sistema de gestión inmobiliaria con scraping inteligente e IA.</p></div></div>
-  <div class="work-card reveal reveal-delay-1"><div class="work-bg"></div><div class="work-bg-accent"></div><a href="#" class="work-link">↗</a><div class="work-content"><div class="work-tag"><span class="tag">Flutter</span><span class="tag">SQLite</span></div><h3 class="work-title">DLicias App</h3><p class="work-desc">App de gestión de ventas para distribuidora mayorista.</p></div></div>
-  <div class="work-card reveal reveal-delay-2"><div class="work-bg"></div><div class="work-bg-accent"></div><a href="#" class="work-link">↗</a><div class="work-content"><div class="work-tag"><span class="tag">React Native</span><span class="tag">JWT</span></div><h3 class="work-title">La Bancaria</h3><p class="work-desc">App de credencial digital para organización bancaria.</p></div></div></div>
+  <div class="works-grid"><div class="work-card featured reveal"><div class="work-bg"></div><div class="work-bg-accent"></div><a href="#" class="work-link">↗</a><div class="work-content"><div class="work-tag"><span class="tag">Flask</span><span class="tag">PostgreSQL</span><span class="tag">Python</span></div><h3 class="work-title">Bienenhaus Propiedades</h3><p class="work-desc">Sistema de gestión inmobiliaria con scraping inteligente de ZonaProp y Argenprop via IA, módulo ACM para valuación de propiedades, notificaciones push y almacenamiento en la nube. Entregado a agencia de Córdoba.</p></div></div>
+  <div class="work-card reveal reveal-delay-1"><div class="work-bg"></div><div class="work-bg-accent"></div><a href="#" class="work-link">↗</a><div class="work-content"><div class="work-tag"><span class="tag">Flutter</span><span class="tag">SQLite</span></div><h3 class="work-title">DLicias App</h3><p class="work-desc">App de gestión de ventas para distribuidora mayorista de golosinas. 524 productos, integración WhatsApp, roles duales y sincronización offline.</p></div></div>
+  <div class="work-card reveal reveal-delay-2"><div class="work-bg"></div><div class="work-bg-accent"></div><a href="#" class="work-link">↗</a><div class="work-content"><div class="work-tag"><span class="tag">React Native</span><span class="tag">JWT</span></div><h3 class="work-title">La Bancaria</h3><p class="work-desc">App de credencial digital para organización bancaria argentina. Modo oscuro, biometría, push notifications y 400+ afiliados conectados.</p></div></div></div>
 </section>
 
 <section id="about"><div class="section-label reveal">Sobre mí</div>
   <div class="about-layout"><div class="about-avatar-wrap reveal"><div class="about-avatar"><div class="about-avatar-bg"></div><div class="about-avatar-inner"><div class="about-initials-glow"></div><div class="about-initials">FH</div></div><div class="about-corner-tr"></div><div class="about-corner-bl"></div></div>
   <div class="about-badges"><div class="about-badge-item"><div class="about-badge-icon">🎓</div><span class="about-badge-label">Formación</span><span class="about-badge-val">Analista en Sistemas</span></div><div class="about-badge-item"><div class="about-badge-icon">📍</div><span class="about-badge-label">Ubicación</span><span class="about-badge-val">Córdoba, Argentina</span></div><div class="about-badge-item"><div class="about-badge-icon">⚡</div><span class="about-badge-label">Experiencia</span><span class="about-badge-val">5+ años</span></div><div class="about-badge-item"><div class="about-badge-icon">🟢</div><span class="about-badge-label">Disponibilidad</span><span class="about-badge-val" style="color:rgba(74,222,128,.9)">Disponible</span></div></div></div>
-  <div class="about-text reveal reveal-delay-2"><h2 class="about-name">Facundo Herrera</h2><div class="about-role">Desarrollador Full‑Stack · OsisDev</div><div class="about-divider"></div><p class="about-bio">Soy desarrollador full‑stack y estudiante avanzado de Análisis de Sistemas con <strong>más de 5 años construyendo software real</strong> para empresas argentinas. Fundé <strong>OsisDev</strong> con una convicción simple: el software tiene que resolver problemas de negocio concretos.</p><div class="about-tags"><span class="about-tag accent">React & React Native</span><span class="about-tag accent">Django & Node.js</span><span class="about-tag accent">Flutter</span><span class="about-tag">PostgreSQL</span><span class="about-tag">MongoDB</span><span class="about-tag">TypeScript</span></div><a href="#cta" class="btn-primary" style="display:inline-block;text-decoration:none">Trabajemos juntos →</a></div></div>
+  <div class="about-text reveal reveal-delay-2"><h2 class="about-name">Facundo Herrera</h2><div class="about-role">Desarrollador Full‑Stack · OsisDev</div><div class="about-divider"></div><p class="about-bio">Soy desarrollador full‑stack y estudiante avanzado de Análisis de Sistemas con <strong>más de 5 años construyendo software real</strong> para empresas argentinas. Fundé <strong>OsisDev</strong> con una convicción simple: el software tiene que resolver problemas de negocio concretos, no solo verse bien en una presentación.</p><p class="about-bio">Trabajo desde el diseño de la arquitectura hasta el deploy en producción — sin intermediarios. Cada proyecto lo trato como si fuera mi propio negocio: <strong>entrego a tiempo, comunico de forma clara y me quedo hasta que funciona</strong>.</p><div class="about-tags"><span class="about-tag accent">React & React Native</span><span class="about-tag accent">Django & Node.js</span><span class="about-tag accent">Flutter</span><span class="about-tag">PostgreSQL</span><span class="about-tag">MongoDB</span><span class="about-tag">REST APIs</span><span class="about-tag">Docker</span><span class="about-tag">TypeScript</span><span class="about-tag">AWS / Render</span></div><a href="#cta" class="btn-primary" style="display:inline-block;text-decoration:none">Trabajemos juntos →</a></div></div>
 </section>
 
-<!-- ========== NUEVA SECCIÓN EQUIPO TÉCNICO (justo después de Sobre mí y antes de Testimonios) ========== -->
+<!-- ========== NUEVA SECCIÓN EQUIPO TÉCNICO ========== -->
 <section id="equipo" style="background:var(--bg)">
-  <div class="container" style="max-width:1280px;margin:0 auto">
+  <div style="max-width:1280px;margin:0 auto">
     <div class="section-label reveal">EQUIPO</div>
     <h2 class="section-title reveal reveal-delay-1">Conoce a los especialistas detrás de cada proyecto</h2>
     <p class="section-sub reveal reveal-delay-2">Cada proyecto incorpora profesionales especializados en backend, frontend, aplicaciones móviles, infraestructura y experiencia de usuario para garantizar soluciones robustas, escalables y preparadas para crecer.</p>
     <div class="reveal reveal-delay-3"><span class="metric-highlight"><span class="metric-number">+12</span> especialistas colaborando según las necesidades del proyecto</span></div>
     
     <div class="team-grid">
-      <div class="team-card reveal"><div class="card-inner"><div class="avatar-wrap"><div class="avatar-circle"><div class="avatar-initials">JP</div></div></div><div class="member-name">Juan Pérez</div><div class="member-role">Senior Backend Engineer</div><div class="member-specialty">Django · FastAPI</div><div class="expand-info"><div class="hud-header">⟡ PERFIL TÉCNICO ⟡</div><div class="bio-text">Especialista en arquitecturas backend escalables, APIs de alto rendimiento y bases de datos empresariales.</div><div class="exp-row"><span class="exp-label">⚡ Experiencia</span><span class="exp-value">8+ años</span></div><div class="tech-badge-list"><span class="tech-badge">Django</span><span class="tech-badge">FastAPI</span><span class="tech-badge">PostgreSQL</span><span class="tech-badge">Docker</span><span class="tech-badge">AWS</span></div><div class="level-row"><span>Senior</span><div class="level-bar-bg"><div class="level-fill" style="--level-width:100%"></div></div></div><div><span style="font-size:11px;color:var(--text-muted)">Participó en:</span><div class="participation-list"><span class="participation-item">Bienenhaus</span><span class="participation-item">DLicias</span><span class="participation-item">Sistemas empresariales</span></div></div></div></div></div>
-      <div class="team-card reveal reveal-delay-1"><div class="card-inner"><div class="avatar-wrap"><div class="avatar-circle"><div class="avatar-initials">MR</div></div></div><div class="member-name">María Rodríguez</div><div class="member-role">Frontend Engineer</div><div class="member-specialty">React & TypeScript</div><div class="expand-info"><div class="hud-header">⟡ PERFIL TÉCNICO ⟡</div><div class="bio-text">Experta en interfaces modernas y reactivas, optimización de performance y accesibilidad web.</div><div class="exp-row"><span class="exp-label">⚡ Experiencia</span><span class="exp-value">6+ años</span></div><div class="tech-badge-list"><span class="tech-badge">React</span><span class="tech-badge">Next.js</span><span class="tech-badge">TypeScript</span><span class="tech-badge">Tailwind</span><span class="tech-badge">Redux</span></div><div class="level-row"><span>Semi Senior +</span><div class="level-bar-bg"><div class="level-fill" style="--level-width:88%"></div></div></div><div><span style="font-size:11px;color:var(--text-muted)">Participó en:</span><div class="participation-list"><span class="participation-item">Dashboard Bancaria</span><span class="participation-item">Portal clientes</span></div></div></div></div></div>
-      <div class="team-card reveal reveal-delay-2"><div class="card-inner"><div class="avatar-wrap"><div class="avatar-circle"><div class="avatar-initials">LS</div></div></div><div class="member-name">Lucas Sosa</div><div class="member-role">Mobile Developer</div><div class="member-specialty">Flutter & React Native</div><div class="expand-info"><div class="hud-header">⟡ PERFIL TÉCNICO ⟡</div><div class="bio-text">Experto en desarrollo cross‑platform, integración nativa y experiencias móviles fluidas.</div><div class="exp-row"><span class="exp-label">⚡ Experiencia</span><span class="exp-value">5+ años</span></div><div class="tech-badge-list"><span class="tech-badge">Flutter</span><span class="tech-badge">Dart</span><span class="tech-badge">React Native</span><span class="tech-badge">Firebase</span></div><div class="level-row"><span>Semi Senior</span><div class="level-bar-bg"><div class="level-fill" style="--level-width:82%"></div></div></div><div><span style="font-size:11px;color:var(--text-muted)">Participó en:</span><div class="participation-list"><span class="participation-item">DLicias App</span><span class="participation-item">La Bancaria</span></div></div></div></div></div>
-      <div class="team-card reveal reveal-delay-3"><div class="card-inner"><div class="avatar-wrap"><div class="avatar-circle"><div class="avatar-initials">SM</div></div></div><div class="member-name">Sofía Martínez</div><div class="member-role">DevOps Engineer</div><div class="member-specialty">Cloud & Infraestructura</div><div class="expand-info"><div class="hud-header">⟡ PERFIL TÉCNICO ⟡</div><div class="bio-text">Automatización, despliegues continuos y arquitecturas cloud. Asegura alta disponibilidad.</div><div class="exp-row"><span class="exp-label">⚡ Experiencia</span><span class="exp-value">7+ años</span></div><div class="tech-badge-list"><span class="tech-badge">Docker</span><span class="tech-badge">AWS</span><span class="tech-badge">Linux</span><span class="tech-badge">CI/CD</span><span class="tech-badge">Nginx</span></div><div class="level-row"><span>Senior</span><div class="level-bar-bg"><div class="level-fill" style="--level-width:95%"></div></div></div><div><span style="font-size:11px;color:var(--text-muted)">Participó en:</span><div class="participation-list"><span class="participation-item">Infra Bienenhaus</span><span class="participation-item">Cluster DLicias</span></div></div></div></div></div>
+      <div class="team-card reveal"><div class="card-inner"><div class="avatar-wrap"><div class="avatar-circle"><div class="avatar-initials">JP</div></div></div><div class="member-name">Juan Pérez</div><div class="member-role">Senior Backend Engineer</div><div class="member-specialty">Django · FastAPI</div><div class="expand-info"><div class="hud-header">⟡ PERFIL TÉCNICO ⟡</div><div class="bio-text">Especialista en arquitecturas backend escalables, APIs de alto rendimiento y bases de datos empresariales.</div><div class="exp-row"><span class="exp-label">⚡ Experiencia</span><span class="exp-value">8+ años</span></div><div class="tech-badge-list"><span class="tech-badge">Django</span><span class="tech-badge">FastAPI</span><span class="tech-badge">PostgreSQL</span><span class="tech-badge">Docker</span><span class="tech-badge">AWS</span></div><div class="level-row"><span>Senior</span><div class="level-bar-bg"><div class="level-fill" style="--level-width:100%"></div></div></div><div><span style="font-size:11px;color:var(--text-muted)">Participó en:</span><div class="participation-list"><span class="participation-item">Bienenhaus</span><span class="participation-item">DLicias</span><span class="participation-item">Sistemas empresariales</span><span class="participation-item">Aplicaciones móviles</span></div></div></div></div></div>
+      <div class="team-card reveal reveal-delay-1"><div class="card-inner"><div class="avatar-wrap"><div class="avatar-circle"><div class="avatar-initials">MR</div></div></div><div class="member-name">María Rodríguez</div><div class="member-role">Frontend Engineer</div><div class="member-specialty">React & TypeScript</div><div class="expand-info"><div class="hud-header">⟡ PERFIL TÉCNICO ⟡</div><div class="bio-text">Experta en interfaces modernas y reactivas, optimización de performance y accesibilidad web. Lidera la capa visual de productos complejos.</div><div class="exp-row"><span class="exp-label">⚡ Experiencia</span><span class="exp-value">6+ años</span></div><div class="tech-badge-list"><span class="tech-badge">React</span><span class="tech-badge">Next.js</span><span class="tech-badge">TypeScript</span><span class="tech-badge">Tailwind</span><span class="tech-badge">Redux</span></div><div class="level-row"><span>Semi Senior +</span><div class="level-bar-bg"><div class="level-fill" style="--level-width:88%"></div></div></div><div><span style="font-size:11px;color:var(--text-muted)">Participó en:</span><div class="participation-list"><span class="participation-item">Dashboard La Bancaria</span><span class="participation-item">Portal de clientes</span><span class="participation-item">E‑commerce</span></div></div></div></div></div>
+      <div class="team-card reveal reveal-delay-2"><div class="card-inner"><div class="avatar-wrap"><div class="avatar-circle"><div class="avatar-initials">LS</div></div></div><div class="member-name">Lucas Sosa</div><div class="member-role">Mobile Developer</div><div class="member-specialty">Flutter & React Native</div><div class="expand-info"><div class="hud-header">⟡ PERFIL TÉCNICO ⟡</div><div class="bio-text">Experto en desarrollo cross‑platform, integración nativa y experiencias móviles fluidas para iOS y Android con una sola base de código.</div><div class="exp-row"><span class="exp-label">⚡ Experiencia</span><span class="exp-value">5+ años</span></div><div class="tech-badge-list"><span class="tech-badge">Flutter</span><span class="tech-badge">Dart</span><span class="tech-badge">React Native</span><span class="tech-badge">Firebase</span></div><div class="level-row"><span>Semi Senior</span><div class="level-bar-bg"><div class="level-fill" style="--level-width:82%"></div></div></div><div><span style="font-size:11px;color:var(--text-muted)">Participó en:</span><div class="participation-list"><span class="participation-item">DLicias App</span><span class="participation-item">La Bancaria credencial</span><span class="participation-item">Apps logística</span></div></div></div></div></div>
+      <div class="team-card reveal reveal-delay-3"><div class="card-inner"><div class="avatar-wrap"><div class="avatar-circle"><div class="avatar-initials">SM</div></div></div><div class="member-name">Sofía Martínez</div><div class="member-role">DevOps Engineer</div><div class="member-specialty">Cloud & Infraestructura</div><div class="expand-info"><div class="hud-header">⟡ PERFIL TÉCNICO ⟡</div><div class="bio-text">Automatización, despliegues continuos y arquitecturas cloud. Asegura alta disponibilidad y monitoreo proactivo para todos los proyectos.</div><div class="exp-row"><span class="exp-label">⚡ Experiencia</span><span class="exp-value">7+ años</span></div><div class="tech-badge-list"><span class="tech-badge">Docker</span><span class="tech-badge">AWS</span><span class="tech-badge">Linux</span><span class="tech-badge">CI/CD</span><span class="tech-badge">Nginx</span></div><div class="level-row"><span>Senior</span><div class="level-bar-bg"><div class="level-fill" style="--level-width:95%"></div></div></div><div><span style="font-size:11px;color:var(--text-muted)">Participó en:</span><div class="participation-list"><span class="participation-item">Infraestructura Bienenhaus</span><span class="participation-item">Cluster DLicias</span><span class="participation-item">Migración cloud</span></div></div></div></div></div>
     </div>
   </div>
 </section>
 
 <section id="testimonials"><div class="section-label reveal">Clientes</div><h2 class="section-title reveal reveal-delay-1">Lo que dicen<br>de nosotros</h2>
-  <div class="testimonials-grid"><div class="testi-card reveal"><div class="testi-quote">"</div><p class="testi-text">Facundo entregó el sistema completo en tiempo y forma. La aplicación superó todas nuestras expectativas.</p><div class="testi-author"><div class="testi-avatar">MG</div><div><div class="testi-name">María García</div><div class="testi-role">Directora · Bienenhaus</div></div></div></div>
-  <div class="testi-card reveal reveal-delay-1"><div class="testi-quote">"</div><p class="testi-text">La app para los repartidores transformó completamente nuestra operación. Los errores bajaron a cero.</p><div class="testi-author"><div class="testi-avatar">RL</div><div><div class="testi-name">Roberto López</div><div class="testi-role">Dueño · DLicias</div></div></div></div>
-  <div class="testi-card reveal reveal-delay-2"><div class="testi-quote">"</div><p class="testi-text">Profesionalismo y calidad técnica. El sistema de credenciales digitales fue un antes y después.</p><div class="testi-author"><div class="testi-avatar">CP</div><div><div class="testi-name">Carlos Pereyra</div><div class="testi-role">Presidente · La Bancaria</div></div></div></div></div>
+  <div class="testimonials-grid"><div class="testi-card reveal"><div class="testi-quote">"</div><p class="testi-text">Facundo entregó el sistema completo en tiempo y forma. La aplicación superó todas nuestras expectativas y el soporte post-entrega fue excelente.</p><div class="testi-author"><div class="testi-avatar">MG</div><div><div class="testi-name">María García</div><div class="testi-role">Directora · Bienenhaus Propiedades</div></div></div></div>
+  <div class="testi-card reveal reveal-delay-1"><div class="testi-quote">"</div><p class="testi-text">La app para los repartidores transformó completamente nuestra operación. Ahora los pedidos fluyen solos y los errores bajaron a cero.</p><div class="testi-author"><div class="testi-avatar">RL</div><div><div class="testi-name">Roberto López</div><div class="testi-role">Dueño · DLicias Distribuidora</div></div></div></div>
+  <div class="testi-card reveal reveal-delay-2"><div class="testi-quote">"</div><p class="testi-text">Profesionalismo y calidad técnica. El sistema de credenciales digitales fue un antes y después para nuestra organización. Muy recomendable.</p><div class="testi-author"><div class="testi-avatar">CP</div><div><div class="testi-name">Carlos Pereyra</div><div class="testi-role">Presidente · Seccional La Bancaria</div></div></div></div></div>
 </section>
 
-<section id="cta"><div class="cta-glow"></div><div class="section-label reveal" style="justify-content:center">Contacto</div><h2 class="cta-title reveal reveal-delay-1">¿Tenés un<br><span style="color:var(--red-vivid)">proyecto</span> en mente?</h2><p class="cta-sub reveal reveal-delay-2">Contanos qué necesitás y te respondemos en menos de 24hs.</p><div class="cta-form reveal reveal-delay-3"><input type="email" class="cta-input" placeholder="tu@email.com"><button class="btn-primary">Enviar →</button></div><div class="cta-contact reveal reveal-delay-4"><a href="mailto:hfacundo45@gmail.com">📧 hfacundo45@gmail.com</a><a href="https://wa.me/543874023845">💬 WhatsApp</a></div></section>
+<section id="cta"><div class="cta-glow"></div><div class="section-label reveal" style="justify-content:center">Contacto</div><h2 class="cta-title reveal reveal-delay-1">¿Tenés un<br><span style="color:var(--red-vivid)">proyecto</span> en mente?</h2><p class="cta-sub reveal reveal-delay-2">Contanos qué necesitás y te respondemos en menos de 24hs.</p><div class="cta-form reveal reveal-delay-3"><input type="email" class="cta-input" placeholder="tu@email.com"><button class="btn-primary">Enviar →</button></div><div class="cta-contact reveal reveal-delay-4"><a href="mailto:hfacundo45@gmail.com">📧 hfacundo45@gmail.com</a><a href="https://wa.me/543874023845">💬 WhatsApp</a><a href="#">🐦 Redes Sociales</a></div></section>
 
 <footer><div class="footer-logo"><div class="nav-logo-dot"></div>OsisDev</div><div class="footer-copy">© 2025 OsisDev · Córdoba, Argentina</div><div class="footer-links"><a href="#services">Servicios</a><a href="#works">Proyectos</a><a href="#cta">Contacto</a></div></footer>
 
@@ -1028,7 +1028,7 @@ document.addEventListener('mouseup',()=>document.body.classList.remove('clicking
 function cursorLoop(){dotX+=(mx-dotX)*0.85;dotY+=(my-dotY)*0.85;cur.style.transform=`translate3d(${dotX-5}px,${dotY-5}px,0)`;rx+=(mx-rx)*0.14;ry+=(my-ry)*0.14;ring.style.transform=`translate3d(${rx-17}px,${ry-17}px,0)`;requestAnimationFrame(cursorLoop)}cursorLoop();
 document.addEventListener('mouseleave',()=>{cur.style.opacity='0';ring.style.opacity='0'});
 document.addEventListener('mouseenter',()=>{cur.style.opacity='1';ring.style.opacity='1'});
-document.querySelectorAll('a,button,.service-card,.team-card').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'))});
+document.querySelectorAll('a,button,.service-card,.tech-item,.testi-card,.work-card,.team-card').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'))});
 const canvas=document.getElementById('canvas-bg'),ctx=canvas.getContext('2d');
 function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}resizeCanvas();window.addEventListener('resize',resizeCanvas);
 const particles=[];for(let i=0;i<80;i++)particles.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,r:Math.random()*1.5+0.3,vx:(Math.random()-0.5)*0.4,vy:(Math.random()-0.5)*0.4,a:Math.random()*0.6+0.1});
@@ -1044,7 +1044,7 @@ const reveals=document.querySelectorAll('.reveal');const obs=new IntersectionObs
 function animCounter(el,target,suffix){let start=0,dur=1800;const step=timestamp=>{if(!start)start=timestamp;const p=Math.min((timestamp-start)/dur,1);const ease=1-Math.pow(1-p,4);el.innerHTML=Math.floor(ease*target)+'<span class="plus">'+suffix+'</span>';if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)}const counterObs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){setTimeout(()=>animCounter(document.getElementById('counter-1'),30,'+'),200);setTimeout(()=>animCounter(document.getElementById('counter-2'),20,'+'),400);setTimeout(()=>animCounter(document.getElementById('counter-3'),5,'+'),600);counterObs.disconnect()}},{threshold:0.5});counterObs.observe(document.getElementById('hero'));
 const words=document.querySelectorAll('.hero-title .word');words.forEach((w,i)=>{w.style.opacity='0';w.style.transform='translateY(60px)';w.style.display='inline-block';w.style.transition=`opacity .8s ${i*.15+.4}s cubic-bezier(.16,1,.3,1), transform .8s ${i*.15+.4}s cubic-bezier(.16,1,.3,1)`;setTimeout(()=>{w.style.opacity='1';w.style.transform='translateY(0)'},100)});
 window.addEventListener('scroll',()=>{document.querySelector('nav').style.background=window.scrollY>60?'rgba(8,8,8,0.95)':'rgba(8,8,8,0.7)'});
-const teamCards=document.querySelectorAll('.team-card .level-fill');if(window.innerWidth<=680)teamCards.forEach(fill=>{const w=getComputedStyle(fill.parentElement?.parentElement?.querySelector('.level-fill')).getPropertyValue('--level-width');if(w)fill.style.width=w});
+const teamCards=document.querySelectorAll('.team-card .level-fill');if(window.innerWidth<=680)teamCards.forEach(fill=>{const w=getComputedStyle(fill).getPropertyValue('--level-width');if(w)fill.style.width=w});
 </script>
 </body>
 </html>
