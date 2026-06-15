@@ -12,7 +12,7 @@
 <meta name="robots" content="index, follow">
 <meta name="language" content="Spanish">
 
-<!-- Open Graph / Redes Sociales -->
+<!-- Open Graph -->
 <meta property="og:title" content="OsisDev | Software House Premium">
 <meta property="og:description" content="Transformamos negocios con software a medida. Sistemas, apps móviles e IA para empresas que quieren crecer.">
 <meta property="og:type" content="website">
@@ -56,9 +56,10 @@
   --text: #FFFFFF;
   --text-muted: rgba(255, 255, 255, 0.55);
   --text-dim: rgba(255, 255, 255, 0.25);
+  --nav-bg: rgba(8, 8, 8, 0.8);
 }
 
-/* Tema claro */
+/* Tema claro - CORREGIDO */
 body.light-mode {
   --bg: #F5F5F5;
   --bg2: #FFFFFF;
@@ -69,6 +70,7 @@ body.light-mode {
   --text: #111111;
   --text-muted: rgba(0, 0, 0, 0.55);
   --text-dim: rgba(0, 0, 0, 0.25);
+  --nav-bg: rgba(255, 255, 255, 0.9);
 }
 
 html {
@@ -96,18 +98,18 @@ body {
   gap: 8px;
   font-size: 14px;
   transition: all 0.3s;
+  color: var(--text);
 }
 .theme-toggle:hover {
   background: var(--red);
   border-color: var(--red);
+  color: #fff;
 }
 .theme-toggle i {
   font-size: 14px;
 }
 
-/* ========================================
-   CUSTOM CURSOR (se desactiva en móvil)
-   ======================================== */
+/* CUSTOM CURSOR */
 @media (min-width: 769px) {
   #cursor {
     position: fixed;
@@ -177,9 +179,7 @@ body::before {
   opacity: 0.4;
 }
 
-/* ========================================
-   NAVBAR CON MENÚ HAMBURGUESA Y THEME TOGGLE
-   ======================================== */
+/* NAVBAR - CORREGIDO para modo claro */
 nav {
   position: fixed;
   top: 0;
@@ -191,13 +191,10 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(8, 8, 8, 0.8);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   transition: background 0.3s;
-}
-body.light-mode nav {
-  background: rgba(255, 255, 255, 0.9);
 }
 .nav-logo {
   font-family: 'Space Grotesk', sans-serif;
@@ -279,7 +276,7 @@ body.light-mode nav {
   left: -100%;
   width: 100%;
   height: calc(100vh - 72px);
-  background: rgba(8, 8, 8, 0.98);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px);
   transition: left 0.3s ease;
   z-index: 99;
@@ -321,6 +318,54 @@ body.light-mode nav {
   }
 }
 
+/* ========================================
+   WHATSAPP FLOTANTE - SIEMPRE VISIBLE
+   ======================================== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+}
+.whatsapp-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #25D366;
+  border: none;
+  border-radius: 60px;
+  padding: 12px 24px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+}
+.whatsapp-link:hover {
+  background: #20b859;
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(37, 211, 102, 0.5);
+}
+.whatsapp-icon {
+  font-size: 24px;
+}
+.whatsapp-text {
+  font-size: 14px;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+  }
+  .whatsapp-link {
+    padding: 10px 18px;
+  }
+  .whatsapp-text {
+    font-size: 12px;
+  }
+}
+
+/* Resto de estilos mantienen la misma estructura... */
 /* ========================================
    HERO SECTION
    ======================================== */
@@ -592,7 +637,7 @@ section {
 }
 
 /* ========================================
-   SERVICES / PROBLEMAS QUE RESOLVEMOS
+   SERVICES
    ======================================== */
 #services {
   background: var(--bg);
@@ -672,7 +717,7 @@ section {
 }
 
 /* ========================================
-   PROCESS SECTION (VERSIÓN ORIGINAL)
+   PROCESS
    ======================================== */
 #process {
   background: var(--bg2);
@@ -818,7 +863,6 @@ section {
   padding: 4px 12px;
   font-size: 11px;
   color: rgba(34, 197, 94, 0.9);
-  letter-spacing: 0.5px;
 }
 .pv-status::before {
   content: '';
@@ -844,7 +888,7 @@ section {
 }
 
 /* ========================================
-   TECH STACK (VERSIÓN ORIGINAL - GRILLAS)
+   TECH STACK
    ======================================== */
 #tech {
   background: var(--bg);
@@ -909,7 +953,7 @@ section {
 }
 
 /* ========================================
-   WORKS / PROYECTOS REDISEÑADOS
+   WORKS
    ======================================== */
 #works {
   background: var(--bg2);
@@ -1000,7 +1044,7 @@ section {
 }
 
 /* ========================================
-   CASOS DE ÉXITO (ANTES/DESPUÉS)
+   CASOS DE ÉXITO
    ======================================== */
 #casos {
   background: var(--bg);
@@ -1141,7 +1185,7 @@ section {
 }
 
 /* ========================================
-   ABOUT (VERSIÓN COMPLETA RESTAURADA)
+   ABOUT
    ======================================== */
 #about {
   background: var(--bg2);
@@ -1351,7 +1395,7 @@ section {
 }
 
 /* ========================================
-   EQUIPO TÉCNICO (SIN MÉTRICA ADICIONAL)
+   EQUIPO TÉCNICO
    ======================================== */
 #equipo {
   background: var(--bg);
@@ -1538,7 +1582,7 @@ section {
 }
 
 /* ========================================
-   RESULTADOS OBTENIDOS (CONTADORES + GRÁFICO)
+   RESULTADOS CON GRÁFICO
    ======================================== */
 #resultados {
   background: var(--bg);
@@ -1600,7 +1644,7 @@ section {
 }
 
 /* ========================================
-   CALCULADORA DE PROYECTOS (PRECIOS REALISTAS USD)
+   CALCULADORA MEJORADA
    ======================================== */
 #calculadora {
   background: var(--bg2);
@@ -1639,11 +1683,17 @@ section {
   font-size: 13px;
   cursor: pointer;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .calc-type-btn.active {
   background: var(--red);
   border-color: var(--red);
   color: #fff;
+}
+.calc-type-btn i {
+  font-size: 14px;
 }
 .calc-complexity, .calc-deadline {
   background: rgba(255, 255, 255, 0.05);
@@ -1653,6 +1703,9 @@ section {
   font-size: 13px;
   cursor: pointer;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .calc-complexity.active, .calc-deadline.active {
   background: var(--red);
@@ -1674,20 +1727,83 @@ section {
   border-radius: 50%;
   cursor: pointer;
 }
-.calc-modules {
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+.price-range {
   display: flex;
   flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+}
+.price-range span {
+  background: rgba(255,255,255,0.03);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.calc-modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 12px;
+  margin-top: 8px;
 }
 .calc-module {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   cursor: pointer;
-  font-size: 12px;
+  transition: all 0.2s;
+}
+.calc-module:hover {
+  border-color: var(--border-red);
+  background: rgba(204, 22, 22, 0.05);
+}
+.calc-module.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(0.3);
+}
+.calc-module.disabled:hover {
+  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.03);
 }
 .calc-module input {
+  width: 18px;
+  height: 18px;
   accent-color: var(--red);
+  cursor: pointer;
+}
+.calc-module.disabled input {
+  cursor: not-allowed;
+}
+.calc-module i {
+  font-size: 18px;
+  color: var(--red-vivid);
+  width: 24px;
+}
+.calc-module span {
+  font-size: 12px;
+  flex: 1;
+}
+.calc-module .recommended {
+  font-size: 9px;
+  background: var(--red);
+  padding: 2px 6px;
+  border-radius: 20px;
+  color: #fff;
+  margin-left: 8px;
 }
 .calc-result {
   padding: 32px;
@@ -1697,24 +1813,44 @@ section {
 }
 .calc-price {
   font-family: 'Space Grotesk', sans-serif;
+  margin: 20px 0;
+}
+.currency {
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: 8px;
+  color: var(--text-muted);
+}
+.price {
   font-size: 52px;
   font-weight: 800;
   color: var(--text);
-  margin: 20px 0;
 }
-.calc-price span {
-  font-size: 20px;
-  color: var(--text-muted);
+.breakdown-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 13px;
 }
-.calc-breakdown {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin: 16px 0;
+.breakdown-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0 8px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--red-vivid);
+  border-top: 2px solid var(--border-red);
+  margin-top: 8px;
 }
 .calc-note {
   font-size: 11px;
   color: var(--text-dim);
   margin-top: 16px;
+}
+.calc-note .highlight {
+  color: var(--red-vivid);
+  font-weight: 500;
 }
 .btn-pdf {
   background: rgba(255, 255, 255, 0.1);
@@ -1725,20 +1861,45 @@ section {
   cursor: pointer;
   transition: all 0.2s;
   color: var(--text);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 .btn-pdf:hover {
   background: var(--red);
   border-color: var(--red);
+}
+.calc-submit {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  padding: 14px;
+  background: var(--red);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.calc-submit:hover {
+  background: var(--red-vivid);
+  transform: translateY(-2px);
 }
 @media (max-width: 900px) {
   .calculator-wrap {
     grid-template-columns: 1fr;
     padding: 32px;
   }
+  .calc-modules-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ========================================
-   BLOG / NOTICIAS
+   BLOG
    ======================================== */
 #blog {
   background: var(--bg);
@@ -1804,7 +1965,7 @@ section {
 }
 
 /* ========================================
-   FAQ ACCORDION
+   FAQ
    ======================================== */
 #faq {
   background: var(--bg);
@@ -1902,7 +2063,7 @@ section {
 }
 
 /* ========================================
-   CTA SECTION
+   CTA
    ======================================== */
 #cta {
   background: var(--bg2);
@@ -2010,61 +2171,6 @@ footer {
 }
 
 /* ========================================
-   WHATSAPP FLOTANTE PREMIUM
-   ======================================== */
-.whatsapp-float {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 1000;
-}
-.whatsapp-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: var(--card);
-  border: 1px solid var(--border-red);
-  border-radius: 60px;
-  padding: 12px 24px;
-  text-decoration: none;
-  color: #fff;
-  transition: all 0.3s;
-  box-shadow: 0 0 20px rgba(204, 22, 22, 0.2);
-}
-.whatsapp-link:hover {
-  background: var(--red);
-  border-color: var(--red);
-  box-shadow: 0 0 30px rgba(204, 22, 22, 0.5);
-  transform: scale(1.05);
-}
-.whatsapp-icon {
-  font-size: 24px;
-}
-.whatsapp-text {
-  font-size: 14px;
-  font-weight: 500;
-}
-.pulse {
-  animation: pulse-wa 2s infinite;
-}
-@keyframes pulse-wa {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(204, 22, 22, 0.4); }
-  50% { box-shadow: 0 0 0 10px rgba(204, 22, 22, 0); }
-}
-@media (max-width: 768px) {
-  .whatsapp-float {
-    bottom: 20px;
-    right: 20px;
-  }
-  .whatsapp-link {
-    padding: 10px 18px;
-  }
-  .whatsapp-text {
-    font-size: 12px;
-  }
-}
-
-/* ========================================
    COOKIE BANNER
    ======================================== */
 .cookie-banner {
@@ -2121,7 +2227,7 @@ footer {
 .reveal-delay-4 { transition-delay: 0.4s; }
 
 /* ========================================
-   TOAST NOTIFICATION
+   TOAST
    ======================================== */
 .toast {
   position: fixed;
@@ -2241,7 +2347,7 @@ footer {
   </div>
 </div>
 
-<!-- PROBLEMAS QUE RESOLVEMOS -->
+<!-- SERVICES -->
 <section id="services">
   <div class="section-label reveal">Soluciones</div>
   <h2 class="section-title reveal reveal-delay-1">Transformamos problemas<br>en soluciones</h2>
@@ -2255,7 +2361,7 @@ footer {
   </div>
 </section>
 
-<!-- PROCESS (VERSIÓN ORIGINAL) -->
+<!-- PROCESS -->
 <section id="process">
   <div class="section-label reveal">Proceso</div>
   <h2 class="section-title reveal reveal-delay-1">Cómo trabajamos</h2>
@@ -2275,7 +2381,7 @@ footer {
   </div>
 </section>
 
-<!-- TECH STACK (VERSIÓN ORIGINAL - GRILLAS) -->
+<!-- TECH STACK -->
 <section id="tech">
   <div class="tech-header">
     <div class="section-label reveal">Stack Tecnológico</div>
@@ -2297,7 +2403,7 @@ footer {
   </div>
 </section>
 
-<!-- PROYECTOS REDISEÑADOS CON BOTONES DE COMPARTIR -->
+<!-- WORKS -->
 <section id="works">
   <div class="section-label reveal">Proyectos</div>
   <h2 class="section-title reveal reveal-delay-1">Casos de éxito<br>reales</h2>
@@ -2338,7 +2444,7 @@ footer {
   </div>
 </section>
 
-<!-- CASOS DE ÉXITO COMPARATIVOS -->
+<!-- CASOS DE ÉXITO -->
 <section id="casos">
   <div class="section-label reveal">Casos de éxito</div>
   <h2 class="section-title reveal reveal-delay-1">Resultados reales<br>para empresas reales</h2>
@@ -2374,7 +2480,7 @@ footer {
   </div>
 </section>
 
-<!-- ABOUT (VERSIÓN COMPLETA) -->
+<!-- ABOUT -->
 <section id="about">
   <div class="section-label reveal">Sobre mí</div>
   <div class="about-layout">
@@ -2417,7 +2523,7 @@ footer {
   </div>
 </section>
 
-<!-- EQUIPO TÉCNICO (SIN MÉTRICA) -->
+<!-- EQUIPO TÉCNICO -->
 <section id="equipo">
   <div style="max-width: 1280px; margin: 0 auto;">
     <div class="section-label reveal">EQUIPO</div>
@@ -2493,7 +2599,7 @@ footer {
   </div>
 </section>
 
-<!-- RESULTADOS OBTENIDOS CON GRÁFICO -->
+<!-- RESULTADOS CON GRÁFICO -->
 <section id="resultados">
   <div class="section-label reveal">Métricas</div>
   <h2 class="section-title reveal reveal-delay-1">Resultados que generan impacto</h2>
@@ -2504,15 +2610,13 @@ footer {
     <div class="result-card reveal reveal-delay-3"><div class="result-number" id="result-4">99.9<span style="font-size:32px">%</span></div><div class="result-label">Disponibilidad</div></div>
     <div class="result-card reveal reveal-delay-4"><div class="result-number" id="result-5">0</div><div class="result-label">Eventos procesados</div></div>
   </div>
-  
-  <!-- Gráfico interactivo -->
   <div class="chart-container reveal reveal-delay-2">
     <h3 style="font-family: 'Space Grotesk'; margin-bottom: 24px; text-align: center;">Evolución de proyectos (2021-2026)</h3>
     <canvas id="projectsChart"></canvas>
   </div>
 </section>
 
-<!-- CALCULADORA DE PROYECTOS CON PDF -->
+<!-- CALCULADORA MEJORADA -->
 <section id="calculadora">
   <div class="section-label reveal">Presupuesto</div>
   <h2 class="section-title reveal reveal-delay-1">Estimá tu proyecto</h2>
@@ -2521,75 +2625,122 @@ footer {
       <div class="calc-group">
         <label>Tipo de proyecto</label>
         <div class="calc-type">
-          <div class="calc-type-btn active" data-type="landing" data-base="400">Landing Page</div>
-          <div class="calc-type-btn" data-type="web" data-base="2500">Sistema Web</div>
-          <div class="calc-type-btn" data-type="app" data-base="3500">App Móvil</div>
-          <div class="calc-type-btn" data-type="saas" data-base="6000">Plataforma SaaS</div>
+          <div class="calc-type-btn active" data-type="landing" data-base="400"><i class="fas fa-globe"></i> Landing Page</div>
+          <div class="calc-type-btn" data-type="web" data-base="2500"><i class="fas fa-laptop-code"></i> Sistema Web</div>
+          <div class="calc-type-btn" data-type="app" data-base="3500"><i class="fas fa-mobile-alt"></i> App Móvil</div>
+          <div class="calc-type-btn" data-type="saas" data-base="6000"><i class="fas fa-cloud"></i> Plataforma SaaS</div>
         </div>
-        <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
-          Landing: $300-$800 | Web: $1,500-$5,000 | App: $2,500-$7,000 | SaaS: $4,000-$12,000
+        <div class="price-range">
+          <span>💰 Landing: $300-$800</span>
+          <span>💻 Web: $1,500-$5,000</span>
+          <span>📱 App: $2,500-$7,000</span>
+          <span>☁️ SaaS: $4,000-$12,000</span>
         </div>
       </div>
       
       <div class="calc-group">
         <label>Complejidad del proyecto</label>
         <div class="calc-type">
-          <div class="calc-complexity active" data-complexity="1.0">Baja</div>
-          <div class="calc-complexity" data-complexity="1.3">Media</div>
-          <div class="calc-complexity" data-complexity="1.6">Alta</div>
+          <div class="calc-complexity active" data-complexity="1.0"><i class="fas fa-seedling"></i> Baja</div>
+          <div class="calc-complexity" data-complexity="1.3"><i class="fas fa-chart-line"></i> Media</div>
+          <div class="calc-complexity" data-complexity="1.6"><i class="fas fa-rocket"></i> Alta</div>
         </div>
       </div>
       
       <div class="calc-group">
         <label>Plazo de entrega</label>
         <div class="calc-type">
-          <div class="calc-deadline active" data-deadline="1.0">Normal (4-8 semanas)</div>
-          <div class="calc-deadline" data-deadline="1.2">Express (2-3 semanas, +20%)</div>
+          <div class="calc-deadline active" data-deadline="1.0"><i class="fas fa-calendar-alt"></i> Normal (4-8 semanas)</div>
+          <div class="calc-deadline" data-deadline="1.2"><i class="fas fa-bolt"></i> Express (2-3 semanas, +20%)</div>
         </div>
       </div>
       
       <div class="calc-group">
         <label>Usuarios estimados: <span id="user-value">1,000</span></label>
         <input type="range" class="calc-slider" id="user-slider" min="10" max="100000" step="10" value="1000">
-        <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--text-muted); margin-top: 6px;">
+        <div class="slider-labels">
           <span>10</span><span>1K</span><span>10K</span><span>100K</span>
         </div>
       </div>
       
       <div class="calc-group">
         <label>Módulos adicionales</label>
-        <div class="calc-modules">
-          <label class="calc-module"><input type="checkbox" value="login" data-cost="150"> Login / Autenticación</label>
-          <label class="calc-module"><input type="checkbox" value="dashboard" data-cost="300"> Dashboard / Analytics</label>
-          <label class="calc-module"><input type="checkbox" value="reportes" data-cost="200"> Reportes avanzados</label>
-          <label class="calc-module"><input type="checkbox" value="integraciones" data-cost="500"> Integraciones (API, WhatsApp)</label>
-          <label class="calc-module"><input type="checkbox" value="ia" data-cost="800"> Inteligencia Artificial</label>
-          <label class="calc-module"><input type="checkbox" value="multitenant" data-cost="1000"> Multitenencia / Multiempresa</label>
-          <label class="calc-module"><input type="checkbox" value="mobile" data-cost="1500"> Versión móvil nativa adicional</label>
+        <div class="calc-modules-grid" id="modulesGrid">
+          <label class="calc-module" data-category="core">
+            <input type="checkbox" value="login" data-cost="150">
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Login / Autenticación</span>
+          </label>
+          <label class="calc-module" data-category="core">
+            <input type="checkbox" value="dashboard" data-cost="300">
+            <i class="fas fa-chart-pie"></i>
+            <span>Dashboard / Analytics</span>
+          </label>
+          <label class="calc-module" data-category="core">
+            <input type="checkbox" value="reportes" data-cost="200">
+            <i class="fas fa-file-alt"></i>
+            <span>Reportes avanzados</span>
+          </label>
+          <label class="calc-module" data-category="integrations">
+            <input type="checkbox" value="integraciones" data-cost="500">
+            <i class="fas fa-plug"></i>
+            <span>Integraciones (API, WhatsApp)</span>
+          </label>
+          <label class="calc-module" data-category="ai">
+            <input type="checkbox" value="ia" data-cost="800">
+            <i class="fas fa-brain"></i>
+            <span>Inteligencia Artificial</span>
+          </label>
+          <label class="calc-module" data-category="enterprise">
+            <input type="checkbox" value="multitenant" data-cost="1000">
+            <i class="fas fa-building"></i>
+            <span>Multitenencia / Multiempresa</span>
+          </label>
+          <label class="calc-module" data-category="mobile" id="mobileModule">
+            <input type="checkbox" value="mobile" data-cost="1500">
+            <i class="fas fa-mobile-alt"></i>
+            <span>Versión móvil nativa adicional</span>
+          </label>
         </div>
       </div>
     </div>
     
     <div class="calc-result" id="calcResult">
       <div class="calc-price">
-        <span style="font-size: 20px;">USD</span> 
-        <span id="calc-price" style="font-size: 52px;">400</span>
+        <span class="currency">USD</span>
+        <span id="calc-price" class="price">400</span>
       </div>
-      <div class="calc-breakdown" style="font-size: 12px; color: var(--text-muted); margin: 16px 0;">
-        <span id="calc-base">Base: $400</span> 
-        <span id="calc-modules">+ Módulos: $0</span>
-        <span id="calc-scale">+ Escala: $0</span>
+      <div class="calc-breakdown">
+        <div class="breakdown-item">
+          <span>💰 Base</span>
+          <span id="calc-base">$400</span>
+        </div>
+        <div class="breakdown-item">
+          <span>📦 Módulos</span>
+          <span id="calc-modules">$0</span>
+        </div>
+        <div class="breakdown-item">
+          <span>📈 Escala</span>
+          <span id="calc-scale">$0</span>
+        </div>
+        <div class="breakdown-total">
+          <span>TOTAL</span>
+          <span id="calc-total">$400</span>
+        </div>
       </div>
       <div class="calc-note">
-        Estimación orientativa en USD (dólares americanos). Incluye: desarrollo, testing, deploy y 1 mes de soporte.<br>
-        <span style="color: var(--red-vivid);">Presupuesto final gratuito sin compromiso.</span>
+        <i class="fas fa-info-circle"></i> Incluye: desarrollo, testing, deploy y 1 mes de soporte<br>
+        <span class="highlight">Presupuesto final gratuito sin compromiso</span>
       </div>
-      <button id="downloadPDF" class="btn-pdf"><i class="fas fa-file-pdf"></i> Descargar presupuesto en PDF</button>
+      <button id="downloadPDF" class="btn-pdf">
+        <i class="fas fa-file-pdf"></i> Descargar presupuesto PDF
+      </button>
+      <a href="#cta" class="calc-submit">Solicitar presupuesto →</a>
     </div>
   </div>
 </section>
 
-<!-- BLOG / NOTICIAS -->
+<!-- BLOG -->
 <section id="blog">
   <div class="section-label reveal">Blog</div>
   <h2 class="section-title reveal reveal-delay-1">Últimos artículos</h2>
@@ -2669,9 +2820,9 @@ footer {
   <div class="footer-copy">© 2026 OsisDev · Software House · Córdoba, Argentina</div>
 </footer>
 
-<!-- WHATSAPP FLOTANTE PREMIUM -->
+<!-- WHATSAPP FLOTANTE - SIEMPRE VISIBLE -->
 <div class="whatsapp-float">
-  <a href="https://wa.me/549123456789" target="_blank" class="whatsapp-link pulse">
+  <a href="https://wa.me/549123456789" target="_blank" class="whatsapp-link">
     <i class="fab fa-whatsapp whatsapp-icon"></i>
     <span class="whatsapp-text">¿Hablamos?</span>
   </a>
@@ -2692,7 +2843,6 @@ footer {
 // ========================================
 function shareOnLinkedIn(projectName) {
   const url = encodeURIComponent(window.location.href);
-  const text = encodeURIComponent(`Mira este proyecto: ${projectName} de OsisDev`);
   window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
 }
 function shareOnTwitter(projectName) {
@@ -3079,7 +3229,7 @@ document.querySelectorAll('.faq-question').forEach(q => {
 });
 
 // ========================================
-// CALCULADORA Y PDF
+// CALCULADORA MEJORADA
 // ========================================
 const typeBtns = document.querySelectorAll('.calc-type-btn');
 const complexityBtns = document.querySelectorAll('.calc-complexity');
@@ -3090,23 +3240,50 @@ const calcPrice = document.getElementById('calc-price');
 const calcBaseSpan = document.getElementById('calc-base');
 const calcModulesSpan = document.getElementById('calc-modules');
 const calcScaleSpan = document.getElementById('calc-scale');
+const calcTotalSpan = document.getElementById('calc-total');
 
 let currentType = 'landing';
 let currentBase = 400;
 let currentComplexity = 1.0;
 let currentDeadline = 1.0;
 let modulesCost = 0;
+let moduleCheckboxes = {};
 
+// Recomendaciones de módulos por tipo de proyecto
+const moduleRecommendations = {
+  landing: ['login', 'integraciones'],
+  web: ['login', 'dashboard', 'reportes', 'integraciones'],
+  app: ['login', 'dashboard', 'integraciones', 'mobile'],
+  saas: ['login', 'dashboard', 'reportes', 'integraciones', 'multitenant', 'ia']
+};
+
+// Módulos que NO aplican para cada tipo
+const moduleExclusions = {
+  landing: ['multitenant', 'ia', 'reportes', 'mobile'],
+  web: ['mobile'],
+  app: ['multitenant', 'reportes'],
+  saas: []
+};
+
+// Inicializar referencia a checkboxes
+document.querySelectorAll('.calc-module input').forEach(cb => {
+  moduleCheckboxes[cb.value] = cb;
+  cb.addEventListener('change', () => updateModulesAndPrice());
+});
+
+// Tipo de proyecto
 typeBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     typeBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     currentType = btn.dataset.type;
     currentBase = parseInt(btn.dataset.base);
+    updateModulesByType();
     updatePrice();
   });
 });
 
+// Complejidad
 complexityBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     complexityBtns.forEach(b => b.classList.remove('active'));
@@ -3116,6 +3293,7 @@ complexityBtns.forEach(btn => {
   });
 });
 
+// Plazo
 deadlineBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     deadlineBtns.forEach(b => b.classList.remove('active'));
@@ -3125,23 +3303,64 @@ deadlineBtns.forEach(btn => {
   });
 });
 
+// Slider de usuarios
 userSlider.addEventListener('input', () => {
   let val = parseInt(userSlider.value);
   userVal.innerText = val.toLocaleString();
   updatePrice();
 });
 
-document.querySelectorAll('.calc-module input').forEach(cb => {
-  cb.addEventListener('change', () => {
-    const cost = parseInt(cb.dataset.cost);
-    if (cb.checked) {
-      modulesCost += cost;
+// Función para actualizar módulos según el tipo de proyecto
+function updateModulesByType() {
+  const exclusions = moduleExclusions[currentType] || [];
+  const recommendations = moduleRecommendations[currentType] || [];
+  
+  document.querySelectorAll('.calc-module').forEach(module => {
+    const input = module.querySelector('input');
+    const moduleValue = input.value;
+    const moduleLabel = module;
+    
+    // Deshabilitar módulos que no aplican
+    if (exclusions.includes(moduleValue)) {
+      moduleLabel.classList.add('disabled');
+      input.disabled = true;
+      if (input.checked) {
+        input.checked = false;
+        modulesCost -= parseInt(input.dataset.cost);
+      }
     } else {
-      modulesCost -= cost;
+      moduleLabel.classList.remove('disabled');
+      input.disabled = false;
     }
-    updatePrice();
+    
+    // Agregar badge "recomendado" si aplica
+    let badge = moduleLabel.querySelector('.recommended');
+    if (recommendations.includes(moduleValue) && !exclusions.includes(moduleValue)) {
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.className = 'recommended';
+        badge.textContent = 'recomendado';
+        moduleLabel.appendChild(badge);
+      }
+    } else if (badge) {
+      badge.remove();
+    }
   });
-});
+  
+  // Resetear módulos costos
+  modulesCost = 0;
+  document.querySelectorAll('.calc-module input:checked:not(:disabled)').forEach(cb => {
+    modulesCost += parseInt(cb.dataset.cost);
+  });
+}
+
+function updateModulesAndPrice() {
+  modulesCost = 0;
+  document.querySelectorAll('.calc-module input:checked:not(:disabled)').forEach(cb => {
+    modulesCost += parseInt(cb.dataset.cost);
+  });
+  updatePrice();
+}
 
 function updatePrice() {
   let users = parseInt(userSlider.value);
@@ -3152,21 +3371,28 @@ function updatePrice() {
   let scaleCost = basePrice * (scaleFactor - 1);
   let total = basePrice + modulesCost + scaleCost;
   
-  calcBaseSpan.innerText = `Base: $${Math.round(basePrice).toLocaleString()}`;
-  calcModulesSpan.innerText = `+ Módulos: $${modulesCost.toLocaleString()}`;
-  calcScaleSpan.innerText = `+ Escala: $${Math.round(scaleCost).toLocaleString()}`;
+  calcBaseSpan.innerText = `$${Math.round(basePrice).toLocaleString()}`;
+  calcModulesSpan.innerText = `$${modulesCost.toLocaleString()}`;
+  calcScaleSpan.innerText = `$${Math.round(scaleCost).toLocaleString()}`;
+  calcTotalSpan.innerText = `$${Math.round(total).toLocaleString()}`;
   calcPrice.innerText = Math.round(total).toLocaleString();
 }
+
+// Inicializar módulos según tipo
+updateModulesByType();
 updatePrice();
 
-// PDF Generator
+// ========================================
+// PDF GENERATOR
+// ========================================
 document.getElementById('downloadPDF').addEventListener('click', async () => {
   const element = document.getElementById('calcResult');
+  if (!element) return;
   const opt = {
     margin: [0.5, 0.5, 0.5, 0.5],
     filename: `presupuesto_osisdev_${new Date().toISOString().slice(0,10)}.pdf`,
     image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2, backgroundColor: '#111111' },
+    html2canvas: { scale: 2 },
     jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
   };
   try {
@@ -3240,20 +3466,24 @@ words.forEach((w, i) => {
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
   if (nav) {
-    nav.style.background = window.scrollY > 60 ? 'rgba(8, 8, 8, 0.95)' : 'rgba(8, 8, 8, 0.8)';
+    if (document.body.classList.contains('light-mode')) {
+      nav.style.background = window.scrollY > 60 ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.8)';
+    } else {
+      nav.style.background = window.scrollY > 60 ? 'rgba(8, 8, 8, 0.95)' : 'rgba(8, 8, 8, 0.8)';
+    }
   }
 });
 
-// Chat en vivo - Crisp (gratuito)
-window.$crisp = [];
-window.CRISP_WEBSITE_ID = "YOUR_CRISP_WEBSITE_ID";
-(function() {
-  d = document;
-  s = d.createElement("script");
-  s.src = "https://client.crisp.chat/l.js";
-  s.async = 1;
-  d.getElementsByTagName("head")[0].appendChild(s);
-})();
+// Chat en vivo - Crisp (gratuito) - Descomentar y agregar su ID
+// window.$crisp = [];
+// window.CRISP_WEBSITE_ID = "YOUR_CRISP_WEBSITE_ID";
+// (function() {
+//   d = document;
+//   s = d.createElement("script");
+//   s.src = "https://client.crisp.chat/l.js";
+//   s.async = 1;
+//   d.getElementsByTagName("head")[0].appendChild(s);
+// })();
 </script>
 </body>
 </html>
