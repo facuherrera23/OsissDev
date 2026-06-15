@@ -39,26 +39,29 @@ body{
 #cursor{
   position:fixed;
   top:0;left:0;
-  width:12px;height:12px;
+  width:10px;height:10px;
   background:var(--red-vivid);
   border-radius:50%;
   pointer-events:none;
   z-index:9999;
-  transition:transform .15s ease,background .15s ease;
-  mix-blend-mode:normal;
+  will-change:transform;
+  transition:width .2s ease,height .2s ease,background .2s ease,opacity .2s ease;
 }
 #cursor-ring{
   position:fixed;
   top:0;left:0;
-  width:36px;height:36px;
-  border:1px solid rgba(255,34,34,0.5);
+  width:34px;height:34px;
+  border:1.5px solid rgba(255,34,34,0.55);
   border-radius:50%;
   pointer-events:none;
   z-index:9998;
-  transition:transform .35s cubic-bezier(.17,.67,.83,.67),width .2s,height .2s,border-color .2s;
+  will-change:transform;
+  transition:width .25s ease,height .25s ease,border-color .25s ease,border-width .25s ease,opacity .2s ease;
 }
-body.hovering #cursor{transform:scale(1.8);background:#fff}
-body.hovering #cursor-ring{width:50px;height:50px;border-color:var(--red-vivid)}
+body.hovering #cursor{width:6px;height:6px;background:rgba(255,34,34,0.4)}
+body.hovering #cursor-ring{width:44px;height:44px;border-color:var(--red-vivid);border-width:1px}
+body.clicking #cursor{width:14px;height:14px;background:#fff}
+body.clicking #cursor-ring{width:28px;height:28px;border-color:#fff}
 
 /* ── NOISE OVERLAY ── */
 body::before{
@@ -138,13 +141,15 @@ nav{
   pointer-events:none;
   opacity:.6;
 }
+#canvas-grid{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  pointer-events:none;
+}
 .hero-grid-lines{
   position:absolute;inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size:80px 80px;
   pointer-events:none;
+  z-index:0;
 }
 .hero-content{
   position:relative;z-index:2;
@@ -695,13 +700,155 @@ footer{
   100%{clip-path:polygon(0 60%,100% 60%,100% 80%,0 80%);transform:translate(0)}
 }
 
+/* ── ABOUT ── */
+#about{background:var(--bg2)}
+.about-layout{
+  display:grid;
+  grid-template-columns:1fr 1.4fr;
+  gap:100px;
+  align-items:center;
+  margin-top:72px;
+}
+.about-avatar-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:32px;
+}
+.about-avatar{
+  position:relative;
+  width:260px;height:260px;
+}
+.about-avatar-bg{
+  position:absolute;inset:0;
+  border-radius:24px;
+  background:var(--red-dim);
+  border:1px solid var(--border-red);
+}
+.about-avatar-inner{
+  position:absolute;inset:12px;
+  border-radius:16px;
+  background:var(--card);
+  border:1px solid rgba(255,255,255,0.05);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.about-initials{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:72px;font-weight:700;
+  letter-spacing:-4px;
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--red-vivid);
+  user-select:none;
+  position:relative;z-index:1;
+}
+.about-initials-glow{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 55%, rgba(204,22,22,0.18) 0%, transparent 70%);
+}
+/* corner accents */
+.about-avatar::before,
+.about-avatar::after{
+  content:'';
+  position:absolute;
+  width:20px;height:20px;
+  border-color:var(--red-vivid);
+  border-style:solid;
+}
+.about-avatar::before{top:-6px;left:-6px;border-width:2px 0 0 2px;border-radius:4px 0 0 0}
+.about-avatar::after{bottom:-6px;right:-6px;border-width:0 2px 2px 0;border-radius:0 0 4px 4px}
+.about-corner-tr,
+.about-corner-bl{
+  position:absolute;
+  width:20px;height:20px;
+  border-color:var(--red-vivid);
+  border-style:solid;
+}
+.about-corner-tr{top:-6px;right:-6px;border-width:2px 2px 0 0;border-radius:0 4px 0 0}
+.about-corner-bl{bottom:-6px;left:-6px;border-width:0 0 2px 2px;border-radius:0 0 0 4px}
+
+.about-badges{
+  display:flex;flex-direction:column;gap:10px;
+  width:100%;
+}
+.about-badge-item{
+  display:flex;align-items:center;gap:12px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:12px 16px;
+  transition:border-color .25s;
+}
+.about-badge-item:hover{border-color:var(--border-red)}
+.about-badge-icon{
+  width:32px;height:32px;
+  background:var(--red-dim);
+  border:1px solid var(--border-red);
+  border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;
+}
+.about-badge-label{font-size:13px;font-weight:500;color:var(--text-muted)}
+.about-badge-val{font-size:13px;font-weight:600;color:#fff;margin-left:auto}
+
+.about-text .section-label{margin-bottom:20px}
+.about-name{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(32px,3.5vw,48px);
+  font-weight:700;
+  line-height:1.05;
+  letter-spacing:-2px;
+  margin-bottom:10px;
+}
+.about-role{
+  font-family:'Space Mono',monospace;
+  font-size:13px;
+  color:var(--red-vivid);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:28px;
+}
+.about-bio{
+  font-size:16px;
+  color:rgba(255,255,255,.65);
+  line-height:1.85;
+  margin-bottom:36px;
+}
+.about-bio strong{color:#fff;font-weight:600}
+.about-tags{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-bottom:40px;
+}
+.about-tag{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:7px 14px;
+  font-size:12px;font-weight:500;
+  color:var(--text-muted);
+  letter-spacing:.5px;
+  transition:border-color .2s,color .2s;
+}
+.about-tag:hover{border-color:var(--border-red);color:#fff}
+.about-tag.accent{
+  background:rgba(204,22,22,.08);
+  border-color:var(--border-red);
+  color:rgba(255,80,80,.9);
+}
+.about-divider{
+  width:40px;height:2px;
+  background:var(--red);
+  margin-bottom:40px;
+  border-radius:2px;
+}
+
 /* ── MOBILE ── */
 @media(max-width:900px){
   nav{padding:0 24px}
   .nav-links{display:none}
   #hero,.section,section{padding:80px 24px}
   .hero-stats{position:relative;right:auto;bottom:auto;justify-content:flex-start;margin-top:60px}
-  .services-header,.process-layout,.works-header{grid-template-columns:1fr}
+  .services-header,.process-layout,.works-header,.about-layout{grid-template-columns:1fr}
   .services-grid,.tech-grid,.tech-grid.row-2,.testimonials-grid{grid-template-columns:1fr}
   .works-grid{grid-template-columns:1fr}
   .work-card.featured{grid-column:1}
@@ -726,7 +873,7 @@ footer{
     <li><a href="#services">Servicios</a></li>
     <li><a href="#process">Proceso</a></li>
     <li><a href="#works">Proyectos</a></li>
-    <li><a href="#tech">Stack</a></li>
+    <li><a href="#about">Sobre mí</a></li>
     <li><a href="#cta">Contacto</a></li>
   </ul>
   <a href="#cta" class="nav-cta">Iniciar Proyecto</a>
@@ -736,6 +883,7 @@ footer{
 <section id="hero">
   <div class="hero-bg"></div>
   <canvas id="canvas-bg"></canvas>
+  <canvas id="canvas-grid"></canvas>
   <div class="hero-grid-lines"></div>
 
   <div class="hero-content">
@@ -1016,6 +1164,79 @@ footer{
   </div>
 </section>
 
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label reveal">Sobre mí</div>
+
+  <div class="about-layout">
+
+    <!-- columna izquierda: avatar + badges -->
+    <div class="about-avatar-wrap reveal">
+      <div class="about-avatar">
+        <div class="about-avatar-bg"></div>
+        <div class="about-avatar-inner">
+          <div class="about-initials-glow"></div>
+          <div class="about-initials">FH</div>
+        </div>
+        <div class="about-corner-tr"></div>
+        <div class="about-corner-bl"></div>
+      </div>
+
+      <div class="about-badges">
+        <div class="about-badge-item">
+          <div class="about-badge-icon">🎓</div>
+          <span class="about-badge-label">Formación</span>
+          <span class="about-badge-val">Analista en Sistemas</span>
+        </div>
+        <div class="about-badge-item">
+          <div class="about-badge-icon">📍</div>
+          <span class="about-badge-label">Ubicación</span>
+          <span class="about-badge-val">Córdoba, Argentina</span>
+        </div>
+        <div class="about-badge-item">
+          <div class="about-badge-icon">⚡</div>
+          <span class="about-badge-label">Experiencia</span>
+          <span class="about-badge-val">5+ años</span>
+        </div>
+        <div class="about-badge-item">
+          <div class="about-badge-icon">🟢</div>
+          <span class="about-badge-label">Disponibilidad</span>
+          <span class="about-badge-val" style="color:rgba(74,222,128,.9)">Disponible</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- columna derecha: texto -->
+    <div class="about-text reveal reveal-delay-2">
+      <h2 class="about-name">Facundo Herrera</h2>
+      <div class="about-role">Desarrollador Full‑Stack · OsisDev</div>
+      <div class="about-divider"></div>
+
+      <p class="about-bio">
+        Soy desarrollador full‑stack y estudiante avanzado de Análisis de Sistemas con <strong>más de 5 años construyendo software real</strong> para empresas argentinas. Fundé <strong>OsisDev</strong> con una convicción simple: el software tiene que resolver problemas de negocio concretos, no solo verse bien en una presentación.
+      </p>
+      <p class="about-bio">
+        Trabajo desde el diseño de la arquitectura hasta el deploy en producción — sin intermediarios. Cada proyecto lo trato como si fuera mi propio negocio: <strong>entrego a tiempo, comunico de forma clara y me quedo hasta que funciona</strong>.
+      </p>
+
+      <div class="about-tags">
+        <span class="about-tag accent">React & React Native</span>
+        <span class="about-tag accent">Django & Node.js</span>
+        <span class="about-tag accent">Flutter</span>
+        <span class="about-tag">PostgreSQL</span>
+        <span class="about-tag">MongoDB</span>
+        <span class="about-tag">REST APIs</span>
+        <span class="about-tag">Docker</span>
+        <span class="about-tag">TypeScript</span>
+        <span class="about-tag">AWS / Render</span>
+      </div>
+
+      <a href="#cta" class="btn-primary" style="display:inline-block;text-decoration:none">Trabajemos juntos →</a>
+    </div>
+
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="section-label reveal">Clientes</div>
@@ -1095,19 +1316,35 @@ footer{
 // ── CUSTOM CURSOR ──
 const cur = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cur.style.transform = `translate(${mx - 6}px, ${my - 6}px)`;
-});
-function animRing() {
-  rx += (mx - rx) * .12;
-  ry += (my - ry) * .12;
-  ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
-  requestAnimationFrame(animRing);
+
+let mx = 0, my = 0;   // raw mouse position
+let rx = 0, ry = 0;   // ring lerp position
+let dotX = 0, dotY = 0; // dot lerp (very fast)
+
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+document.addEventListener('mousedown', () => document.body.classList.add('clicking'));
+document.addEventListener('mouseup',   () => document.body.classList.remove('clicking'));
+
+function cursorLoop() {
+  // dot: near-instant (lerp 0.85 per frame ≈ instant but never jumpy)
+  dotX += (mx - dotX) * 0.85;
+  dotY += (my - dotY) * 0.85;
+  cur.style.transform = `translate3d(${dotX - 5}px,${dotY - 5}px,0)`;
+
+  // ring: smooth lag (lerp 0.14 = ~7 frames to catch up)
+  rx += (mx - rx) * 0.14;
+  ry += (my - ry) * 0.14;
+  ring.style.transform = `translate3d(${rx - 17}px,${ry - 17}px,0)`;
+
+  requestAnimationFrame(cursorLoop);
 }
-animRing();
-document.querySelectorAll('a,button,.service-card,.tech-item,.testi-card').forEach(el => {
+cursorLoop();
+
+// hide both when mouse leaves window
+document.addEventListener('mouseleave', () => { cur.style.opacity='0'; ring.style.opacity='0'; });
+document.addEventListener('mouseenter', () => { cur.style.opacity='1'; ring.style.opacity='1'; });
+
+document.querySelectorAll('a,button,.service-card,.tech-item,.testi-card,.work-card').forEach(el => {
   el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
   el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
 });
@@ -1167,7 +1404,106 @@ function drawParticles() {
 }
 drawParticles();
 
-// ── SCROLL REVEAL ──
+// ── ANIMATED GRID CANVAS ──
+const cgrid = document.getElementById('canvas-grid');
+const gctx = cgrid.getContext('2d');
+const heroEl = document.getElementById('hero');
+function resizeGrid() {
+  cgrid.width  = heroEl.offsetWidth  || window.innerWidth;
+  cgrid.height = heroEl.offsetHeight || window.innerHeight;
+}
+resizeGrid();
+window.addEventListener('resize', resizeGrid);
+
+const CELL = 80; // grid cell size in px
+let gTime = 0;
+
+function drawGrid() {
+  gctx.clearRect(0, 0, cgrid.width, cgrid.height);
+  const cols = Math.ceil(cgrid.width  / CELL) + 1;
+  const rows = Math.ceil(cgrid.height / CELL) + 1;
+  gTime += 0.008;
+
+  // vertical lines
+  for (let c = 0; c <= cols; c++) {
+    const x = c * CELL;
+    // each column gets a phase offset → wave of brightness ripples across
+    const phase = c * 0.28 + gTime;
+    const brightness = (Math.sin(phase) * 0.5 + 0.5); // 0..1
+    // base opacity 0.025, pulse adds up to +0.05 for brightest columns
+    const alpha = 0.022 + brightness * 0.048;
+    gctx.beginPath();
+    gctx.moveTo(x, 0);
+    gctx.lineTo(x, cgrid.height);
+    gctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+    gctx.lineWidth = 1;
+    gctx.stroke();
+
+    // occasionally flash a short red segment on a line
+    if (brightness > 0.92) {
+      const segY = ((c * 137.5 + gTime * 40) % cgrid.height);
+      const segLen = 40 + Math.sin(gTime * 3 + c) * 20;
+      const grad = gctx.createLinearGradient(x, segY, x, segY + segLen);
+      grad.addColorStop(0, 'rgba(204,22,22,0)');
+      grad.addColorStop(0.5, `rgba(204,22,22,${(brightness - 0.92) * 3})`);
+      grad.addColorStop(1, 'rgba(204,22,22,0)');
+      gctx.beginPath();
+      gctx.moveTo(x, segY);
+      gctx.lineTo(x, segY + segLen);
+      gctx.strokeStyle = grad;
+      gctx.lineWidth = 1.5;
+      gctx.stroke();
+    }
+  }
+
+  // horizontal lines
+  for (let r = 0; r <= rows; r++) {
+    const y = r * CELL;
+    const phase = r * 0.35 + gTime * 0.7;
+    const brightness = (Math.sin(phase) * 0.5 + 0.5);
+    const alpha = 0.018 + brightness * 0.038;
+    gctx.beginPath();
+    gctx.moveTo(0, y);
+    gctx.lineTo(cgrid.width, y);
+    gctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+    gctx.lineWidth = 1;
+    gctx.stroke();
+
+    // red horizontal flash
+    if (brightness > 0.94) {
+      const segX = ((r * 173.1 + gTime * 30) % cgrid.width);
+      const segLen = 50 + Math.cos(gTime * 2 + r) * 25;
+      const grad = gctx.createLinearGradient(segX, y, segX + segLen, y);
+      grad.addColorStop(0, 'rgba(204,22,22,0)');
+      grad.addColorStop(0.5, `rgba(204,22,22,${(brightness - 0.94) * 4})`);
+      grad.addColorStop(1, 'rgba(204,22,22,0)');
+      gctx.beginPath();
+      gctx.moveTo(segX, y);
+      gctx.lineTo(segX + segLen, y);
+      gctx.strokeStyle = grad;
+      gctx.lineWidth = 1.5;
+      gctx.stroke();
+    }
+  }
+
+  // dot intersections that pulse
+  for (let c = 0; c <= cols; c++) {
+    for (let r = 0; r <= rows; r++) {
+      const phase = (c * 0.28 + r * 0.35 + gTime) ;
+      const b = Math.sin(phase) * 0.5 + 0.5;
+      if (b > 0.85) {
+        const a = (b - 0.85) * 0.5;
+        gctx.beginPath();
+        gctx.arc(c * CELL, r * CELL, 1.5, 0, Math.PI * 2);
+        gctx.fillStyle = `rgba(204,22,22,${a})`;
+        gctx.fill();
+      }
+    }
+  }
+
+  requestAnimationFrame(drawGrid);
+}
+drawGrid();
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
