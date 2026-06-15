@@ -59,20 +59,6 @@
   --nav-bg: rgba(8, 8, 8, 0.8);
 }
 
-/* Tema claro - CORREGIDO */
-body.light-mode {
-  --bg: #F5F5F5;
-  --bg2: #FFFFFF;
-  --bg3: #E8E8E8;
-  --card: #FFFFFF;
-  --border: rgba(0, 0, 0, 0.1);
-  --border-red: rgba(204, 22, 22, 0.25);
-  --text: #111111;
-  --text-muted: rgba(0, 0, 0, 0.55);
-  --text-dim: rgba(0, 0, 0, 0.25);
-  --nav-bg: rgba(255, 255, 255, 0.9);
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -83,30 +69,6 @@ body {
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
   cursor: none;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-/* Theme Toggle Button */
-.theme-toggle {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid var(--border);
-  border-radius: 40px;
-  padding: 8px 16px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  transition: all 0.3s;
-  color: var(--text);
-}
-.theme-toggle:hover {
-  background: var(--red);
-  border-color: var(--red);
-  color: #fff;
-}
-.theme-toggle i {
-  font-size: 14px;
 }
 
 /* CUSTOM CURSOR */
@@ -179,7 +141,7 @@ body::before {
   opacity: 0.4;
 }
 
-/* NAVBAR - CORREGIDO para modo claro */
+/* NAVBAR */
 nav {
   position: fixed;
   top: 0;
@@ -318,9 +280,7 @@ nav {
   }
 }
 
-/* ========================================
-   WHATSAPP FLOTANTE - SIEMPRE VISIBLE
-   ======================================== */
+/* WHATSAPP FLOTANTE - SIEMPRE VISIBLE */
 .whatsapp-float {
   position: fixed;
   bottom: 30px;
@@ -365,10 +325,7 @@ nav {
   }
 }
 
-/* Resto de estilos mantienen la misma estructura... */
-/* ========================================
-   HERO SECTION
-   ======================================== */
+/* HERO SECTION */
 #hero {
   min-height: 100vh;
   display: flex;
@@ -550,9 +507,7 @@ nav {
   }
 }
 
-/* ========================================
-   MARQUEE
-   ======================================== */
+/* MARQUEE */
 .marquee-wrap {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -591,9 +546,7 @@ nav {
   border-radius: 50%;
 }
 
-/* ========================================
-   SECTION BASE
-   ======================================== */
+/* SECTION BASE */
 section {
   padding: 120px 60px;
   position: relative;
@@ -636,9 +589,7 @@ section {
   }
 }
 
-/* ========================================
-   SERVICES
-   ======================================== */
+/* SERVICES */
 #services {
   background: var(--bg);
 }
@@ -716,9 +667,7 @@ section {
   }
 }
 
-/* ========================================
-   PROCESS
-   ======================================== */
+/* PROCESS */
 #process {
   background: var(--bg2);
 }
@@ -887,9 +836,7 @@ section {
   }
 }
 
-/* ========================================
-   TECH STACK
-   ======================================== */
+/* TECH STACK */
 #tech {
   background: var(--bg);
 }
@@ -952,9 +899,7 @@ section {
   }
 }
 
-/* ========================================
-   WORKS
-   ======================================== */
+/* WORKS */
 #works {
   background: var(--bg2);
 }
@@ -1043,9 +988,7 @@ section {
   }
 }
 
-/* ========================================
-   CASOS DE ÉXITO
-   ======================================== */
+/* CASOS DE ÉXITO */
 #casos {
   background: var(--bg);
 }
@@ -1116,9 +1059,7 @@ section {
   }
 }
 
-/* ========================================
-   TIMELINE
-   ======================================== */
+/* TIMELINE */
 #timeline {
   background: var(--bg2);
 }
@@ -1184,9 +1125,7 @@ section {
   }
 }
 
-/* ========================================
-   ABOUT
-   ======================================== */
+/* ABOUT */
 #about {
   background: var(--bg2);
 }
@@ -1394,9 +1333,7 @@ section {
   }
 }
 
-/* ========================================
-   EQUIPO TÉCNICO
-   ======================================== */
+/* EQUIPO TÉCNICO */
 #equipo {
   background: var(--bg);
 }
@@ -1581,9 +1518,7 @@ section {
   }
 }
 
-/* ========================================
-   RESULTADOS CON GRÁFICO
-   ======================================== */
+/* RESULTADOS CON GRÁFICO */
 #resultados {
   background: var(--bg);
 }
@@ -1643,9 +1578,7 @@ section {
   }
 }
 
-/* ========================================
-   CALCULADORA MEJORADA
-   ======================================== */
+/* CALCULADORA MEJORADA */
 #calculadora {
   background: var(--bg2);
 }
@@ -1898,9 +1831,7 @@ section {
   }
 }
 
-/* ========================================
-   BLOG
-   ======================================== */
+/* BLOG */
 #blog {
   background: var(--bg);
 }
@@ -1964,9 +1895,7 @@ section {
   }
 }
 
-/* ========================================
-   FAQ
-   ======================================== */
+/* FAQ */
 #faq {
   background: var(--bg);
 }
@@ -2005,9 +1934,7 @@ section {
   transition: transform 0.3s;
 }
 
-/* ========================================
-   TESTIMONIALS
-   ======================================== */
+/* TESTIMONIALS */
 #testimonials {
   background: var(--bg2);
 }
@@ -2062,9 +1989,7 @@ section {
   }
 }
 
-/* ========================================
-   CTA
-   ======================================== */
+/* CTA */
 #cta {
   background: var(--bg2);
   text-align: center;
@@ -2139,9 +2064,7 @@ section {
   }
 }
 
-/* ========================================
-   FOOTER
-   ======================================== */
+/* FOOTER */
 footer {
   background: var(--bg);
   border-top: 1px solid var(--border);
@@ -2170,9 +2093,7 @@ footer {
   }
 }
 
-/* ========================================
-   COOKIE BANNER
-   ======================================== */
+/* COOKIE BANNER */
 .cookie-banner {
   position: fixed;
   bottom: 0;
@@ -2209,9 +2130,7 @@ footer {
   cursor: pointer;
 }
 
-/* ========================================
-   REVEAL ANIMATIONS
-   ======================================== */
+/* REVEAL ANIMATIONS */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -2226,9 +2145,7 @@ footer {
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 
-/* ========================================
-   TOAST
-   ======================================== */
+/* TOAST */
 .toast {
   position: fixed;
   bottom: 100px;
@@ -2283,10 +2200,6 @@ footer {
     <li><a href="#blog">Blog</a></li>
     <li><a href="#cta">Contacto</a></li>
   </ul>
-  <div class="theme-toggle" id="themeToggle">
-    <i class="fas fa-moon"></i>
-    <span>Modo Claro</span>
-  </div>
   <a href="#calculadora" class="nav-cta">Calcular proyecto</a>
   <div class="hamburger">
     <span></span>
@@ -2855,25 +2768,6 @@ function shareOnWhatsApp(projectName) {
   const text = encodeURIComponent(`Mira este proyecto: ${projectName} de OsisDev: `);
   window.open(`https://wa.me/?text=${text}${url}`, '_blank');
 }
-
-// ========================================
-// MODO OSCURO/CLARO
-// ========================================
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon = themeToggle.querySelector('i');
-const themeText = themeToggle.querySelector('span');
-
-function toggleTheme() {
-  document.body.classList.toggle('light-mode');
-  if (document.body.classList.contains('light-mode')) {
-    themeIcon.className = 'fas fa-sun';
-    themeText.textContent = 'Modo Oscuro';
-  } else {
-    themeIcon.className = 'fas fa-moon';
-    themeText.textContent = 'Modo Claro';
-  }
-}
-themeToggle.addEventListener('click', toggleTheme);
 
 // ========================================
 // COOKIE BANNER
@@ -3466,11 +3360,7 @@ words.forEach((w, i) => {
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
   if (nav) {
-    if (document.body.classList.contains('light-mode')) {
-      nav.style.background = window.scrollY > 60 ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.8)';
-    } else {
-      nav.style.background = window.scrollY > 60 ? 'rgba(8, 8, 8, 0.95)' : 'rgba(8, 8, 8, 0.8)';
-    }
+    nav.style.background = window.scrollY > 60 ? 'rgba(8, 8, 8, 0.95)' : 'rgba(8, 8, 8, 0.8)';
   }
 });
 
