@@ -863,10 +863,27 @@ section {
   padding: 36px 24px;
   text-align: center;
   transition: background 0.3s;
-  cursor: default;
+  cursor: pointer;
+  position: relative;
 }
 .tech-item:hover {
   background: var(--bg3);
+}
+.tech-item::after {
+  content: '🎮 Click para jugar';
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  font-size: 9px;
+  color: var(--red-vivid);
+  opacity: 0;
+  transition: opacity 0.3s;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.tech-item:hover::after {
+  opacity: 1;
 }
 .tech-icon {
   font-size: 32px;
@@ -896,6 +913,181 @@ section {
 @media (max-width: 480px) {
   .tech-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* GAME MODAL */
+.game-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(6px);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.game-modal.open {
+  display: flex;
+}
+.game-modal-content {
+  background: var(--bg2);
+  border: 1px solid var(--border-red);
+  border-radius: 24px;
+  max-width: 640px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 32px 28px;
+  position: relative;
+  box-shadow: 0 0 60px rgba(204,22,22,0.15);
+}
+.game-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: color 0.2s, transform 0.2s;
+  line-height: 1;
+}
+.game-modal-close:hover {
+  color: var(--red-vivid);
+  transform: rotate(90deg);
+}
+.game-modal-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+.game-modal-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+}
+#gameContainer {
+  min-height: 180px;
+}
+.game-btn {
+  background: var(--red);
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.game-btn:hover {
+  background: var(--red-vivid);
+}
+.game-btn.secondary {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
+}
+.game-btn.secondary:hover {
+  background: rgba(255,255,255,0.15);
+}
+.game-input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 14px;
+  color: var(--text);
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+.game-input:focus {
+  border-color: var(--border-red);
+  outline: none;
+}
+.game-list {
+  list-style: none;
+  margin: 12px 0;
+}
+.game-list li {
+  background: var(--bg3);
+  padding: 8px 14px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  border-left: 3px solid var(--red);
+}
+.game-list li .del {
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.game-list li .del:hover {
+  color: var(--red-vivid);
+}
+.game-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 12px 0;
+}
+.game-tag {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.game-tag:hover {
+  border-color: var(--border-red);
+  background: rgba(204,22,22,0.1);
+}
+.game-tag.selected {
+  border-color: var(--red-vivid);
+  background: rgba(204,22,22,0.2);
+  color: #fff;
+}
+.game-progress {
+  height: 6px;
+  background: var(--bg3);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+.game-progress .fill {
+  height: 100%;
+  background: var(--red);
+  width: 0%;
+  transition: width 0.3s;
+}
+.game-score {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--red-vivid);
+}
+.game-message {
+  background: rgba(204,22,22,0.08);
+  border-left: 3px solid var(--red);
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 12px 0;
+}
+@media (max-width: 600px) {
+  .game-modal-content {
+    padding: 24px 16px;
+  }
+  .game-row {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
 
@@ -2294,27 +2486,36 @@ footer {
   </div>
 </section>
 
-<!-- TECH STACK -->
+<!-- TECH STACK (con juegos) -->
 <section id="tech">
   <div class="tech-header">
     <div class="section-label reveal">Stack Tecnológico</div>
     <h2 class="section-title reveal reveal-delay-1">Las herramientas<br>que dominamos</h2>
+    <p style="color:var(--text-muted); margin-top: 12px;">🎮 Haz clic en cualquier tecnología para jugar un minijuego</p>
   </div>
   <div class="tech-grid reveal reveal-delay-1">
-    <div class="tech-item"><div class="tech-icon">⚛️</div><div class="tech-name">React</div></div>
-    <div class="tech-item"><div class="tech-icon">📱</div><div class="tech-name">React Native</div></div>
-    <div class="tech-item"><div class="tech-icon">🐍</div><div class="tech-name">Django</div></div>
-    <div class="tech-item"><div class="tech-icon">🟢</div><div class="tech-name">Node.js</div></div>
-    <div class="tech-item"><div class="tech-icon">🐘</div><div class="tech-name">PostgreSQL</div></div>
-    <div class="tech-item"><div class="tech-icon">🍃</div><div class="tech-name">MongoDB</div></div>
+    <div class="tech-item" data-game="react"><div class="tech-icon">⚛️</div><div class="tech-name">React</div></div>
+    <div class="tech-item" data-game="reactnative"><div class="tech-icon">📱</div><div class="tech-name">React Native</div></div>
+    <div class="tech-item" data-game="django"><div class="tech-icon">🐍</div><div class="tech-name">Django</div></div>
+    <div class="tech-item" data-game="nodejs"><div class="tech-icon">🟢</div><div class="tech-name">Node.js</div></div>
+    <div class="tech-item" data-game="postgresql"><div class="tech-icon">🐘</div><div class="tech-name">PostgreSQL</div></div>
+    <div class="tech-item" data-game="mongodb"><div class="tech-icon">🍃</div><div class="tech-name">MongoDB</div></div>
   </div>
   <div class="tech-grid row-2 reveal reveal-delay-2">
-    <div class="tech-item"><div class="tech-icon">🐦</div><div class="tech-name">Flutter</div></div>
-    <div class="tech-item"><div class="tech-icon">⚡</div><div class="tech-name">TypeScript</div></div>
-    <div class="tech-item"><div class="tech-icon">🐳</div><div class="tech-name">Docker</div></div>
-    <div class="tech-item"><div class="tech-icon">☁️</div><div class="tech-name">AWS / Render</div></div>
+    <div class="tech-item" data-game="flutter"><div class="tech-icon">🐦</div><div class="tech-name">Flutter</div></div>
+    <div class="tech-item" data-game="typescript"><div class="tech-icon">⚡</div><div class="tech-name">TypeScript</div></div>
+    <div class="tech-item" data-game="docker"><div class="tech-icon">🐳</div><div class="tech-name">Docker</div></div>
+    <div class="tech-item" data-game="aws"><div class="tech-icon">☁️</div><div class="tech-name">AWS / Render</div></div>
   </div>
 </section>
+
+<!-- Modal de juegos -->
+<div id="gameModal" class="game-modal">
+  <div class="game-modal-content">
+    <span class="game-modal-close" id="gameModalClose">&times;</span>
+    <div id="gameContainer"></div>
+  </div>
+</div>
 
 <!-- WORKS -->
 <section id="works">
@@ -3364,7 +3565,499 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Chat en vivo - Crisp (gratuito) - Descomentar y agregar su ID
+// ========================================
+// MINIJUEGOS DE TECNOLOGÍAS
+// ========================================
+const gameModal = document.getElementById('gameModal');
+const gameContainer = document.getElementById('gameContainer');
+const gameModalClose = document.getElementById('gameModalClose');
+
+const techGames = {
+  react: {
+    title: '⚛️ React — Estado y Renderizado',
+    desc: 'Simula el concepto de estado en React: actualiza el contador y observa cómo se refleja en la UI.',
+    html: `
+      <div id="reactGame">
+        <div class="game-row">
+          <button class="game-btn" id="reactDec">-</button>
+          <span id="reactCount" class="game-score" style="font-size:48px;">0</span>
+          <button class="game-btn" id="reactInc">+</button>
+        </div>
+        <div class="game-row">
+          <label><input type="checkbox" id="reactToggle"> Mostrar mensaje</label>
+        </div>
+        <div id="reactMsg" style="display:none; background:var(--red-dim); padding:12px; border-radius:8px; margin-top:8px;">
+          <i class="fas fa-info-circle"></i> El estado cambió → el componente se re-renderiza.
+        </div>
+        <div class="game-message">💡 El estado es la memoria del componente. Cada cambio dispara un nuevo renderizado.</div>
+      </div>
+    `,
+    init: function() {
+      let count = 0;
+      const el = document.getElementById('reactCount');
+      const inc = document.getElementById('reactInc');
+      const dec = document.getElementById('reactDec');
+      const toggle = document.getElementById('reactToggle');
+      const msg = document.getElementById('reactMsg');
+      inc.addEventListener('click', () => { count++; el.textContent = count; });
+      dec.addEventListener('click', () => { count--; el.textContent = count; });
+      toggle.addEventListener('change', () => {
+        msg.style.display = toggle.checked ? 'block' : 'none';
+      });
+    }
+  },
+  reactnative: {
+    title: '📱 React Native — Interacción táctil',
+    desc: 'Simula una app móvil: toca el botón grande para ver animaciones y contar interacciones.',
+    html: `
+      <div id="rnGame" style="text-align:center;">
+        <button id="rnBtn" style="background:var(--red); border:none; border-radius:60px; padding:20px 40px; font-size:24px; color:#fff; cursor:pointer; transition:all 0.15s;">
+          👆 Tócame
+        </button>
+        <div style="margin-top:20px;">
+          <span class="game-score" id="rnCount">0</span> toques
+        </div>
+        <div class="game-message">📱 Los gestos táctiles son el corazón de React Native.</div>
+      </div>
+    `,
+    init: function() {
+      let count = 0;
+      const btn = document.getElementById('rnBtn');
+      const el = document.getElementById('rnCount');
+      btn.addEventListener('click', () => {
+        count++;
+        el.textContent = count;
+        btn.style.transform = 'scale(0.9)';
+        btn.style.background = `hsl(${Math.random()*360}, 70%, 50%)`;
+        setTimeout(() => btn.style.transform = 'scale(1)', 150);
+      });
+    }
+  },
+  django: {
+    title: '🐍 Django — Panel de Administración',
+    desc: 'CRUD sencillo: agrega y elimina elementos, como en el admin de Django.',
+    html: `
+      <div id="djangoGame">
+        <div class="game-row">
+          <input class="game-input" id="djangoInput" placeholder="Nuevo elemento..." style="flex:1;">
+          <button class="game-btn" id="djangoAdd">Agregar</button>
+        </div>
+        <ul class="game-list" id="djangoList">
+          <li>Producto A <span class="del" data-id="0">✕</span></li>
+          <li>Producto B <span class="del" data-id="1">✕</span></li>
+        </ul>
+        <div class="game-message">📋 El admin de Django permite gestionar modelos sin escribir código adicional.</div>
+      </div>
+    `,
+    init: function() {
+      let items = ['Producto A', 'Producto B'];
+      const list = document.getElementById('djangoList');
+      const input = document.getElementById('djangoInput');
+      const addBtn = document.getElementById('djangoAdd');
+
+      function render() {
+        list.innerHTML = items.map((text, i) =>
+          `<li>${text} <span class="del" data-id="${i}">✕</span></li>`
+        ).join('');
+        list.querySelectorAll('.del').forEach(span => {
+          span.addEventListener('click', () => {
+            const idx = parseInt(span.dataset.id);
+            items.splice(idx, 1);
+            render();
+          });
+        });
+      }
+
+      addBtn.addEventListener('click', () => {
+        const val = input.value.trim();
+        if (val) { items.push(val); input.value = ''; render(); }
+      });
+      render();
+    }
+  },
+  nodejs: {
+    title: '🟢 Node.js — Event Loop',
+    desc: 'Simula tareas asíncronas: haz clic en "Ejecutar" y observa el orden de finalización.',
+    html: `
+      <div id="nodeGame">
+        <button class="game-btn" id="nodeRun">▶ Ejecutar tareas</button>
+        <div class="game-progress" style="margin:16px 0;">
+          <div class="fill" id="nodeProgress" style="width:0%;"></div>
+        </div>
+        <div id="nodeLog" style="background:var(--bg3); padding:12px; border-radius:8px; font-family:monospace; font-size:12px; max-height:120px; overflow-y:auto; color:var(--text-muted);">
+          <div>⚡ Listo para ejecutar...</div>
+        </div>
+        <div class="game-message">🔄 Node.js maneja múltiples operaciones sin bloquear el hilo principal.</div>
+      </div>
+    `,
+    init: function() {
+      const runBtn = document.getElementById('nodeRun');
+      const log = document.getElementById('nodeLog');
+      const prog = document.getElementById('nodeProgress');
+      let running = false;
+
+      runBtn.addEventListener('click', () => {
+        if (running) return;
+        running = true;
+        runBtn.disabled = true;
+        log.innerHTML = '<div>⏳ Iniciando tareas...</div>';
+        prog.style.width = '0%';
+
+        const tasks = [
+          { time: 1000, msg: '✅ Tarea 1 completada (1s)' },
+          { time: 2000, msg: '✅ Tarea 2 completada (2s)' },
+          { time: 500, msg: '✅ Tarea 3 completada (0.5s)' }
+        ];
+
+        let done = 0;
+        tasks.forEach((t, i) => {
+          setTimeout(() => {
+            log.innerHTML += `<div>${t.msg}</div>`;
+            done++;
+            prog.style.width = `${(done / tasks.length) * 100}%`;
+            if (done === tasks.length) {
+              log.innerHTML += `<div style="color:var(--red-vivid);">🏁 Todas las tareas finalizadas (orden asíncrono)</div>`;
+              running = false;
+              runBtn.disabled = false;
+            }
+          }, t.time);
+        });
+      });
+    }
+  },
+  postgresql: {
+    title: '🐘 PostgreSQL — Consulta SQL',
+    desc: 'Elige las palabras clave en el orden correcto para formar una consulta SQL válida.',
+    html: `
+      <div id="postgresGame">
+        <div style="margin-bottom:12px; font-size:14px; color:var(--text-muted);">
+          Arma una consulta que obtenga <strong>nombre y edad</strong> de la tabla <strong>usuarios</strong> donde la edad sea mayor a 18.
+        </div>
+        <div class="game-row" id="sqlOptions">
+          <span class="game-tag" data-sql="SELECT">SELECT</span>
+          <span class="game-tag" data-sql="FROM">FROM</span>
+          <span class="game-tag" data-sql="WHERE">WHERE</span>
+          <span class="game-tag" data-sql="nombre, edad">nombre, edad</span>
+          <span class="game-tag" data-sql="usuarios">usuarios</span>
+          <span class="game-tag" data-sql="edad > 18">edad > 18</span>
+        </div>
+        <div style="margin:12px 0;">
+          <span style="color:var(--text-muted);">Tu consulta: </span>
+          <span id="sqlBuild" style="font-family:monospace; background:var(--bg3); padding:4px 12px; border-radius:6px;">⬅️ haz clic en las palabras</span>
+        </div>
+        <button class="game-btn" id="sqlCheck">Verificar</button>
+        <div id="sqlResult" style="margin-top:12px; font-size:14px;"></div>
+        <div class="game-message">📊 PostgreSQL es potente para consultas complejas y análisis de datos.</div>
+      </div>
+    `,
+    init: function() {
+      const build = document.getElementById('sqlBuild');
+      const result = document.getElementById('sqlResult');
+      const checkBtn = document.getElementById('sqlCheck');
+      let selected = [];
+
+      document.querySelectorAll('#sqlOptions .game-tag').forEach(tag => {
+        tag.addEventListener('click', () => {
+          selected.push(tag.dataset.sql);
+          build.textContent = selected.join(' ');
+          tag.style.opacity = '0.4';
+          tag.style.pointerEvents = 'none';
+        });
+      });
+
+      checkBtn.addEventListener('click', () => {
+        const correct = ['SELECT', 'nombre, edad', 'FROM', 'usuarios', 'WHERE', 'edad > 18'];
+        const user = selected.join(' ');
+        const expected = correct.join(' ');
+        if (user === expected) {
+          result.innerHTML = '✅ ¡Correcto! Consulta válida.';
+          result.style.color = '#44ff44';
+        } else {
+          result.innerHTML = `❌ Casi. Recordá el orden: SELECT columnas FROM tabla WHERE condición.`;
+          result.style.color = '#ff4444';
+        }
+      });
+    }
+  },
+  mongodb: {
+    title: '🍃 MongoDB — Documentos JSON',
+    desc: 'Agrupa los documentos según su categoría (colección).',
+    html: `
+      <div id="mongoGame">
+        <div class="game-row">
+          <span style="color:var(--text-muted);">📄 Documentos:</span>
+          <span class="game-tag" data-collection="users">{"name":"Ana","age":25}</span>
+          <span class="game-tag" data-collection="products">{"name":"Laptop","price":1200}</span>
+          <span class="game-tag" data-collection="users">{"name":"Luis","age":30}</span>
+          <span class="game-tag" data-collection="products">{"name":"Mouse","price":25}</span>
+        </div>
+        <div style="display:flex; gap:20px; margin:16px 0;">
+          <div style="flex:1; background:var(--bg3); border-radius:12px; padding:12px;">
+            <strong>📂 users</strong>
+            <div id="mongoUsers" style="margin-top:8px;"></div>
+          </div>
+          <div style="flex:1; background:var(--bg3); border-radius:12px; padding:12px;">
+            <strong>📂 products</strong>
+            <div id="mongoProducts" style="margin-top:8px;"></div>
+          </div>
+        </div>
+        <button class="game-btn" id="mongoReset">Reiniciar</button>
+        <div class="game-message">🍃 MongoDB almacena datos en documentos JSON flexibles.</div>
+      </div>
+    `,
+    init: function() {
+      const docs = [
+        { text: '{"name":"Ana","age":25}', coll: 'users' },
+        { text: '{"name":"Laptop","price":1200}', coll: 'products' },
+        { text: '{"name":"Luis","age":30}', coll: 'users' },
+        { text: '{"name":"Mouse","price":25}', coll: 'products' }
+      ];
+      const usersDiv = document.getElementById('mongoUsers');
+      const productsDiv = document.getElementById('mongoProducts');
+      const resetBtn = document.getElementById('mongoReset');
+
+      function render() {
+        usersDiv.innerHTML = docs.filter(d => d.coll === 'users').map(d => `<div style="background:var(--bg); padding:6px 12px; border-radius:6px; margin-bottom:4px; font-size:12px;">${d.text}</div>`).join('');
+        productsDiv.innerHTML = docs.filter(d => d.coll === 'products').map(d => `<div style="background:var(--bg); padding:6px 12px; border-radius:6px; margin-bottom:4px; font-size:12px;">${d.text}</div>`).join('');
+      }
+
+      // Drag & drop simple: al hacer clic en un tag, se mueve a la otra colección
+      document.querySelectorAll('#mongoGame .game-tag').forEach(tag => {
+        tag.addEventListener('click', () => {
+          const text = tag.textContent;
+          const doc = docs.find(d => d.text === text);
+          if (!doc) return;
+          doc.coll = doc.coll === 'users' ? 'products' : 'users';
+          render();
+        });
+      });
+
+      resetBtn.addEventListener('click', () => {
+        docs[0].coll = 'users'; docs[1].coll = 'products'; docs[2].coll = 'users'; docs[3].coll = 'products';
+        render();
+      });
+
+      render();
+    }
+  },
+  flutter: {
+    title: '🐦 Flutter — Construye widgets',
+    desc: 'Selecciona los widgets en el orden correcto para construir una interfaz: Column → Row → Text.',
+    html: `
+      <div id="flutterGame">
+        <div class="game-row">
+          <span class="game-tag" data-widget="Column">Column</span>
+          <span class="game-tag" data-widget="Row">Row</span>
+          <span class="game-tag" data-widget="Text">Text</span>
+          <span class="game-tag" data-widget="Container">Container</span>
+        </div>
+        <div style="margin:12px 0;">
+          <span style="color:var(--text-muted);">Tu árbol de widgets: </span>
+          <span id="flutterTree" style="font-family:monospace; background:var(--bg3); padding:4px 12px; border-radius:6px;">⬅️ haz clic</span>
+        </div>
+        <button class="game-btn" id="flutterCheck">Verificar</button>
+        <div id="flutterResult" style="margin-top:12px;"></div>
+        <div class="game-message">🐦 Flutter usa un árbol de widgets para construir la UI de forma declarativa.</div>
+      </div>
+    `,
+    init: function() {
+      const tree = document.getElementById('flutterTree');
+      const result = document.getElementById('flutterResult');
+      const checkBtn = document.getElementById('flutterCheck');
+      let selected = [];
+
+      document.querySelectorAll('#flutterGame .game-tag').forEach(tag => {
+        tag.addEventListener('click', () => {
+          selected.push(tag.dataset.widget);
+          tree.textContent = selected.join(' → ');
+          tag.style.opacity = '0.4';
+          tag.style.pointerEvents = 'none';
+        });
+      });
+
+      checkBtn.addEventListener('click', () => {
+        // Orden correcto: Column (padre) → Row (hijo) → Text (nieto)
+        const correct = ['Column', 'Row', 'Text'];
+        const user = selected.join(' → ');
+        const expected = correct.join(' → ');
+        if (user === expected) {
+          result.innerHTML = '✅ ¡Correcto! Column → Row → Text es una estructura típica.';
+          result.style.color = '#44ff44';
+        } else {
+          result.innerHTML = `❌ Intentá de nuevo. Recordá que Column y Row son contenedores, Text es hoja.`;
+          result.style.color = '#ff4444';
+        }
+      });
+    }
+  },
+  typescript: {
+    title: '⚡ TypeScript — Tipado estático',
+    desc: 'Elige el tipo correcto para cada variable.',
+    html: `
+      <div id="tsGame">
+        <div style="margin-bottom:12px;">
+          <div style="background:var(--bg3); padding:8px 12px; border-radius:8px; font-family:monospace; margin-bottom:8px;">
+            let name = "Juan"; <span style="color:var(--text-muted);">// ¿qué tipo?</span>
+          </div>
+          <div class="game-row">
+            <span class="game-tag" data-ts="string">string</span>
+            <span class="game-tag" data-ts="number">number</span>
+            <span class="game-tag" data-ts="boolean">boolean</span>
+            <span class="game-tag" data-ts="any">any</span>
+          </div>
+          <div style="margin-top:12px;">
+            <span style="color:var(--text-muted);">Tu elección: </span>
+            <span id="tsChoice" style="font-family:monospace; background:var(--bg3); padding:4px 12px; border-radius:6px;">⬅️ elige</span>
+          </div>
+        </div>
+        <button class="game-btn" id="tsCheck">Verificar</button>
+        <div id="tsResult" style="margin-top:12px;"></div>
+        <div class="game-message">⚡ TypeScript añade tipos para detectar errores en tiempo de desarrollo.</div>
+      </div>
+    `,
+    init: function() {
+      const choice = document.getElementById('tsChoice');
+      const result = document.getElementById('tsResult');
+      const checkBtn = document.getElementById('tsCheck');
+      let selected = null;
+
+      document.querySelectorAll('#tsGame .game-tag').forEach(tag => {
+        tag.addEventListener('click', () => {
+          selected = tag.dataset.ts;
+          choice.textContent = selected;
+          document.querySelectorAll('#tsGame .game-tag').forEach(t => t.classList.remove('selected'));
+          tag.classList.add('selected');
+        });
+      });
+
+      checkBtn.addEventListener('click', () => {
+        if (selected === 'string') {
+          result.innerHTML = '✅ Correcto! "Juan" es un string.';
+          result.style.color = '#44ff44';
+        } else {
+          result.innerHTML = `❌ No. "Juan" está entre comillas, es un string.`;
+          result.style.color = '#ff4444';
+        }
+      });
+    }
+  },
+  docker: {
+    title: '🐳 Docker — Ordena las capas',
+    desc: 'Ordena las instrucciones de un Dockerfile para construir una imagen correctamente.',
+    html: `
+      <div id="dockerGame">
+        <div class="game-row" style="flex-wrap:wrap;">
+          <span class="game-tag" data-layer="FROM">FROM ubuntu:20.04</span>
+          <span class="game-tag" data-layer="RUN">RUN apt update</span>
+          <span class="game-tag" data-layer="COPY">COPY . /app</span>
+          <span class="game-tag" data-layer="CMD">CMD ["python", "app.py"]</span>
+        </div>
+        <div style="margin:12px 0;">
+          <span style="color:var(--text-muted);">Orden actual: </span>
+          <span id="dockerOrder" style="font-family:monospace; background:var(--bg3); padding:4px 12px; border-radius:6px;">⬅️ haz clic</span>
+        </div>
+        <button class="game-btn" id="dockerCheck">Verificar</button>
+        <div id="dockerResult" style="margin-top:12px;"></div>
+        <div class="game-message">🐳 Cada capa en Docker se almacena en caché para construir imágenes rápidamente.</div>
+      </div>
+    `,
+    init: function() {
+      const order = document.getElementById('dockerOrder');
+      const result = document.getElementById('dockerResult');
+      const checkBtn = document.getElementById('dockerCheck');
+      let selected = [];
+
+      document.querySelectorAll('#dockerGame .game-tag').forEach(tag => {
+        tag.addEventListener('click', () => {
+          selected.push(tag.dataset.layer);
+          order.textContent = selected.join(' → ');
+          tag.style.opacity = '0.4';
+          tag.style.pointerEvents = 'none';
+        });
+      });
+
+      checkBtn.addEventListener('click', () => {
+        const correct = ['FROM', 'RUN', 'COPY', 'CMD'];
+        const user = selected.join(' → ');
+        const expected = correct.join(' → ');
+        if (user === expected) {
+          result.innerHTML = '✅ ¡Correcto! FROM → RUN → COPY → CMD es el orden óptimo.';
+          result.style.color = '#44ff44';
+        } else {
+          result.innerHTML = `❌ Recordá que FROM va primero, luego RUN, COPY, y al final CMD.`;
+          result.style.color = '#ff4444';
+        }
+      });
+    }
+  },
+  aws: {
+    title: '☁️ AWS / Render — Escala automática',
+    desc: 'Ajusta el número de instancias según la carga para mantener el rendimiento.',
+    html: `
+      <div id="awsGame">
+        <div style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
+          <span style="color:var(--text-muted);">Instancias:</span>
+          <input type="range" id="awsSlider" min="1" max="10" value="3" style="flex:1; height:6px; background:var(--border); border-radius:4px; appearance:none;">
+          <span id="awsCount" style="font-size:24px; font-weight:700; color:var(--red-vivid);">3</span>
+        </div>
+        <div style="margin:12px 0; background:var(--bg3); padding:12px; border-radius:8px;">
+          <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text-muted);">
+            <span>📊 Carga: <span id="awsLoad">60%</span></span>
+            <span>⚡ Respuesta: <span id="awsResp">180ms</span></span>
+          </div>
+        </div>
+        <div class="game-message">☁️ Escalar instancias automáticamente mantiene la aplicación rápida y disponible.</div>
+      </div>
+    `,
+    init: function() {
+      const slider = document.getElementById('awsSlider');
+      const count = document.getElementById('awsCount');
+      const load = document.getElementById('awsLoad');
+      const resp = document.getElementById('awsResp');
+
+      slider.addEventListener('input', () => {
+        const val = parseInt(slider.value);
+        count.textContent = val;
+        const loadVal = Math.max(10, 100 - val * 8);
+        load.textContent = loadVal + '%';
+        const respVal = Math.max(50, 300 - val * 25);
+        resp.textContent = respVal + 'ms';
+      });
+      slider.dispatchEvent(new Event('input'));
+    }
+  }
+};
+
+// Abrir juego
+document.querySelectorAll('.tech-item[data-game]').forEach(item => {
+  item.addEventListener('click', () => {
+    const gameId = item.dataset.game;
+    const game = techGames[gameId];
+    if (!game) return;
+    gameContainer.innerHTML = `
+      <div class="game-modal-title">${game.title}</div>
+      <div class="game-modal-sub">${game.desc}</div>
+      ${game.html}
+    `;
+    gameModal.classList.add('open');
+    if (game.init) game.init();
+  });
+});
+
+// Cerrar modal
+gameModalClose.addEventListener('click', () => {
+  gameModal.classList.remove('open');
+});
+gameModal.addEventListener('click', (e) => {
+  if (e.target === gameModal) gameModal.classList.remove('open');
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') gameModal.classList.remove('open');
+});
+
+// ========================================
+// CHAT EN VIVO (CRISP) - Descomentar y poner ID
+// ========================================
 // window.$crisp = [];
 // window.CRISP_WEBSITE_ID = "YOUR_CRISP_WEBSITE_ID";
 // (function() {
