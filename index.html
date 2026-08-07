@@ -2,4071 +2,1217 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>OsisDev | Software House — Sistemas, Apps Móviles e IA</title>
-
-<!-- Meta Tags SEO -->
-<meta name="description" content="OsisDev: Software House especializada en desarrollo de sistemas, aplicaciones móviles, automatización con IA e integraciones. +12 especialistas para proyectos escalables.">
-<meta name="keywords" content="software house, desarrollo web, aplicaciones móviles, inteligencia artificial, automatización, django, react, flutter, sistemas empresariales">
-<meta name="author" content="OsisDev">
-<meta name="robots" content="index, follow">
-<meta name="language" content="Spanish">
-
-<!-- Open Graph -->
-<meta property="og:title" content="OsisDev | Software House Premium">
-<meta property="og:description" content="Transformamos negocios con software a medida. Sistemas, apps móviles e IA para empresas que quieren crecer.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facundo Herrera — Analista de Sistemas & Desarrollador Full-Stack</title>
+<meta name="description" content="Portafolio de Facundo Herrera, Analista de Sistemas y desarrollador full-stack en Argentina. Sistemas de gestión, plataformas web y soluciones a medida.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-family='monospace' font-weight='700' font-size='52' fill='%23ff3b2b' text-anchor='middle'%3EFH%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://osisdev.com">
-<meta property="og:image" content="https://osisdev.com/og-image.jpg">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="OsisDev | Software House Premium">
-<meta name="twitter:description" content="Transformamos negocios con software a medida. Sistemas, apps móviles e IA.">
-
-<link rel="canonical" href="https://osisdev.com">
+<meta property="og:title" content="Facundo Herrera — Analista de Sistemas & Full-Stack Developer">
+<meta property="og:description" content="Sistemas de gestión, plataformas web y soluciones a medida. Argentina — remoto o presencial.">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<!-- Chart.js para gráficos -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<!-- html2pdf para generar PDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ========================================
-   ROOT VARIABLES & RESET
-   ======================================== */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+  :root{
+    --bg:#0a0a0a;
+    --bg-alt:#0f0f0f;
+    --card:#141414;
+    --card-hover:#191919;
+    --border:#242424;
+    --border-hover:#3a3a3a;
+    --red:#e8291c;
+    --red-bright:#ff3b2b;
+    --red-deep:#5c0d09;
+    --red-glow:rgba(232,41,28,.28);
+    --white:#f4f4f2;
+    --gray:#8f8f8f;
+    --gray-dim:#5a5a5a;
+    --font-display:'Anton', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+  }
 
-:root {
-  --red: #CC1616;
-  --red-vivid: #FF2222;
-  --red-glow: rgba(204, 22, 22, 0.3);
-  --red-dim: rgba(204, 22, 22, 0.08);
-  --bg: #080808;
-  --bg2: #0F0F0F;
-  --bg3: #151515;
-  --card: #111111;
-  --border: rgba(255, 255, 255, 0.07);
-  --border-red: rgba(204, 22, 22, 0.35);
-  --text: #FFFFFF;
-  --text-muted: rgba(255, 255, 255, 0.55);
-  --text-dim: rgba(255, 255, 255, 0.25);
-  --nav-bg: rgba(8, 8, 8, 0.8);
-}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--white);
+    font-family:var(--font-body);
+    overflow-x:hidden;
+    line-height:1.5;
+    opacity:0;
+    transition:opacity .5s ease;
+  }
+  body.loaded{opacity:1;}
+  ::selection{background:var(--red);color:#fff;}
+  a{-webkit-tap-highlight-color:transparent;}
 
-html {
-  scroll-behavior: smooth;
-}
+  /* film-grain texture for a premium finish */
+  .grain{
+    position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.035;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
-  cursor: none;
-}
+  /* scroll progress indicator */
+  .scroll-progress{
+    position:fixed;top:0;left:0;height:2px;width:0%;z-index:300;
+    background:linear-gradient(90deg, var(--red), var(--red-bright));
+    box-shadow:0 0 10px var(--red-glow);
+    transition:width .1s linear;
+  }
 
-/* CUSTOM CURSOR */
-@media (min-width: 769px) {
-  #cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 10px;
-    height: 10px;
-    background: var(--red-vivid);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    will-change: transform;
-    transition: width 0.2s ease, height 0.2s ease;
+  /* back to top */
+  .to-top{
+    position:fixed;right:24px;bottom:24px;z-index:90;
+    width:46px;height:46px;border-radius:50%;
+    background:var(--card);border:1px solid var(--border);
+    color:var(--white);display:flex;align-items:center;justify-content:center;
+    font-size:16px;cursor:pointer;text-decoration:none;
+    opacity:0;pointer-events:none;transform:translateY(10px);
+    transition:opacity .3s ease, transform .3s ease, border-color .3s ease, background .3s ease;
+    box-shadow:0 10px 30px rgba(0,0,0,.5);
   }
-  #cursor-ring {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 34px;
-    height: 34px;
-    border: 1.5px solid rgba(255, 34, 34, 0.55);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    will-change: transform;
-    transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
-  }
-  body.hovering #cursor {
-    width: 6px;
-    height: 6px;
-    background: rgba(255, 34, 34, 0.4);
-  }
-  body.hovering #cursor-ring {
-    width: 44px;
-    height: 44px;
-    border-color: var(--red-vivid);
-    border-width: 1px;
-  }
-  body.clicking #cursor {
-    width: 14px;
-    height: 14px;
-    background: #fff;
-  }
-  body.clicking #cursor-ring {
-    width: 28px;
-    height: 28px;
-    border-color: #fff;
-  }
-}
-@media (max-width: 768px) {
-  #cursor, #cursor-ring {
-    display: none;
-  }
-  body {
-    cursor: auto;
-  }
-}
+  .to-top.visible{opacity:1;pointer-events:auto;transform:translateY(0);}
+  .to-top:hover{border-color:var(--red);background:var(--card-hover);color:var(--red-bright);}
 
-/* Noise Overlay */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.4;
-}
+  @media (max-width:600px){ .to-top{right:16px;bottom:16px;width:42px;height:42px;} }
 
-/* NAVBAR */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  padding: 0 60px;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--nav-bg);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  transition: background 0.3s;
-}
-.nav-logo {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.nav-logo-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--red-vivid);
-  border-radius: 50%;
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-@keyframes pulse-dot {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 34, 34, 0.7); }
-  50% { box-shadow: 0 0 0 8px rgba(255, 34, 34, 0); }
-}
-.nav-links {
-  display: flex;
-  gap: 36px;
-  list-style: none;
-}
-.nav-links a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.2s;
-}
-.nav-links a:hover {
-  color: var(--text);
-}
-.nav-cta {
-  background: var(--red);
-  color: #fff;
-  padding: 10px 24px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 600;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background 0.2s, box-shadow 0.2s;
-}
-.nav-cta:hover {
-  background: var(--red-vivid);
-  box-shadow: 0 0 24px var(--red-glow);
-}
+  /* utility */
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--red-bright);
+    display:flex;align-items:center;gap:8px;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{content:'';width:7px;height:7px;background:var(--red);border-radius:50%;box-shadow:0 0 8px var(--red-glow);}
+  .section-title{
+    font-family:var(--font-display);
+    font-weight:400;
+    font-size:clamp(32px,5vw,52px);
+    letter-spacing:.01em;
+    line-height:1.02;
+    text-transform:uppercase;
+  }
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
 
-/* Menú Hamburguesa */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  z-index: 101;
-}
-.hamburger span {
-  width: 25px;
-  height: 2px;
-  background: var(--text);
-  margin: 4px 0;
-  transition: 0.3s;
-  border-radius: 2px;
-}
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -6px);
-}
-.mobile-menu {
-  position: fixed;
-  top: 72px;
-  left: -100%;
-  width: 100%;
-  height: calc(100vh - 72px);
-  background: var(--nav-bg);
-  backdrop-filter: blur(20px);
-  transition: left 0.3s ease;
-  z-index: 99;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-}
-.mobile-menu.active {
-  left: 0;
-}
-.mobile-menu a {
-  color: var(--text);
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-.mobile-menu a:hover {
-  color: var(--red-vivid);
-}
-.mobile-menu .mobile-cta {
-  background: var(--red);
-  padding: 12px 32px;
-  border-radius: 4px;
-  font-size: 16px;
-}
+  /* background texture */
+  .grid-bg{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size:56px 56px;
+    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
+  }
 
-@media (max-width: 768px) {
-  nav {
-    padding: 0 24px;
+  /* ===== NAV ===== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(10,10,10,.7);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:background .35s ease, border-color .35s ease, padding .35s ease;
   }
-  .nav-links {
-    display: none;
+  header.scrolled{
+    background:rgba(8,8,8,.88);
+    border-bottom:1px solid var(--border);
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
   }
-  .hamburger {
-    display: flex;
+  nav{
+    max-width:1240px;margin:0 auto;padding:18px 32px;
+    display:flex;align-items:center;justify-content:space-between;
+    transition:padding .35s ease;
   }
-}
+  header.scrolled nav{padding:13px 32px;}
+  .logo{
+    font-family:var(--font-mono);font-weight:700;font-size:16px;letter-spacing:.05em;
+    color:var(--white);text-decoration:none;display:inline-flex;align-items:center;gap:2px;
+    transition:letter-spacing .3s ease;
+  }
+  .logo:hover{letter-spacing:.08em;}
+  .logo span{color:var(--red-bright);}
+  .nav-links{display:flex;gap:36px;list-style:none;}
+  .nav-links a{
+    color:var(--gray);text-decoration:none;font-size:13px;
+    font-family:var(--font-mono);letter-spacing:.05em;text-transform:uppercase;
+    transition:color .25s ease;position:relative;padding-bottom:3px;
+  }
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;
+    background:var(--red-bright);transform:scaleX(0);transform-origin:left;
+    transition:transform .3s ease;
+  }
+  .nav-links a:hover{color:var(--white);}
+  .nav-links a:hover::after{transform:scaleX(1);}
+  .nav-links a.active{color:var(--red-bright);}
+  .nav-links a.active::after{transform:scaleX(1);}
+  .status-pill{
+    display:flex;align-items:center;gap:8px;
+    font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;
+    color:var(--gray);border:1px solid var(--border);
+    padding:7px 14px;border-radius:100px;text-transform:uppercase;
+  }
+  .status-dot{width:7px;height:7px;border-radius:50%;background:#3ddc71;box-shadow:0 0 8px #3ddc71;animation:blink 2s infinite;}
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:.35;}}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .burger span{width:22px;height:2px;background:var(--white);transition:transform .3s ease, opacity .3s ease;}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .burger.open span:nth-child(2){opacity:0;}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-/* WHATSAPP FLOTANTE - SIEMPRE VISIBLE */
-.whatsapp-float {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 1000;
-}
-.whatsapp-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: #25D366;
-  border: none;
-  border-radius: 60px;
-  padding: 12px 24px;
-  text-decoration: none;
-  color: #fff;
-  transition: all 0.3s;
-  box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
-}
-.whatsapp-link:hover {
-  background: #20b859;
-  transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(37, 211, 102, 0.5);
-}
-.whatsapp-icon {
-  font-size: 24px;
-}
-.whatsapp-text {
-  font-size: 14px;
-  font-weight: 600;
-}
-@media (max-width: 768px) {
-  .whatsapp-float {
-    bottom: 20px;
-    right: 20px;
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;z-index:1;
+    padding:160px 0 90px;
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    overflow:hidden;
   }
-  .whatsapp-link {
-    padding: 10px 18px;
+  .hero-bgtext{
+    position:absolute;top:52%;left:50%;transform:translate(-50%,-50%);
+    font-family:var(--font-display);
+    font-size:clamp(90px,17vw,240px);
+    color:transparent;
+    -webkit-text-stroke:1.5px rgba(232,41,28,.1);
+    white-space:nowrap;letter-spacing:.02em;
+    z-index:-1;user-select:none;pointer-events:none;
   }
-  .whatsapp-text {
-    font-size: 12px;
+  .hero-glow{
+    position:absolute;z-index:-1;border-radius:50%;pointer-events:none;
+    background:radial-gradient(circle, var(--red-glow) 0%, transparent 70%);
+    filter:blur(10px);
   }
-}
+  .hero-glow.g1{width:600px;height:600px;top:-180px;right:-160px;opacity:.55;}
+  .hero-glow.g2{width:400px;height:400px;bottom:-140px;left:-100px;opacity:.35;}
 
-/* HERO SECTION */
-#hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 120px 60px 80px;
-  position: relative;
-  overflow: hidden;
-}
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 60% 60% at 75% 50%, rgba(204, 22, 22, 0.12) 0%, transparent 70%),
-              radial-gradient(ellipse 30% 40% at 10% 80%, rgba(204, 22, 22, 0.06) 0%, transparent 60%);
-  pointer-events: none;
-}
-#canvas-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.6;
-}
-#canvas-grid {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-@media (max-width: 768px) {
-  #canvas-bg, #canvas-grid {
-    display: none;
+  .hero-top{
+    font-family:var(--font-mono);
+    font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;
+    display:flex;justify-content:space-between;align-items:center;
+    margin-bottom:60px;gap:16px;flex-wrap:wrap;
   }
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 760px;
-}
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(204, 22, 22, 0.1);
-  border: 1px solid rgba(204, 22, 22, 0.3);
-  padding: 6px 16px;
-  border-radius: 100px;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: rgba(255, 100, 100, 0.9);
-  margin-bottom: 40px;
-}
-.hero-badge::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  background: #ff2222;
-  border-radius: 50%;
-  animation: blink 1.4s step-end infinite;
-}
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-.hero-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(52px, 7vw, 96px);
-  font-weight: 700;
-  line-height: 0.93;
-  letter-spacing: -3px;
-  margin-bottom: 32px;
-}
-.hero-title .line {
-  overflow: hidden;
-  display: block;
-}
-.hero-title .word {
-  display: inline-block;
-}
-.hero-title .accent {
-  color: var(--red-vivid);
-}
-.hero-sub {
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--text-muted);
-  line-height: 1.7;
-  max-width: 520px;
-  margin-bottom: 52px;
-}
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
-.btn-primary {
-  background: var(--red);
-  color: #fff;
-  padding: 16px 36px;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: box-shadow 0.3s;
-}
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.btn-primary:hover {
-  box-shadow: 0 0 40px var(--red-glow);
-}
-.btn-primary:hover::before {
-  opacity: 1;
-}
-.btn-ghost {
-  color: rgba(255, 255, 255, 0.7);
-  padding: 16px 32px;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  border: 1px solid var(--border);
-  transition: border-color 0.2s, color 0.2s;
-}
-.btn-ghost:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  color: #fff;
-}
-.hero-stats {
-  position: absolute;
-  right: 60px;
-  bottom: 80px;
-  display: flex;
-  gap: 48px;
-  z-index: 2;
-}
-.stat-item {
-  text-align: right;
-}
-.stat-num {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 42px;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1;
-  letter-spacing: -2px;
-}
-.stat-num .plus {
-  color: var(--red-vivid);
-}
-.stat-label {
-  font-size: 12px;
-  color: var(--text-muted);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-top: 4px;
-}
-@media (max-width: 768px) {
-  .hero-stats {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    justify-content: flex-start;
-    margin-top: 60px;
+  .hero-top .pill{
+    display:flex;align-items:center;gap:8px;
+    padding:8px 16px;border:1px solid var(--border);border-radius:100px;
+    background:rgba(255,255,255,.02);color:var(--gray);
   }
-  .hero-actions {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
+  .hero-top .pill.right{color:var(--red-bright);border-color:rgba(232,41,28,.3);background:rgba(232,41,28,.06);}
+  .hero-top .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--red-bright);box-shadow:0 0 8px var(--red-glow);}
+  .hero-top .pill .dot.pulse{animation:pulse-dot 1.8s ease-in-out infinite;}
+  @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(1.4);}}
 
-/* MARQUEE */
-.marquee-wrap {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 20px 0;
-  overflow: hidden;
-  background: var(--bg2);
-}
-.marquee-track {
-  display: flex;
-  gap: 60px;
-  animation: marquee 22s linear infinite;
-  width: max-content;
-}
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.marquee-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: 'Space Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  white-space: nowrap;
-}
-.marquee-item .dot {
-  width: 4px;
-  height: 4px;
-  background: var(--red);
-  border-radius: 50%;
-}
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;
+  }
+  .hero-greeting{
+    font-family:var(--font-mono);color:var(--red-bright);
+    font-size:16px;margin-bottom:8px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .hero-greeting::before{content:'';width:24px;height:1px;background:var(--red-bright);}
+  .hero-name{
+    font-family:var(--font-display);
+    font-weight:400;
+    font-size:clamp(46px,6.4vw,88px);
+    line-height:.96;
+    text-transform:uppercase;
+    letter-spacing:.005em;
+  }
+  .hero-name .accent{color:var(--red-bright);}
+  .hero-role{
+    font-family:var(--font-display);
+    color:var(--white);
+    font-size:clamp(18px,2.1vw,25px);
+    text-transform:uppercase;
+    margin-top:14px;
+    letter-spacing:.01em;
+    display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;
+  }
+  .hero-role .sep{color:var(--red-bright);font-family:var(--font-mono);font-size:16px;}
+  .hero-bio{
+    color:var(--gray);max-width:480px;margin-top:24px;font-size:15.5px;line-height:1.75;
+  }
+  .hero-loc{
+    margin-top:28px;font-family:var(--font-mono);font-size:12.5px;color:var(--gray-dim);
+    display:flex;align-items:center;gap:8px;
+  }
+  .hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
+  .hero-actions .btn-primary{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--red);color:#fff;font-family:var(--font-mono);font-size:13px;font-weight:600;
+    letter-spacing:.05em;text-transform:uppercase;text-decoration:none;
+    padding:15px 26px;border-radius:6px;
+    box-shadow:0 12px 30px -8px var(--red-glow);
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .hero-actions .btn-primary:hover{transform:translateY(-2px);background:var(--red-bright);box-shadow:0 16px 38px -8px rgba(232,41,28,.45);}
+  .hero-actions .btn-secondary{
+    display:inline-flex;align-items:center;gap:8px;
+    color:var(--white);font-family:var(--font-mono);font-size:13px;font-weight:600;
+    letter-spacing:.05em;text-transform:uppercase;text-decoration:none;
+    padding:15px 22px;border-radius:6px;border:1px solid var(--border);
+    transition:border-color .25s ease, background .25s ease, transform .25s ease;
+  }
+  .hero-actions .btn-secondary:hover{border-color:var(--border-hover);background:rgba(255,255,255,.03);transform:translateY(-2px);}
 
-/* SECTION BASE */
-section {
-  padding: 120px 60px;
-  position: relative;
-}
-.section-label {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: 'Space Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--red-vivid);
-  margin-bottom: 24px;
-}
-.section-label::before {
-  content: '';
-  width: 24px;
-  height: 1px;
-  background: var(--red-vivid);
-}
-.section-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(36px, 4vw, 56px);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -2px;
-  margin-bottom: 20px;
-}
-.section-sub {
-  font-size: 17px;
-  font-weight: 300;
-  color: var(--text-muted);
-  line-height: 1.7;
-  max-width: 540px;
-}
-@media (max-width: 768px) {
-  section {
-    padding: 80px 24px;
+  /* ===== hero visual (photo + floating terminal) ===== */
+  .hero-visual{position:relative;width:100%;}
+  .hero-photo-frame{
+    position:relative;width:100%;aspect-ratio:4/5;border-radius:16px;overflow:hidden;
+    border:1px solid var(--border);box-shadow:0 30px 90px -20px rgba(0,0,0,.7);
+    background:linear-gradient(165deg,#170707 0%,#0a0a0a 65%);
   }
-}
+  .hero-photo-fallback{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% 20%, rgba(232,41,28,.22), transparent 65%),
+      linear-gradient(180deg, #140606 0%, #0a0a0a 100%);
+  }
+  .hero-photo-fallback::before{
+    content:'';position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size:26px 26px;
+    mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 80%);
+  }
+  .fallback-mono{
+    position:relative;font-family:var(--font-display);font-size:min(38vw,220px);line-height:1;
+    color:transparent;-webkit-text-stroke:1.5px rgba(232,41,28,.32);user-select:none;
+  }
+  .fallback-hint{
+    position:absolute;bottom:22px;left:0;right:0;text-align:center;
+    font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--gray-dim);
+  }
+  .hero-photo{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;
+    filter:grayscale(.15) contrast(1.12) brightness(.92);
+  }
+  .hero-photo-duotone{
+    position:absolute;inset:0;pointer-events:none;
+    background:
+      linear-gradient(180deg, transparent 35%, rgba(5,5,5,.92) 100%),
+      linear-gradient(120deg, rgba(232,41,28,.28), transparent 55%);
+    mix-blend-mode:multiply;
+  }
+  .hero-photo-frame::after{
+    content:'';position:absolute;inset:0;border-radius:16px;
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);pointer-events:none;
+  }
+  .hero-scan{
+    position:absolute;left:0;right:0;height:2px;
+    background:linear-gradient(90deg, transparent, var(--red-bright), transparent);
+    opacity:.55;filter:blur(.5px);
+    animation:scan-sweep 4.5s linear infinite;
+  }
+  @keyframes scan-sweep{0%{top:0%;}100%{top:100%;}}
 
-/* SERVICES */
-#services {
-  background: var(--bg);
-}
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  margin-top: 56px;
-}
-.service-card {
-  background: var(--card);
-  padding: 48px 36px;
-  position: relative;
-  transition: background 0.3s;
-}
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--red);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
-}
-.service-card:hover {
-  background: #1a1a1a;
-}
-.service-card:hover::before {
-  transform: scaleX(1);
-}
-.service-icon {
-  width: 52px;
-  height: 52px;
-  background: var(--red-dim);
-  border: 1px solid var(--border-red);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 28px;
-  font-size: 22px;
-}
-.service-name {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 14px;
-}
-.service-desc {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.7;
-}
-.service-benefits {
-  margin-top: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.service-benefit {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.03);
-  padding: 4px 10px;
-  border-radius: 20px;
-}
-@media (max-width: 900px) {
-  .services-grid {
-    grid-template-columns: 1fr;
+  .hero-terminal-float{
+    position:absolute;left:-8%;bottom:-9%;width:78%;
+    z-index:2;
   }
-}
 
-/* PROCESS */
-#process {
-  background: var(--bg2);
-}
-.process-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
-  align-items: center;
-  margin-top: 80px;
-}
-.process-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.step {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 24px;
-  padding: 32px 0;
-  border-bottom: 1px solid var(--border);
-  position: relative;
-  transition: padding-left 0.3s;
-}
-.step:last-child {
-  border-bottom: none;
-}
-.step:hover {
-  padding-left: 8px;
-}
-.step-num {
-  font-family: 'Space Mono', monospace;
-  font-size: 12px;
-  color: var(--red-vivid);
-  letter-spacing: 1px;
-  padding-top: 3px;
-}
-.step-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 19px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  letter-spacing: -0.3px;
-}
-.step-desc {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.7;
-}
-.process-visual {
-  position: relative;
-  height: 500px;
-}
-.pv-card {
-  position: absolute;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 28px;
-}
-.pv-card.main {
-  width: 300px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-color: var(--border-red);
-  box-shadow: 0 0 60px rgba(204, 22, 22, 0.1);
-}
-.pv-card.float-1 {
-  width: 190px;
-  top: 10%;
-  left: 0;
-  animation: float1 6s ease-in-out infinite;
-}
-.pv-card.float-2 {
-  width: 170px;
-  bottom: 12%;
-  right: 0;
-  animation: float2 7s ease-in-out infinite;
-}
-.pv-card.float-3 {
-  width: 160px;
-  top: 20%;
-  right: 5%;
-  animation: float1 5s ease-in-out infinite reverse;
-}
-@keyframes float1 {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
-}
-@keyframes float2 {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(12px); }
-}
-.pv-label {
-  font-size: 11px;
-  color: var(--text-muted);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-}
-.pv-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-.pv-bar {
-  height: 4px;
-  background: var(--bg3);
-  border-radius: 2px;
-  margin-bottom: 6px;
-  overflow: hidden;
-}
-.pv-fill {
-  height: 100%;
-  background: var(--red);
-  border-radius: 2px;
-}
-.pv-small {
-  font-size: 11px;
-  color: var(--text-muted);
-}
-.pv-num {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 4px;
-}
-.pv-num sup {
-  font-size: 16px;
-  color: var(--red-vivid);
-}
-.pv-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(34, 197, 94, 0.1);
-  border: 1px solid rgba(34, 197, 94, 0.2);
-  border-radius: 100px;
-  padding: 4px 12px;
-  font-size: 11px;
-  color: rgba(34, 197, 94, 0.9);
-}
-.pv-status::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  background: rgba(34, 197, 94, 0.9);
-  border-radius: 50%;
-}
-@media (max-width: 900px) {
-  .process-layout {
-    grid-template-columns: 1fr;
-    gap: 60px;
+  /* terminal card */
+  .terminal{
+    background:rgba(20,20,20,.92);backdrop-filter:blur(14px);
+    border:1px solid var(--border);border-radius:10px;
+    overflow:hidden;box-shadow:0 24px 70px -12px rgba(0,0,0,.7);
   }
-  .process-visual {
-    height: 400px;
+  .terminal-bar{
+    display:flex;align-items:center;gap:7px;
+    padding:11px 14px;background:#0d0d0d;border-bottom:1px solid var(--border);
   }
-  .pv-card.main {
-    width: 260px;
+  .terminal-bar span{width:10px;height:10px;border-radius:50%;}
+  .terminal-bar span:nth-child(1){background:#ff5f57;}
+  .terminal-bar span:nth-child(2){background:#febc2e;}
+  .terminal-bar span:nth-child(3){background:#28c840;}
+  .terminal-title{
+    margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--gray-dim);
   }
-  .pv-card.float-1, .pv-card.float-2, .pv-card.float-3 {
-    display: none;
+  .terminal-body{
+    padding:20px 18px;font-family:var(--font-mono);font-size:12.5px;line-height:1.95;
+    min-height:190px;
   }
-}
+  .terminal-body .line{color:var(--gray);}
+  .terminal-body .prompt{color:var(--red-bright);}
+  .terminal-body .out{color:var(--white);}
+  .cursor{
+    display:inline-block;width:7px;height:14px;background:var(--red-bright);
+    animation:blink 1s step-end infinite;vertical-align:middle;margin-left:2px;
+  }
 
-/* TECH STACK */
-#tech {
-  background: var(--bg);
-}
-.tech-header {
-  text-align: center;
-  margin-bottom: 80px;
-}
-.tech-header .section-label {
-  justify-content: center;
-}
-.tech-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  margin-bottom: 1px;
-}
-.tech-grid.row-2 {
-  grid-template-columns: repeat(4, 1fr);
-}
-.tech-item {
-  background: var(--card);
-  padding: 36px 24px;
-  text-align: center;
-  transition: background 0.3s;
-  cursor: pointer;
-  position: relative;
-}
-.tech-item:hover {
-  background: var(--bg3);
-}
-.tech-item::after {
-  content: '🎮 Click para jugar';
-  position: absolute;
-  bottom: 8px;
-  left: 0;
-  right: 0;
-  font-size: 9px;
-  color: var(--red-vivid);
-  opacity: 0;
-  transition: opacity 0.3s;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-.tech-item:hover::after {
-  opacity: 1;
-}
-.tech-icon {
-  font-size: 32px;
-  margin-bottom: 12px;
-  filter: grayscale(1);
-  transition: filter 0.3s;
-}
-.tech-item:hover .tech-icon {
-  filter: grayscale(0);
-}
-.tech-name {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-muted);
-}
-.tech-item:hover .tech-name {
-  color: var(--text);
-}
-@media (max-width: 900px) {
-  .tech-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .hero-stats{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    margin-top:96px;border-top:1px solid var(--border);padding-top:28px;
   }
-  .tech-grid.row-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 480px) {
-  .tech-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+  .stat{padding-right:20px;border-right:1px solid var(--border);}
+  .stat:last-child{border-right:none;}
+  .stat-num{font-family:var(--font-display);font-size:clamp(30px,4vw,46px);color:var(--white);}
+  .stat-num span{color:var(--red-bright);}
+  .stat-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:var(--gray);text-transform:uppercase;margin-top:4px;}
 
-/* GAME MODAL */
-.game-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(6px);
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-.game-modal.open {
-  display: flex;
-}
-.game-modal-content {
-  background: var(--bg2);
-  border: 1px solid var(--border-red);
-  border-radius: 24px;
-  max-width: 640px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 32px 28px;
-  position: relative;
-  box-shadow: 0 0 60px rgba(204,22,22,0.15);
-}
-.game-modal-close {
-  position: absolute;
-  top: 16px;
-  right: 20px;
-  font-size: 28px;
-  cursor: pointer;
-  color: var(--text-muted);
-  transition: color 0.2s, transform 0.2s;
-  line-height: 1;
-}
-.game-modal-close:hover {
-  color: var(--red-vivid);
-  transform: rotate(90deg);
-}
-.game-modal-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 24px;
-  margin-bottom: 8px;
-}
-.game-modal-sub {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-bottom: 24px;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 16px;
-}
-#gameContainer {
-  min-height: 180px;
-}
-.game-btn {
-  background: var(--red);
-  border: none;
-  padding: 8px 20px;
-  border-radius: 6px;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.game-btn:hover {
-  background: var(--red-vivid);
-}
-.game-btn.secondary {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid var(--border);
-}
-.game-btn.secondary:hover {
-  background: rgba(255,255,255,0.15);
-}
-.game-input {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 8px 14px;
-  color: var(--text);
-  font-size: 14px;
-  width: 100%;
-  margin-bottom: 12px;
-}
-.game-input:focus {
-  border-color: var(--border-red);
-  outline: none;
-}
-.game-list {
-  list-style: none;
-  margin: 12px 0;
-}
-.game-list li {
-  background: var(--bg3);
-  padding: 8px 14px;
-  border-radius: 6px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 6px;
-  border-left: 3px solid var(--red);
-}
-.game-list li .del {
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: color 0.2s;
-}
-.game-list li .del:hover {
-  color: var(--red-vivid);
-}
-.game-row {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 12px 0;
-}
-.game-tag {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 4px 12px;
-  font-size: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.game-tag:hover {
-  border-color: var(--border-red);
-  background: rgba(204,22,22,0.1);
-}
-.game-tag.selected {
-  border-color: var(--red-vivid);
-  background: rgba(204,22,22,0.2);
-  color: #fff;
-}
-.game-progress {
-  height: 6px;
-  background: var(--bg3);
-  border-radius: 6px;
-  overflow: hidden;
-  margin: 12px 0;
-}
-.game-progress .fill {
-  height: 100%;
-  background: var(--red);
-  width: 0%;
-  transition: width 0.3s;
-}
-.game-score {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--red-vivid);
-}
-.game-message {
-  background: rgba(204,22,22,0.08);
-  border-left: 3px solid var(--red);
-  padding: 12px 16px;
-  border-radius: 6px;
-  font-size: 13px;
-  color: var(--text-muted);
-  margin: 12px 0;
-}
-@media (max-width: 600px) {
-  .game-modal-content {
-    padding: 24px 16px;
-  }
-  .game-row {
-    flex-direction: column;
-    align-items: stretch;
-  }
-}
+  /* ===== SECTION SPACING ===== */
+  section{position:relative;z-index:1;padding:120px 0;}
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:20px;}
+  .section-head p{color:var(--gray);max-width:380px;font-size:14.5px;}
 
-/* WORKS */
-#works {
-  background: var(--bg2);
-}
-.works-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  background: var(--border);
-  margin-top: 56px;
-}
-.work-card {
-  background: var(--card);
-  padding: 48px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s;
-}
-.work-card.featured {
-  grid-column: 1 / -1;
-  padding: 64px;
-}
-.work-img {
-  width: 100%;
-  height: 200px;
-  background: linear-gradient(135deg, var(--bg3), var(--bg));
-  border-radius: 12px;
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-  transition: transform 0.3s;
-}
-.work-card:hover .work-img {
-  transform: scale(1.02);
-}
-.work-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-.work-desc {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-}
-.work-results {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 16px;
-}
-.work-result {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.work-result::before {
-  content: '✓';
-  color: var(--red-vivid);
-  font-weight: bold;
-}
-.share-buttons {
-  margin-top: 20px;
-  display: flex;
-  gap: 12px;
-}
-.share-buttons a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 12px;
-  transition: color 0.2s;
-}
-.share-buttons a:hover {
-  color: var(--red-vivid);
-}
-@media (max-width: 900px) {
-  .works-grid {
-    grid-template-columns: 1fr;
+  /* ===== PROYECTOS ===== */
+  .projects{display:flex;flex-direction:column;gap:2px;}
+  .project{
+    display:grid;grid-template-columns:200px 1.3fr 1fr;gap:32px;align-items:center;
+    padding:28px;background:var(--card);border:1px solid var(--border);
+    border-radius:10px;margin-bottom:14px;
+    transition:border-color .3s ease, background .3s ease, transform .3s ease, box-shadow .3s ease;
+    position:relative;overflow:hidden;
   }
-  .work-card.featured {
-    grid-column: 1;
+  .project::before{
+    content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--red);
+    transform:scaleY(0);transform-origin:bottom;transition:transform .35s ease;
   }
-}
+  .project:hover{border-color:var(--border-hover);background:var(--card-hover);transform:translateX(4px);box-shadow:0 20px 50px -18px rgba(0,0,0,.6);}
+  .project:hover::before{transform:scaleY(1);}
 
-/* CASOS DE ÉXITO */
-#casos {
-  background: var(--bg);
-}
-.casos-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
-  margin-top: 56px;
-}
-.caso-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 36px;
-  transition: all 0.3s;
-}
-.caso-card:hover {
-  border-color: var(--border-red);
-  transform: translateY(-6px);
-}
-.caso-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 22px;
-  margin-bottom: 24px;
-}
-.comparison {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-.comparison-col {
-  padding: 16px;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
-}
-.comparison-col h4 {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin-bottom: 12px;
-}
-.comparison-col.antes h4 {
-  color: #ff4444;
-}
-.comparison-col.despues h4 {
-  color: #44ff44;
-}
-.comparison-col ul {
-  list-style: none;
-}
-.comparison-col li {
-  font-size: 13px;
-  padding: 6px 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.comparison-col li::before {
-  content: '✗';
-  color: #ff4444;
-}
-.comparison-col.despues li::before {
-  content: '✓';
-  color: #44ff44;
-}
-@media (max-width: 900px) {
-  .casos-grid {
-    grid-template-columns: 1fr;
+  .project-thumb{
+    position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;
+    border:1px solid var(--border);
+    background:
+      radial-gradient(ellipse 90% 70% at 30% 20%, rgba(232,41,28,.2), transparent 60%),
+      linear-gradient(160deg,#150606 0%,#0a0a0a 100%);
   }
-}
+  .project-thumb::before{
+    content:'';position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size:16px 16px;
+    mask-image:radial-gradient(ellipse 70% 70% at 50% 50%, #000 30%, transparent 85%);
+  }
+  .project-thumb svg{
+    position:relative;width:38%;height:38%;stroke:var(--gray);fill:none;stroke-width:1.4;
+    transition:stroke .4s ease, transform .5s cubic-bezier(.22,1,.36,1);
+  }
+  .project:hover .project-thumb svg{stroke:var(--red-bright);transform:scale(1.1);}
+  .project-thumb-num{
+    position:absolute;top:8px;left:8px;font-family:var(--font-mono);font-size:11px;font-weight:600;
+    color:var(--red-bright);background:rgba(10,10,10,.7);border:1px solid var(--border);
+    padding:2px 8px;border-radius:100px;letter-spacing:.05em;
+  }
+  .project-main .project-tag{
+    font-family:var(--font-mono);font-size:11px;color:var(--gray-dim);
+    text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;display:block;
+  }
+  .project-cmd{
+    font-family:var(--font-mono);font-size:12.5px;color:var(--red-bright);margin-bottom:12px;
+  }
+  .project-cmd::before{content:'$ ';color:var(--gray-dim);}
+  .project-title{font-family:var(--font-display);font-size:24px;text-transform:uppercase;margin-bottom:12px;letter-spacing:.01em;}
+  .project-desc{color:var(--gray);font-size:14.5px;line-height:1.7;max-width:460px;}
+  .project-side{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px;}
+  .stack-tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .stack-tag{
+    font-family:var(--font-mono);font-size:11px;color:var(--gray);
+    border:1px solid var(--border);padding:5px 10px;border-radius:100px;
+  }
+  .project-status{font-family:var(--font-mono);font-size:11px;color:#3ddc71;display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:.06em;}
+  .project-status .dot{width:6px;height:6px;background:#3ddc71;border-radius:50%;box-shadow:0 0 6px #3ddc71;}
 
-/* TIMELINE */
-#timeline {
-  background: var(--bg2);
-}
-.timeline {
-  max-width: 600px;
-  margin: 56px auto 0;
-  position: relative;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 20px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--border-red);
-}
-.timeline-item {
-  display: flex;
-  gap: 32px;
-  margin-bottom: 48px;
-  position: relative;
-  opacity: 0;
-  transform: translateX(-20px);
-  transition: all 0.6s ease;
-}
-.timeline-item.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-.timeline-year {
-  font-family: 'Space Mono', monospace;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--red-vivid);
-  min-width: 80px;
-}
-.timeline-content {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px 28px;
-  flex: 1;
-}
-.timeline-content h3 {
-  font-size: 18px;
-  margin-bottom: 6px;
-}
-.timeline-content p {
-  font-size: 13px;
-  color: var(--text-muted);
-}
-@media (max-width: 600px) {
-  .timeline-item {
-    flex-direction: column;
-    gap: 8px;
+  /* ===== STACK — grid de herramientas tipo logo-wall ===== */
+  .stack-section{background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .stack-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
   }
-  .timeline::before {
-    left: 0;
+  .tool-card{
+    position:relative;overflow:hidden;
+    background:var(--card);border:1px solid var(--border);border-radius:16px;
+    padding:32px 18px 24px;
+    display:flex;flex-direction:column;align-items:center;gap:16px;
+    transition:transform .45s cubic-bezier(.22,1,.36,1), border-color .45s ease, background .45s ease, box-shadow .45s ease;
+    cursor:default;
   }
-  .timeline-year {
-    min-width: auto;
+  .tool-card::before{
+    content:'';position:absolute;inset:-60% -20% auto -20%;height:140%;
+    background:radial-gradient(circle at 50% 30%, var(--red-glow), transparent 65%);
+    opacity:0;transition:opacity .5s ease;pointer-events:none;
   }
-}
+  .tool-card::after{
+    content:'';position:absolute;left:0;right:0;bottom:0;height:2px;
+    background:linear-gradient(90deg, transparent, var(--red), transparent);
+    transform:scaleX(0);transition:transform .45s ease;
+  }
+  .tool-card:hover{
+    transform:translateY(-8px);
+    border-color:var(--border-hover);
+    background:var(--card-hover);
+    box-shadow:0 22px 45px rgba(0,0,0,.45), 0 0 30px rgba(232,41,28,.12);
+  }
+  .tool-card:hover::before{opacity:1;}
+  .tool-card:hover::after{transform:scaleX(1);}
+  .tool-badge{
+    width:62px;height:62px;border-radius:14px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    background:#0c0c0c;border:1px solid var(--border);
+    font-family:var(--font-mono);font-weight:700;font-size:14px;letter-spacing:.01em;
+    color:var(--gray);position:relative;z-index:1;
+    transition:color .4s ease, border-color .4s ease, transform .5s cubic-bezier(.22,1,.36,1), box-shadow .4s ease;
+  }
+  .tool-card:hover .tool-badge{
+    color:var(--red-bright);border-color:var(--red);
+    transform:rotate(-6deg) scale(1.1);
+    box-shadow:0 0 22px rgba(232,41,28,.4);
+  }
+  .tool-name{
+    font-family:var(--font-mono);font-size:11.5px;color:var(--gray);
+    text-transform:uppercase;letter-spacing:.05em;position:relative;z-index:1;
+    transition:color .4s ease;text-align:center;
+  }
+  .tool-card:hover .tool-name{color:var(--white);}
 
-/* ABOUT */
-#about {
-  background: var(--bg2);
-}
-.about-layout {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 100px;
-  align-items: center;
-  margin-top: 72px;
-}
-.about-avatar-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-}
-.about-avatar {
-  position: relative;
-  width: 260px;
-  height: 260px;
-}
-.about-avatar-bg {
-  position: absolute;
-  inset: 0;
-  border-radius: 24px;
-  background: var(--red-dim);
-  border: 1px solid var(--border-red);
-}
-.about-avatar-inner {
-  position: absolute;
-  inset: 12px;
-  border-radius: 16px;
-  background: var(--card);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.about-initials {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 72px;
-  font-weight: 700;
-  letter-spacing: -4px;
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--red-vivid);
-  user-select: none;
-  position: relative;
-  z-index: 1;
-}
-.about-initials-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 50% 55%, rgba(204, 22, 22, 0.18) 0%, transparent 70%);
-}
-.about-avatar::before,
-.about-avatar::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-color: var(--red-vivid);
-  border-style: solid;
-}
-.about-avatar::before {
-  top: -6px;
-  left: -6px;
-  border-width: 2px 0 0 2px;
-  border-radius: 4px 0 0 0;
-}
-.about-avatar::after {
-  bottom: -6px;
-  right: -6px;
-  border-width: 0 2px 2px 0;
-  border-radius: 0 0 4px 4px;
-}
-.about-corner-tr,
-.about-corner-bl {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-color: var(--red-vivid);
-  border-style: solid;
-}
-.about-corner-tr {
-  top: -6px;
-  right: -6px;
-  border-width: 2px 2px 0 0;
-  border-radius: 0 4px 0 0;
-}
-.about-corner-bl {
-  bottom: -6px;
-  left: -6px;
-  border-width: 0 0 2px 2px;
-  border-radius: 0 0 0 4px;
-}
-.about-badges {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-}
-.about-badge-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 12px 16px;
-  transition: border-color 0.25s;
-}
-.about-badge-item:hover {
-  border-color: var(--border-red);
-}
-.about-badge-icon {
-  width: 32px;
-  height: 32px;
-  background: var(--red-dim);
-  border: 1px solid var(--border-red);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  flex-shrink: 0;
-}
-.about-badge-label {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-muted);
-}
-.about-badge-val {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text);
-  margin-left: auto;
-}
-.about-text .section-label {
-  margin-bottom: 20px;
-}
-.about-name {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(32px, 3.5vw, 48px);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -2px;
-  margin-bottom: 10px;
-}
-.about-role {
-  font-family: 'Space Mono', monospace;
-  font-size: 13px;
-  color: var(--red-vivid);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 28px;
-}
-.about-bio {
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.85;
-  margin-bottom: 36px;
-}
-.about-bio strong {
-  color: var(--text);
-  font-weight: 600;
-}
-.about-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 40px;
-}
-.about-tag {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 7px 14px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-muted);
-  letter-spacing: 0.5px;
-  transition: border-color 0.2s, color 0.2s;
-}
-.about-tag:hover {
-  border-color: var(--border-red);
-  color: var(--text);
-}
-.about-tag.accent {
-  background: rgba(204, 22, 22, 0.08);
-  border-color: var(--border-red);
-  color: rgba(255, 80, 80, 0.9);
-}
-.about-divider {
-  width: 40px;
-  height: 2px;
-  background: var(--red);
-  margin-bottom: 40px;
-  border-radius: 2px;
-}
-@media (max-width: 900px) {
-  .about-layout {
-    grid-template-columns: 1fr;
-    gap: 60px;
+  /* ===== PROCESO — tarjetas superpuestas (fan cards) ===== */
+  .process-stack{
+    display:flex;justify-content:center;flex-wrap:nowrap;
+    padding:64px 0 20px;
   }
-}
+  .proc-card{
+    width:224px;flex-shrink:0;
+    margin-left:-72px;
+    transform-origin:bottom center;
+    transition:transform .55s cubic-bezier(.22,1,.36,1), filter .4s ease, opacity .4s ease;
+    cursor:pointer;
+  }
+  .proc-card:first-child{margin-left:0;}
+  .proc-card:nth-child(1){transform:rotate(-11deg) translateY(20px);z-index:1;}
+  .proc-card:nth-child(2){transform:rotate(-5.5deg) translateY(7px);z-index:2;}
+  .proc-card:nth-child(3){transform:rotate(0deg) translateY(0);z-index:3;}
+  .proc-card:nth-child(4){transform:rotate(5.5deg) translateY(7px);z-index:2;}
+  .proc-card:nth-child(5){transform:rotate(11deg) translateY(20px);z-index:1;}
+  .proc-inner{
+    height:330px;background:linear-gradient(160deg,var(--card) 0%,#0b0b0b 100%);
+    border:1px solid var(--border);border-radius:18px;
+    padding:24px 22px;display:flex;flex-direction:column;justify-content:flex-end;
+    box-shadow:0 16px 36px rgba(0,0,0,.55);
+    position:relative;overflow:hidden;
+    transition:border-color .45s ease, box-shadow .45s ease;
+  }
+  .proc-inner::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(115deg, transparent 30%, rgba(255,255,255,.06) 50%, transparent 70%);
+    transform:translateX(-120%);transition:transform .7s ease;
+  }
+  .proc-card:hover .proc-inner::after{transform:translateX(120%);}
+  .proc-num{
+    font-family:var(--font-display);font-size:72px;line-height:1;
+    color:rgba(232,41,28,.2);position:absolute;top:20px;left:22px;
+    transition:font-size .5s cubic-bezier(.22,1,.36,1), color .45s ease;
+  }
+  .proc-content{opacity:0;transform:translateY(16px);transition:opacity .4s ease .06s, transform .4s ease .06s;}
+  .proc-content h4{font-family:var(--font-display);font-size:20px;text-transform:uppercase;margin-bottom:10px;letter-spacing:.01em;}
+  .proc-content p{color:var(--gray);font-size:13.5px;line-height:1.65;}
+  .proc-card:hover, .proc-card.active{
+    transform:translateY(-46px) rotate(0deg) scale(1.07) !important;
+    z-index:10 !important;
+  }
+  .proc-card:hover .proc-inner, .proc-card.active .proc-inner{
+    border-color:var(--red);box-shadow:0 32px 60px rgba(232,41,28,.32);
+  }
+  .proc-card:hover .proc-num, .proc-card.active .proc-num{
+    font-size:38px;color:var(--red-bright);
+  }
+  .proc-card:hover .proc-content, .proc-card.active .proc-content{opacity:1;transform:translateY(0);}
+  .proc-card.dimmed{opacity:.45;filter:saturate(.35) brightness(.65);}
+  .process-hint{
+    text-align:center;font-family:var(--font-mono);font-size:11.5px;color:var(--gray-dim);
+    margin-top:6px;letter-spacing:.06em;text-transform:uppercase;
+  }
 
-/* EQUIPO TÉCNICO */
-#equipo {
-  background: var(--bg);
-}
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
-  margin-top: 56px;
-}
-.team-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-.team-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--red), var(--red-vivid), transparent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s ease;
-  z-index: 2;
-}
-.team-card:hover::before {
-  transform: scaleX(1);
-}
-.team-card:hover {
-  border-color: rgba(204, 22, 22, 0.7);
-  box-shadow: 0 20px 35px -12px rgba(204, 22, 22, 0.25);
-  background: #181818;
-  transform: translateY(-6px);
-}
-.card-inner {
-  padding: 32px 24px 28px;
-  transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-}
-.avatar-wrap {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 28px;
-}
-.avatar-circle {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 20%, var(--bg3), #0a0a0a);
-  border: 1.5px solid var(--border-red);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.team-card:hover .avatar-circle {
-  border-color: var(--red-vivid);
-  box-shadow: 0 0 18px var(--red-glow);
-}
-.avatar-initials {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 38px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.85);
-}
-.member-name {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 6px;
-}
-.member-role {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--red-vivid);
-  text-align: center;
-  margin-bottom: 8px;
-}
-.member-specialty {
-  font-size: 12px;
-  color: var(--text-muted);
-  text-align: center;
-  border-top: 1px dashed var(--border);
-  padding-top: 12px;
-  margin-top: 8px;
-}
-.expand-info {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: all 0.45s cubic-bezier(0.2, 0.9, 0.4, 1.2);
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.team-card:hover .expand-info {
-  max-height: 480px;
-  opacity: 1;
-  margin-top: 20px;
-}
-.hud-header {
-  font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 1.8px;
-  color: var(--red);
-  background: rgba(204, 22, 22, 0.08);
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 4px;
-  border-left: 2px solid var(--red);
-  width: fit-content;
-}
-.bio-text {
-  font-size: 12px;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.7);
-}
-.exp-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 6px 12px;
-  border-radius: 10px;
-}
-.tech-badge-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.tech-badge {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 4px 10px;
-  font-size: 10px;
-}
-.level-bar-bg {
-  flex: 1;
-  height: 5px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  overflow: hidden;
-}
-.level-fill {
-  height: 100%;
-  background: var(--red);
-  width: 0%;
-  transition: width 0.5s ease-out;
-}
-.team-card:hover .level-fill {
-  width: var(--level-width);
-}
-.participation-item {
-  font-size: 11px;
-  background: rgba(204, 22, 22, 0.08);
-  padding: 3px 8px;
-  border-radius: 20px;
-  display: inline-block;
-  margin: 2px;
-}
-@media (max-width: 1100px) {
-  .team-grid {
-    grid-template-columns: repeat(2, 1fr);
+  /* ===== CONTACTO — animado ===== */
+  .contact{
+    position:relative;overflow:hidden;
+    background:linear-gradient(180deg, var(--red-deep) 0%, #1a0705 55%, var(--bg) 100%);
+    border-top:1px solid var(--border);
+    text-align:center;
   }
-}
-@media (max-width: 680px) {
-  .team-grid {
-    grid-template-columns: 1fr;
+  .contact .wrap{position:relative;z-index:2;}
+  .contact-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+  .orb-1{width:440px;height:440px;background:radial-gradient(circle, rgba(255,70,50,.4), transparent 70%);top:-140px;left:-110px;animation:floatOrb 15s ease-in-out infinite alternate;}
+  .orb-2{width:380px;height:380px;background:radial-gradient(circle, rgba(255,59,43,.28), transparent 70%);bottom:-150px;right:-90px;animation:floatOrb 19s ease-in-out infinite alternate-reverse;}
+  .orb-3{width:260px;height:260px;background:radial-gradient(circle, rgba(255,120,100,.2), transparent 70%);top:40%;left:50%;animation:floatOrb 22s ease-in-out infinite alternate;}
+  @keyframes floatOrb{0%{transform:translate(0,0) scale(1);}100%{transform:translate(40px,30px) scale(1.18);}}
+  .contact-scanline{
+    position:absolute;left:0;right:0;height:2px;z-index:1;
+    background:linear-gradient(90deg, transparent, rgba(255,120,100,.7), transparent);
+    animation:scanMove 6s linear infinite;opacity:.55;pointer-events:none;
   }
-  .expand-info {
-    max-height: 600px;
-    opacity: 1;
-    margin-top: 20px;
-  }
-  .level-fill {
-    width: var(--level-width) !important;
-  }
-}
+  @keyframes scanMove{0%{top:0%;}100%{top:100%;}}
 
-/* RESULTADOS CON GRÁFICO */
-#resultados {
-  background: var(--bg);
-}
-.results-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 32px;
-  margin-top: 56px;
-  text-align: center;
-}
-.result-card {
-  padding: 32px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  transition: all 0.3s;
-}
-.result-card:hover {
-  border-color: var(--border-red);
-  transform: translateY(-6px);
-}
-.result-number {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 64px;
-  font-weight: 800;
-  color: var(--red-vivid);
-  line-height: 1;
-}
-.result-label {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-top: 12px;
-}
-.chart-container {
-  margin-top: 60px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 32px;
-}
-.chart-container canvas {
-  max-height: 300px;
-}
-@media (max-width: 1100px) {
-  .results-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .status-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--font-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:#ffd9d4;border:1px solid rgba(255,255,255,.18);
+    padding:9px 18px 9px 14px;border-radius:100px;margin-bottom:30px;
+    background:rgba(0,0,0,.28);backdrop-filter:blur(6px);
   }
-}
-@media (max-width: 900px) {
-  .results-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 680px) {
-  .results-grid {
-    grid-template-columns: 1fr;
-  }
-}
+  .status-ping{position:relative;width:10px;height:10px;display:inline-flex;align-items:center;justify-content:center;}
+  .ping-core{width:7px;height:7px;border-radius:50%;background:#3ddc71;box-shadow:0 0 8px #3ddc71;z-index:1;}
+  .ping-ring{position:absolute;inset:-5px;border-radius:50%;border:1.5px solid #3ddc71;animation:pingRing 1.8s cubic-bezier(0,0,.2,1) infinite;}
+  @keyframes pingRing{0%{transform:scale(.4);opacity:.9;}80%,100%{transform:scale(2.4);opacity:0;}}
 
-/* CALCULADORA MEJORADA */
-#calculadora {
-  background: var(--bg2);
-}
-.calculator-wrap {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  margin-top: 56px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 48px;
-}
-.calc-options {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-.calc-group label {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-bottom: 8px;
-  display: block;
-}
-.calc-type {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.calc-type-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.calc-type-btn.active {
-  background: var(--red);
-  border-color: var(--red);
-  color: #fff;
-}
-.calc-type-btn i {
-  font-size: 14px;
-}
-.calc-complexity, .calc-deadline {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.calc-complexity.active, .calc-deadline.active {
-  background: var(--red);
-  border-color: var(--red);
-  color: #fff;
-}
-.calc-slider {
-  width: 100%;
-  height: 4px;
-  background: var(--border);
-  border-radius: 2px;
-  appearance: none;
-}
-.calc-slider::-webkit-slider-thumb {
-  appearance: none;
-  width: 16px;
-  height: 16px;
-  background: var(--red);
-  border-radius: 50%;
-  cursor: pointer;
-}
-.slider-labels {
-  display: flex;
-  justify-content: space-between;
-  font-size: 10px;
-  color: var(--text-muted);
-  margin-top: 6px;
-}
-.price-range {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 12px;
-  font-size: 11px;
-  color: var(--text-muted);
-  padding: 8px 0;
-  border-top: 1px solid var(--border);
-}
-.price-range span {
-  background: rgba(255,255,255,0.03);
-  padding: 4px 12px;
-  border-radius: 20px;
-}
-.calc-modules-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
-  margin-top: 8px;
-}
-.calc-module {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.calc-module:hover {
-  border-color: var(--border-red);
-  background: rgba(204, 22, 22, 0.05);
-}
-.calc-module.disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-  filter: grayscale(0.3);
-}
-.calc-module.disabled:hover {
-  border-color: var(--border);
-  background: rgba(255, 255, 255, 0.03);
-}
-.calc-module input {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--red);
-  cursor: pointer;
-}
-.calc-module.disabled input {
-  cursor: not-allowed;
-}
-.calc-module i {
-  font-size: 18px;
-  color: var(--red-vivid);
-  width: 24px;
-}
-.calc-module span {
-  font-size: 12px;
-  flex: 1;
-}
-.calc-module .recommended {
-  font-size: 9px;
-  background: var(--red);
-  padding: 2px 6px;
-  border-radius: 20px;
-  color: #fff;
-  margin-left: 8px;
-}
-.calc-result {
-  padding: 32px;
-  background: linear-gradient(135deg, var(--bg3), var(--bg));
-  border-radius: 20px;
-  text-align: center;
-}
-.calc-price {
-  font-family: 'Space Grotesk', sans-serif;
-  margin: 20px 0;
-}
-.currency {
-  font-size: 20px;
-  font-weight: 500;
-  margin-right: 8px;
-  color: var(--text-muted);
-}
-.price {
-  font-size: 52px;
-  font-weight: 800;
-  color: var(--text);
-}
-.breakdown-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px dashed var(--border);
-  font-size: 13px;
-}
-.breakdown-total {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 0 8px;
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--red-vivid);
-  border-top: 2px solid var(--border-red);
-  margin-top: 8px;
-}
-.calc-note {
-  font-size: 11px;
-  color: var(--text-dim);
-  margin-top: 16px;
-}
-.calc-note .highlight {
-  color: var(--red-vivid);
-  font-weight: 500;
-}
-.btn-pdf {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 20px;
-  margin-top: 16px;
-  cursor: pointer;
-  transition: all 0.2s;
-  color: var(--text);
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-.btn-pdf:hover {
-  background: var(--red);
-  border-color: var(--red);
-}
-.calc-submit {
-  display: block;
-  width: 100%;
-  text-align: center;
-  margin-top: 20px;
-  padding: 14px;
-  background: var(--red);
-  color: #fff;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s;
-}
-.calc-submit:hover {
-  background: var(--red-vivid);
-  transform: translateY(-2px);
-}
-@media (max-width: 900px) {
-  .calculator-wrap {
-    grid-template-columns: 1fr;
-    padding: 32px;
+  .contact-title{
+    font-family:var(--font-display);font-size:clamp(36px,7vw,84px);text-transform:uppercase;
+    line-height:1.05;max-width:820px;margin:0 auto 26px;
   }
-  .calc-modules-grid {
-    grid-template-columns: 1fr;
-  }
-}
+  .title-line{display:block;}
+  .w-mask{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;}
+  .w{display:inline-block;transform:translateY(120%);opacity:0;transition:transform .8s cubic-bezier(.19,1,.22,1), opacity .5s ease;}
+  .w-mask.in-view .w{transform:translateY(0);opacity:1;}
 
-/* BLOG */
-#blog {
-  background: var(--bg);
-}
-.blog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-top: 56px;
-}
-.blog-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  overflow: hidden;
-  transition: all 0.3s;
-}
-.blog-card:hover {
-  border-color: var(--border-red);
-  transform: translateY(-6px);
-}
-.blog-image {
-  height: 200px;
-  background: linear-gradient(135deg, var(--bg3), var(--bg));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-}
-.blog-content {
-  padding: 24px;
-}
-.blog-date {
-  font-size: 11px;
-  color: var(--text-muted);
-  margin-bottom: 8px;
-}
-.blog-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-.blog-excerpt {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 16px;
-}
-.blog-link {
-  color: var(--red-vivid);
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 500;
-}
-.blog-link:hover {
-  text-decoration: underline;
-}
-@media (max-width: 900px) {
-  .blog-grid {
-    grid-template-columns: 1fr;
+  .contact-rotator{
+    font-family:var(--font-mono);font-size:15px;color:var(--red-bright);
+    margin-bottom:22px;min-height:22px;display:flex;justify-content:center;align-items:center;gap:6px;
   }
-}
+  .rotator-prompt{color:var(--gray-dim);}
+  .contact-rotator .cursor{background:var(--red-bright);}
 
-/* FAQ */
-#faq {
-  background: var(--bg);
-}
-.faq-grid {
-  max-width: 800px;
-  margin: 56px auto 0;
-}
-.faq-item {
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 16px;
-}
-.faq-question {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
-  cursor: pointer;
-  font-weight: 500;
-}
-.faq-question:hover {
-  color: var(--red-vivid);
-}
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-  color: var(--text-muted);
-  font-size: 14px;
-  line-height: 1.7;
-}
-.faq-item.open .faq-answer {
-  max-height: 200px;
-  padding-bottom: 20px;
-}
-.faq-question i {
-  transition: transform 0.3s;
-}
-
-/* TESTIMONIALS */
-#testimonials {
-  background: var(--bg2);
-}
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 70px;
-}
-.testi-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 36px;
-  transition: all 0.3s;
-}
-.testi-card:hover {
-  border-color: var(--border-red);
-  transform: translateY(-4px);
-}
-.testi-quote {
-  font-size: 38px;
-  color: var(--red);
-  margin-bottom: 20px;
-}
-.testi-text {
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.75;
-  margin-bottom: 28px;
-}
-.testi-author {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.testi-avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--bg3);
-  border: 2px solid var(--border-red);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: var(--red-vivid);
-}
-@media (max-width: 900px) {
-  .testimonials-grid {
-    grid-template-columns: 1fr;
+  .contact-sub{color:#e8c9c7;max-width:460px;margin:0 auto 44px;font-size:15px;}
+  .contact-actions{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+  .btn{
+    position:relative;overflow:hidden;
+    font-family:var(--font-mono);font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+    padding:16px 30px;border-radius:100px;text-decoration:none;
+    display:inline-flex;align-items:center;gap:10px;
+    transition:transform .35s cubic-bezier(.22,1,.36,1), box-shadow .3s ease, border-color .3s ease;
+    will-change:transform;
   }
-}
-
-/* CTA */
-#cta {
-  background: var(--bg2);
-  text-align: center;
-  padding: 120px 60px;
-  position: relative;
-  overflow: hidden;
-}
-.cta-glow {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: var(--red-glow);
-  filter: blur(120px);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.cta-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(42px, 6vw, 80px);
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -3px;
-  margin-bottom: 28px;
-  position: relative;
-  z-index: 1;
-}
-.cta-form {
-  display: flex;
-  gap: 12px;
-  max-width: 480px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-.cta-input {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 16px 20px;
-  color: var(--text);
-  font-size: 14px;
-}
-.cta-input:focus {
-  border-color: rgba(204, 22, 22, 0.5);
-  outline: none;
-}
-.cta-contact {
-  margin-top: 40px;
-  display: flex;
-  gap: 32px;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-}
-.cta-contact a {
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.cta-contact a:hover {
-  color: var(--text);
-}
-@media (max-width: 768px) {
-  .cta-form {
-    flex-direction: column;
+  .btn::before{
+    content:'';position:absolute;top:0;left:-60%;width:35%;height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,.4), transparent);
+    transform:skewX(-20deg);transition:left .65s ease;pointer-events:none;
   }
-  #cta {
-    padding: 80px 24px;
-  }
-}
+  .btn:hover::before{left:130%;}
+  .btn-primary{background:var(--white);color:#0a0a0a;font-weight:600;}
+  .btn-primary:hover{box-shadow:0 14px 32px rgba(255,255,255,.22);}
+  .btn-outline{border:1px solid rgba(255,255,255,.35);color:#fff;}
+  .btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.06);box-shadow:0 14px 32px rgba(232,41,28,.25);}
+  .btn-icon{display:inline-block;transform:rotate(90deg);}
+  .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.55);transform:scale(0);animation:rippleAnim .65s ease-out forwards;pointer-events:none;}
+  @keyframes rippleAnim{to{transform:scale(5);opacity:0;}}
 
-/* FOOTER */
-footer {
-  background: var(--bg);
-  border-top: 1px solid var(--border);
-  padding: 60px;
-  display: flex;
-  justify-content: space-between;
-}
-.footer-logo {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.footer-copy {
-  font-size: 13px;
-  color: var(--text-dim);
-}
-@media (max-width: 768px) {
-  footer {
-    flex-direction: column;
-    gap: 24px;
-    text-align: center;
-    padding: 40px 24px;
-  }
-}
+  .contact-note{margin-top:36px;font-family:var(--font-mono);font-size:12px;color:#c99;}
 
-/* COOKIE BANNER */
-.cookie-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--card);
-  border-top: 1px solid var(--border-red);
-  padding: 16px 24px;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-  transform: translateY(100%);
-  transition: transform 0.3s;
-}
-.cookie-banner.show {
-  transform: translateY(0);
-}
-.cookie-text {
-  font-size: 13px;
-  color: var(--text-muted);
-}
-.cookie-text a {
-  color: var(--red-vivid);
-}
-.cookie-btn {
-  background: var(--red);
-  border: none;
-  padding: 8px 24px;
-  border-radius: 4px;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* REVEAL ANIMATIONS */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-
-/* TOAST */
-.toast {
-  position: fixed;
-  bottom: 100px;
-  right: 30px;
-  background: var(--card);
-  border: 1px solid var(--border-red);
-  border-radius: 12px;
-  padding: 16px 24px;
-  color: var(--text);
-  font-size: 14px;
-  z-index: 10000;
-  transform: translateX(400px);
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-.toast.show {
-  transform: translateX(0);
-}
-.toast.success {
-  border-left: 4px solid #44ff44;
-}
-.toast.error {
-  border-left: 4px solid #ff4444;
-}
-@media (max-width: 768px) {
-  .toast {
-    bottom: 80px;
-    right: 20px;
-    left: 20px;
-    transform: translateY(100px);
-    text-align: center;
+  /* ===== FOOTER ===== */
+  footer{
+    padding:36px 0;border-top:1px solid var(--border);
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
   }
-  .toast.show {
-    transform: translateY(0);
+  footer p{font-family:var(--font-mono);font-size:12px;color:var(--gray-dim);}
+  .footer-links{display:flex;gap:22px;}
+  .footer-links a{color:var(--gray);font-family:var(--font-mono);font-size:12px;text-decoration:none;}
+  .footer-links a:hover{color:var(--red-bright);}
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    .hero{padding-top:130px;}
+    .hero-grid{grid-template-columns:1fr;gap:70px;}
+    .hero-visual{margin-top:10px;padding-bottom:70px;}
+    .hero-photo-frame{aspect-ratio:4/3;max-width:420px;margin:0 auto;}
+    .hero-terminal-float{left:50%;transform:translateX(-50%);bottom:-40px;width:88%;max-width:380px;}
+    .hero-stats{grid-template-columns:1fr;gap:20px;margin-top:60px;}
+    .stat{border-right:none;border-bottom:1px solid var(--border);padding-bottom:16px;}
+    .stat:last-child{border-bottom:none;}
+    .project{grid-template-columns:1fr;gap:18px;}
+    .project-thumb{max-width:220px;}
+    .stack-grid{grid-template-columns:repeat(3,1fr);}
+    .contact-actions{flex-direction:column;align-items:center;}
+    .process-stack{flex-wrap:wrap;gap:20px;padding:40px 0 10px;}
+    .proc-card{margin-left:0 !important;width:200px;}
+    .proc-card:nth-child(1),.proc-card:nth-child(2),.proc-card:nth-child(3),
+    .proc-card:nth-child(4),.proc-card:nth-child(5){transform:none;}
+    .proc-card:hover, .proc-card.active{transform:translateY(-10px) scale(1.04) !important;}
   }
-}
+  @media (max-width:520px){
+    .wrap{padding:0 20px;}
+    .stack-grid{grid-template-columns:repeat(2,1fr);}
+    .hero-top{flex-direction:column;align-items:flex-start;gap:8px;}
+    .hero-top .pill{width:100%;box-sizing:border-box;}
+    .hero-photo-frame{aspect-ratio:1/1;}
+    .fallback-mono{font-size:32vw;}
+    .process-stack{flex-direction:column;align-items:center;}
+    .proc-card{width:100%;max-width:320px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
 </style>
 </head>
 <body>
 
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
+<div class="grain"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="grid-bg"></div>
 
-<nav>
-  <div class="nav-logo"><div class="nav-logo-dot"></div>OsisDev</div>
-  <ul class="nav-links">
-    <li><a href="#services">Soluciones</a></li>
-    <li><a href="#process">Proceso</a></li>
-    <li><a href="#works">Proyectos</a></li>
-    <li><a href="#about">Sobre mí</a></li>
-    <li><a href="#resultados">Resultados</a></li>
-    <li><a href="#blog">Blog</a></li>
-    <li><a href="#cta">Contacto</a></li>
-  </ul>
-  <a href="#calculadora" class="nav-cta">Calcular proyecto</a>
-  <div class="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</nav>
+<header>
+  <nav class="wrap">
+    <a href="#inicio" class="logo">FH<span>_</span>SYSTEMS</a>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="status-pill"><span class="status-dot"></span> Disponible</div>
+    <button class="burger" id="burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </nav>
+</header>
 
-<div class="mobile-menu">
-  <a href="#services">Soluciones</a>
-  <a href="#process">Proceso</a>
-  <a href="#works">Proyectos</a>
-  <a href="#about">Sobre mí</a>
-  <a href="#resultados">Resultados</a>
-  <a href="#blog">Blog</a>
-  <a href="#calculadora" class="mobile-cta">Calcular proyecto</a>
-  <a href="#cta">Contacto</a>
-</div>
+<a href="#inicio" class="to-top" id="toTop" aria-label="Volver arriba">↑</a>
 
-<section id="hero">
-  <div class="hero-bg"></div>
-  <canvas id="canvas-bg"></canvas>
-  <canvas id="canvas-grid"></canvas>
-  <div class="hero-content">
-    <div class="hero-badge reveal">Software House Premium</div>
-    <h1 class="hero-title reveal reveal-delay-1">
-      <span class="line"><span class="word">Sistemas</span></span>
-      <span class="line"><span class="word">que <span class="accent">transforman</span></span></span>
-      <span class="line"><span class="word">negocios.</span></span>
-    </h1>
-    <p class="hero-sub reveal reveal-delay-2">Desarrollamos software a medida, aplicaciones móviles, automatización con IA y sistemas empresariales. Equipo de especialistas para proyectos complejos.</p>
-    <div class="hero-actions reveal reveal-delay-3">
-      <a href="#calculadora" class="btn-primary">Calcular proyecto</a>
-      <a href="#works" class="btn-ghost">Ver casos →</a>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bgtext">SISTEMAS · SISTEMAS ·</div>
+  <div class="hero-glow g1"></div>
+  <div class="hero-glow g2"></div>
+  <div class="wrap">
+    <div class="hero-top">
+      <span class="pill"><span class="dot"></span>ANALISTA DE SISTEMAS</span>
+      <span class="pill right"><span class="dot pulse"></span>DISPONIBLE PARA FREELANCE Y RELACIÓN DE DEPENDENCIA</span>
     </div>
-  </div>
-  <div class="hero-stats reveal reveal-delay-4">
-    <div class="stat-item"><div class="stat-num" id="counter-1">0<span class="plus">+</span></div><div class="stat-label">Proyectos</div></div>
-    <div class="stat-item"><div class="stat-num" id="counter-2">0<span class="plus">+</span></div><div class="stat-label">Clientes</div></div>
-    <div class="stat-item"><div class="stat-num" id="counter-3">0<span class="plus">+</span></div><div class="stat-label">Años</div></div>
-  </div>
-</section>
 
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span class="marquee-item"><span class="dot"></span>React & React Native</span>
-    <span class="marquee-item"><span class="dot"></span>Node.js & Django</span>
-    <span class="marquee-item"><span class="dot"></span>PostgreSQL & MongoDB</span>
-    <span class="marquee-item"><span class="dot"></span>Flutter & Dart</span>
-    <span class="marquee-item"><span class="dot"></span>Sistemas Empresariales</span>
-    <span class="marquee-item"><span class="dot"></span>Automatización IA</span>
-    <span class="marquee-item"><span class="dot"></span>React & React Native</span>
-    <span class="marquee-item"><span class="dot"></span>Node.js & Django</span>
-    <span class="marquee-item"><span class="dot"></span>PostgreSQL & MongoDB</span>
-    <span class="marquee-item"><span class="dot"></span>Flutter & Dart</span>
-    <span class="marquee-item"><span class="dot"></span>Sistemas Empresariales</span>
-    <span class="marquee-item"><span class="dot"></span>Automatización IA</span>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-label reveal">Soluciones</div>
-  <h2 class="section-title reveal reveal-delay-1">Transformamos problemas<br>en soluciones</h2>
-  <div class="services-grid">
-    <div class="service-card reveal"><div class="service-icon">⚙️</div><h3 class="service-name">Automatización</h3><p class="service-desc">Reducimos tareas repetitivas y eliminamos errores manuales. Aumentamos la productividad de tu equipo.</p><div class="service-benefits"><span class="service-benefit">+300% productividad</span><span class="service-benefit">0 errores manuales</span></div></div>
-    <div class="service-card reveal reveal-delay-1"><div class="service-icon">📊</div><h3 class="service-name">Gestión Empresarial</h3><p class="service-desc">Inventario, ventas, clientes y reportes en un solo lugar. Control total de tu negocio.</p><div class="service-benefits"><span class="service-benefit">Control total</span><span class="service-benefit">Decisiones en tiempo real</span></div></div>
-    <div class="service-card reveal reveal-delay-2"><div class="service-icon">📱</div><h3 class="service-name">Aplicaciones Móviles</h3><p class="service-desc">Apps para clientes y empleados con gestión remota. Tu negocio en el bolsillo.</p><div class="service-benefits"><span class="service-benefit">iOS & Android</span><span class="service-benefit">Offline first</span></div></div>
-    <div class="service-card reveal reveal-delay-3"><div class="service-icon">🔌</div><h3 class="service-name">Integraciones</h3><p class="service-desc">WhatsApp, APIs, Mercado Libre y sistemas externos. Conectamos todo tu ecosistema.</p><div class="service-benefits"><span class="service-benefit">Ecosistema conectado</span><span class="service-benefit">Automatización total</span></div></div>
-    <div class="service-card reveal reveal-delay-4"><div class="service-icon">🧠</div><h3 class="service-name">Inteligencia Artificial</h3><p class="service-desc">Extracción de datos, automatización y análisis inteligente. IA aplicada a tu negocio.</p><div class="service-benefits"><span class="service-benefit">Procesamiento automático</span><span class="service-benefit">Insights predictivos</span></div></div>
-    <div class="service-card reveal reveal-delay-4"><div class="service-icon">☁️</div><h3 class="service-name">Infraestructura</h3><p class="service-desc">Hosting, deploy y monitoreo 24/7. Tu aplicación siempre disponible y segura.</p><div class="service-benefits"><span class="service-benefit">99.9% disponibilidad</span><span class="service-benefit">Escalabilidad garantizada</span></div></div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section id="process">
-  <div class="section-label reveal">Proceso</div>
-  <h2 class="section-title reveal reveal-delay-1">Cómo trabajamos</h2>
-  <div class="process-layout">
-    <div class="process-steps">
-      <div class="step reveal"><div class="step-num">01</div><div><h3 class="step-title">Descubrimiento</h3><p class="step-desc">Entendemos tu negocio, objetivos y contexto técnico. Sin tecnicismos innecesarios, foco en el problema real.</p></div></div>
-      <div class="step reveal reveal-delay-1"><div class="step-num">02</div><div><h3 class="step-title">Diseño & Arquitectura</h3><p class="step-desc">Definimos la stack tecnológica, UX/UI y la arquitectura del sistema. Te mostramos antes de escribir una línea.</p></div></div>
-      <div class="step reveal reveal-delay-2"><div class="step-num">03</div><div><h3 class="step-title">Desarrollo Iterativo</h3><p class="step-desc">Sprints cortos con entregas frecuentes. Siempre estás al tanto del progreso y podés dar feedback real.</p></div></div>
-      <div class="step reveal reveal-delay-3"><div class="step-num">04</div><div><h3 class="step-title">Deploy & Entrega</h3><p class="step-desc">Lanzamiento, documentación y capacitación incluidos. No te dejamos solo con el sistema: te enseñamos a usarlo.</p></div></div>
-    </div>
-    <div class="process-visual reveal reveal-delay-2">
-      <div class="pv-card float-1"><div class="pv-label">Sprint actual</div><div class="pv-title">Módulo de pagos</div><div class="pv-bar"><div class="pv-fill" style="width:72%"></div></div><div class="pv-small">72% completado · 3 días restantes</div></div>
-      <div class="pv-card main"><div class="pv-label">Rendimiento del proyecto</div><div class="pv-num"><sup>+</sup>520</div><div class="pv-small" style="margin-bottom:20px">horas ahorradas para clientes en 2024</div><div class="pv-bar" style="height:6px"><div class="pv-fill" style="width:88%"></div></div><div class="pv-small" style="margin-bottom:16px">88% satisfacción · 24 proyectos</div><div class="pv-status">En producción · OsisDev</div></div>
-      <div class="pv-card float-2"><div class="pv-label">Tiempo promedio</div><div class="pv-num" style="font-size:24px">4–8 <span style="font-size:14px;color:var(--text-muted)">semanas</span></div><div class="pv-small">de MVP a producción</div></div>
-      <div class="pv-card float-3" style="padding:20px"><div class="pv-label" style="margin-bottom:8px">Stack recomendado</div><div style="display:flex;flex-wrap:wrap;gap:6px"><span style="background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:10px">React</span><span style="background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:10px">Django</span><span style="background:rgba(204,22,22,.15);border:1px solid var(--border-red);border-radius:4px;padding:3px 8px;font-size:10px;color:var(--red-vivid)">+3</span></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- TECH STACK (con juegos) -->
-<section id="tech">
-  <div class="tech-header">
-    <div class="section-label reveal">Stack Tecnológico</div>
-    <h2 class="section-title reveal reveal-delay-1">Las herramientas<br>que dominamos</h2>
-    <p style="color:var(--text-muted); margin-top: 12px;">🎮 Haz clic en cualquier tecnología para jugar un minijuego</p>
-  </div>
-  <div class="tech-grid reveal reveal-delay-1">
-    <div class="tech-item" data-game="react"><div class="tech-icon">⚛️</div><div class="tech-name">React</div></div>
-    <div class="tech-item" data-game="reactnative"><div class="tech-icon">📱</div><div class="tech-name">React Native</div></div>
-    <div class="tech-item" data-game="django"><div class="tech-icon">🐍</div><div class="tech-name">Django</div></div>
-    <div class="tech-item" data-game="nodejs"><div class="tech-icon">🟢</div><div class="tech-name">Node.js</div></div>
-    <div class="tech-item" data-game="postgresql"><div class="tech-icon">🐘</div><div class="tech-name">PostgreSQL</div></div>
-    <div class="tech-item" data-game="mongodb"><div class="tech-icon">🍃</div><div class="tech-name">MongoDB</div></div>
-  </div>
-  <div class="tech-grid row-2 reveal reveal-delay-2">
-    <div class="tech-item" data-game="flutter"><div class="tech-icon">🐦</div><div class="tech-name">Flutter</div></div>
-    <div class="tech-item" data-game="typescript"><div class="tech-icon">⚡</div><div class="tech-name">TypeScript</div></div>
-    <div class="tech-item" data-game="docker"><div class="tech-icon">🐳</div><div class="tech-name">Docker</div></div>
-    <div class="tech-item" data-game="aws"><div class="tech-icon">☁️</div><div class="tech-name">AWS / Render</div></div>
-  </div>
-</section>
-
-<!-- Modal de juegos -->
-<div id="gameModal" class="game-modal">
-  <div class="game-modal-content">
-    <span class="game-modal-close" id="gameModalClose">&times;</span>
-    <div id="gameContainer"></div>
-  </div>
-</div>
-
-<!-- WORKS -->
-<section id="works">
-  <div class="section-label reveal">Proyectos</div>
-  <h2 class="section-title reveal reveal-delay-1">Casos de éxito<br>reales</h2>
-  <div class="works-grid">
-    <div class="work-card featured reveal">
-      <div class="work-img">🏢</div>
-      <h3 class="work-title">Bienenhaus Propiedades</h3>
-      <p class="work-desc">Sistema inmobiliario con scraping inteligente de ZonaProp y Argenprop vía IA, módulo ACM para valuación de propiedades.</p>
-      <div class="work-results"><span class="work-result">Publicaciones automatizadas</span><span class="work-result">Integración portales</span><span class="work-result">ACM inteligente</span></div>
-      <div class="share-buttons">
-        <a href="#" onclick="shareOnLinkedIn('Bienenhaus Propiedades')"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="#" onclick="shareOnTwitter('Bienenhaus Propiedades')"><i class="fab fa-twitter"></i> Twitter</a>
-        <a href="#" onclick="shareOnWhatsApp('Bienenhaus Propiedades')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      </div>
-    </div>
-    <div class="work-card reveal reveal-delay-1">
-      <div class="work-img">🍬</div>
-      <h3 class="work-title">DLicias App</h3>
-      <p class="work-desc">Gestión de ventas para distribuidora mayorista de golosinas. 524 productos, integración WhatsApp, roles duales y sincronización offline.</p>
-      <div class="work-results"><span class="work-result">524 productos</span><span class="work-result">Sincronización offline</span><span class="work-result">WhatsApp integrado</span></div>
-      <div class="share-buttons">
-        <a href="#" onclick="shareOnLinkedIn('DLicias App')"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="#" onclick="shareOnTwitter('DLicias App')"><i class="fab fa-twitter"></i> Twitter</a>
-        <a href="#" onclick="shareOnWhatsApp('DLicias App')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      </div>
-    </div>
-    <div class="work-card reveal reveal-delay-2">
-      <div class="work-img">🏦</div>
-      <h3 class="work-title">La Bancaria</h3>
-      <p class="work-desc">Credencial digital para organización bancaria argentina. Modo oscuro, biometría, push notifications y 400+ afiliados conectados.</p>
-      <div class="work-results"><span class="work-result">Credenciales digitales</span><span class="work-result">Notificaciones push</span><span class="work-result">Biometría</span></div>
-      <div class="share-buttons">
-        <a href="#" onclick="shareOnLinkedIn('La Bancaria')"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="#" onclick="shareOnTwitter('La Bancaria')"><i class="fab fa-twitter"></i> Twitter</a>
-        <a href="#" onclick="shareOnWhatsApp('La Bancaria')"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CASOS DE ÉXITO -->
-<section id="casos">
-  <div class="section-label reveal">Casos de éxito</div>
-  <h2 class="section-title reveal reveal-delay-1">Resultados reales<br>para empresas reales</h2>
-  <div class="casos-grid">
-    <div class="caso-card reveal">
-      <h3 class="caso-title">Bienenhaus Propiedades</h3>
-      <div class="comparison">
-        <div class="comparison-col antes"><h4>ANTES</h4><ul><li>Publicación manual en portales</li><li>Gestión dispersa de propiedades</li><li>Valuación a ojo sin criterio</li></ul></div>
-        <div class="comparison-col despues"><h4>DESPUÉS</h4><ul><li>Sincronización automática</li><li>Panel centralizado</li><li>ACM con IA para valuación</li></ul></div>
-      </div>
-    </div>
-    <div class="caso-card reveal reveal-delay-1">
-      <h3 class="caso-title">DLicias Distribuidora</h3>
-      <div class="comparison">
-        <div class="comparison-col antes"><h4>ANTES</h4><ul><li>Pedidos por WhatsApp manuales</li><li>Inventario desactualizado</li><li>Errores frecuentes de carga</li></ul></div>
-        <div class="comparison-col despues"><h4>DESPUÉS</h4><ul><li>Pedidos automatizados desde app</li><li>Stock en tiempo real</li><li>0 errores operativos</li></ul></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TIMELINE -->
-<section id="timeline">
-  <div class="section-label reveal">Trayectoria</div>
-  <h2 class="section-title reveal reveal-delay-1">Nuestra evolución</h2>
-  <div class="timeline">
-    <div class="timeline-item"><div class="timeline-year">2021</div><div class="timeline-content"><h3>Primeros sistemas comerciales</h3><p>Gestión de inventario y ventas para PyMEs</p></div></div>
-    <div class="timeline-item"><div class="timeline-year">2022</div><div class="timeline-content"><h3>Aplicaciones móviles</h3><p>Primeras apps nativas para empresas</p></div></div>
-    <div class="timeline-item"><div class="timeline-year">2023</div><div class="timeline-content"><h3>Automatización empresarial</h3><p>Procesos automatizados con integraciones</p></div></div>
-    <div class="timeline-item"><div class="timeline-year">2024</div><div class="timeline-content"><h3>Fundación OsisDev</h3><p>Nace la software house especializada</p></div></div>
-    <div class="timeline-item"><div class="timeline-year">2025</div><div class="timeline-content"><h3>Sistemas empresariales</h3><p>CRM, ERP y plataformas complejas</p></div></div>
-    <div class="timeline-item"><div class="timeline-year">2026</div><div class="timeline-content"><h3>IA aplicada a negocios</h3><p>Automatización inteligente y análisis predictivo</p></div></div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-label reveal">Sobre mí</div>
-  <div class="about-layout">
-    <div class="about-avatar-wrap reveal">
-      <div class="about-avatar">
-        <div class="about-avatar-bg"></div>
-        <div class="about-avatar-inner">
-          <div class="about-initials-glow"></div>
-          <div class="about-initials">FH</div>
+    <div class="hero-grid">
+      <div>
+        <div class="hero-greeting">Hola, soy</div>
+        <h1 class="hero-name">Facundo<br><span class="accent">Herrera</span></h1>
+        <div class="hero-role">Analista de Sistemas <span class="sep">/</span> Full-Stack Developer</div>
+        <p class="hero-bio">Diseño y desarrollo sistemas que resuelven problemas reales de gestión: desde control de stock y caja hasta plataformas administrativas con integraciones externas. Priorizo entender el negocio antes de escribir la primera línea de código.</p>
+        <div class="hero-loc">📍 Argentina — Remoto o presencial</div>
+        <div class="hero-actions">
+          <a href="#proyectos" class="btn-primary">Ver proyectos →</a>
+          <a href="#contacto" class="btn-secondary">Contactar</a>
         </div>
-        <div class="about-corner-tr"></div>
-        <div class="about-corner-bl"></div>
       </div>
-      <div class="about-badges">
-        <div class="about-badge-item"><div class="about-badge-icon">🎓</div><span class="about-badge-label">Formación</span><span class="about-badge-val">Analista en Sistemas</span></div>
-        <div class="about-badge-item"><div class="about-badge-icon">📍</div><span class="about-badge-label">Ubicación</span><span class="about-badge-val">Córdoba, Argentina</span></div>
-        <div class="about-badge-item"><div class="about-badge-icon">⚡</div><span class="about-badge-label">Experiencia</span><span class="about-badge-val">5+ años</span></div>
-        <div class="about-badge-item"><div class="about-badge-icon">🟢</div><span class="about-badge-label">Disponibilidad</span><span class="about-badge-val" style="color:rgba(74,222,128,.9)">Disponible</span></div>
+
+      <div class="hero-visual reveal">
+        <div class="hero-photo-frame">
+          <!-- Reemplazá el src por tu foto real (retrato vertical, buena luz).
+               Si la imagen no carga, se muestra automáticamente el fallback de abajo. -->
+          <div class="hero-photo-fallback">
+            <span class="fallback-mono">FH</span>
+            <span class="fallback-hint">Foto próximamente</span>
+          </div>
+          <img class="hero-photo" src="assets/facundo-herrera.jpg" alt="Facundo Herrera — Analista de Sistemas"
+               onerror="this.style.display='none'">
+          <div class="hero-photo-duotone"></div>
+          <div class="hero-scan"></div>
+        </div>
+
+        <div class="terminal hero-terminal-float">
+          <div class="terminal-bar">
+            <span></span><span></span><span></span>
+            <div class="terminal-title">facundo@sistemas: ~</div>
+          </div>
+          <div class="terminal-body" id="terminalBody"></div>
+        </div>
       </div>
     </div>
-    <div class="about-text reveal reveal-delay-2">
-      <h2 class="about-name">Facundo Herrera</h2>
-      <div class="about-role">Desarrollador Full‑Stack · OsisDev</div>
-      <div class="about-divider"></div>
-      <p class="about-bio">Soy desarrollador full‑stack y estudiante avanzado de Análisis de Sistemas con <strong>más de 5 años construyendo software real</strong> para empresas argentinas. Fundé <strong>OsisDev</strong> con una convicción simple: el software tiene que resolver problemas de negocio concretos, no solo verse bien en una presentación.</p>
-      <p class="about-bio">Trabajo desde el diseño de la arquitectura hasta el deploy en producción — sin intermediarios. Cada proyecto lo trato como si fuera mi propio negocio: <strong>entrego a tiempo, comunico de forma clara y me quedo hasta que funciona</strong>.</p>
-      <div class="about-tags">
-        <span class="about-tag accent">React & React Native</span>
-        <span class="about-tag accent">Django & Node.js</span>
-        <span class="about-tag accent">Flutter</span>
-        <span class="about-tag">PostgreSQL</span>
-        <span class="about-tag">MongoDB</span>
-        <span class="about-tag">REST APIs</span>
-        <span class="about-tag">Docker</span>
-        <span class="about-tag">TypeScript</span>
-        <span class="about-tag">AWS / Render</span>
+
+    <div class="hero-stats reveal">
+      <div class="stat">
+        <div class="stat-num">2<span>+</span></div>
+        <div class="stat-label">Años de experiencia</div>
       </div>
-      <a href="#cta" class="btn-primary" style="display:inline-block;text-decoration:none">Trabajemos juntos →</a>
+      <div class="stat">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Proyectos entregados</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">AR</div>
+        <div class="stat-label">Argentina · Remoto</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- EQUIPO TÉCNICO -->
-<section id="equipo">
-  <div style="max-width: 1280px; margin: 0 auto;">
-    <div class="section-label reveal">EQUIPO</div>
-    <h2 class="section-title reveal reveal-delay-1">Conoce a los especialistas detrás de cada proyecto</h2>
-    <p class="section-sub reveal reveal-delay-2">Cada proyecto incorpora profesionales especializados en backend, frontend, aplicaciones móviles, infraestructura y experiencia de usuario para garantizar soluciones robustas, escalables y preparadas para crecer.</p>
-    
-    <div class="team-grid">
-      <div class="team-card reveal">
-        <div class="card-inner">
-          <div class="avatar-wrap"><div class="avatar-circle"><div class="avatar-initials">JP</div></div></div>
-          <div class="member-name">Juan Pérez</div>
-          <div class="member-role">Senior Backend Engineer</div>
-          <div class="member-specialty">Django · FastAPI</div>
-          <div class="expand-info">
-            <div class="hud-header">⟡ PERFIL TÉCNICO ⟡</div>
-            <div class="bio-text">Especialista en arquitecturas backend escalables, APIs de alto rendimiento y bases de datos empresariales.</div>
-            <div class="exp-row"><span>⚡ Experiencia</span><span>8+ años</span></div>
-            <div class="tech-badge-list"><span class="tech-badge">Django</span><span class="tech-badge">FastAPI</span><span class="tech-badge">PostgreSQL</span><span class="tech-badge">Docker</span><span class="tech-badge">AWS</span></div>
-            <div class="level-row">Senior<div class="level-bar-bg"><div class="level-fill" style="--level-width:100%"></div></div></div>
-            <div><span class="participation-item">Bienenhaus</span><span class="participation-item">DLicias</span><span class="participation-item">Sistemas empresariales</span></div>
+<!-- PROYECTOS -->
+<section id="proyectos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Proyectos seleccionados</div>
+        <h2 class="section-title">Sistemas en<br>producción</h2>
+      </div>
+      <p>Una selección de los proyectos donde participé en el análisis, diseño y desarrollo de la solución completa.</p>
+    </div>
+
+    <div class="projects">
+      <div class="project reveal">
+        <div class="project-thumb">
+          <span class="project-thumb-num">01</span>
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h2l1.6 9.6A2 2 0 0 0 8.57 17H18a2 2 0 0 0 1.95-1.57L21 9H6"/><circle cx="9" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg>
+        </div>
+        <div class="project-main">
+          <span class="project-tag">Retail · Punto de venta</span>
+          <div class="project-cmd">sistema-gestion-supermercado --run</div>
+          <h3 class="project-title">Gestión para Supermercado</h3>
+          <p class="project-desc">Sistema integral de gestión con módulo de caja, control de stock en tiempo real y un motor de IA que analiza patrones de venta para sugerir y generar ofertas especiales de forma automática.</p>
+        </div>
+        <div class="project-side">
+          <div class="stack-tags">
+            <span class="stack-tag">React</span>
+            <span class="stack-tag">Node.js</span>
+            <span class="stack-tag">PostgreSQL</span>
+            <span class="stack-tag">IA / ML</span>
+          </div>
+          <div class="project-status"><span class="dot"></span>En producción</div>
+        </div>
+      </div>
+
+      <div class="project reveal">
+        <div class="project-thumb">
+          <span class="project-thumb-num">02</span>
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg>
+        </div>
+        <div class="project-main">
+          <span class="project-tag">Real Estate · Panel administrativo</span>
+          <div class="project-cmd">inmobiliaria-admin --sync-api</div>
+          <h3 class="project-title">Plataforma Inmobiliaria</h3>
+          <p class="project-desc">Sitio web inmobiliario con sistema administrativo propio, módulo de tasaciones y sincronización automática de publicaciones con portales inmobiliarios externos mediante integraciones API.</p>
+        </div>
+        <div class="project-side">
+          <div class="stack-tags">
+            <span class="stack-tag">React</span>
+            <span class="stack-tag">Django</span>
+            <span class="stack-tag">MySQL</span>
+            <span class="stack-tag">REST API</span>
+          </div>
+          <div class="project-status"><span class="dot"></span>En producción</div>
+        </div>
+      </div>
+
+      <div class="project reveal">
+        <div class="project-thumb">
+          <span class="project-thumb-num">03</span>
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V6l8-4z"/><path d="M9.5 12l1.8 1.8L14.8 10"/></svg>
+        </div>
+        <div class="project-main">
+          <span class="project-tag">Fintech · Portal sindical</span>
+          <div class="project-cmd">portal-sindicato --auth-secure</div>
+          <h3 class="project-title">Sistema para Sindicato</h3>
+          <p class="project-desc">Portal seguro para que afiliados de un sindicato consulten el estado de su cuenta: deudas, aportes y datos personales, con autenticación robusta y control de accesos por perfil de usuario.</p>
+        </div>
+        <div class="project-side">
+          <div class="stack-tags">
+            <span class="stack-tag">React</span>
+            <span class="stack-tag">Node.js</span>
+            <span class="stack-tag">MongoDB</span>
+            <span class="stack-tag">Auth / JWT</span>
+          </div>
+          <div class="project-status"><span class="dot"></span>En producción</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="stack-section" id="stack">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Stack técnico</div>
+        <h2 class="section-title">Herramientas<br>que domino</h2>
+      </div>
+      <p>Tecnologías que uso para llevar un sistema desde el análisis hasta el despliegue en producción.</p>
+    </div>
+
+    <div class="stack-grid reveal">
+      <div class="tool-card"><div class="tool-badge">HTML</div><div class="tool-name">HTML5</div></div>
+      <div class="tool-card"><div class="tool-badge">CSS</div><div class="tool-name">CSS3</div></div>
+      <div class="tool-card"><div class="tool-badge">JS</div><div class="tool-name">JavaScript</div></div>
+      <div class="tool-card"><div class="tool-badge">RCT</div><div class="tool-name">React</div></div>
+      <div class="tool-card"><div class="tool-badge">ND</div><div class="tool-name">Node.js</div></div>
+      <div class="tool-card"><div class="tool-badge">DJ</div><div class="tool-name">Django</div></div>
+      <div class="tool-card"><div class="tool-badge">SQL</div><div class="tool-name">MySQL</div></div>
+      <div class="tool-card"><div class="tool-badge">PG</div><div class="tool-name">PostgreSQL</div></div>
+      <div class="tool-card"><div class="tool-badge">MDB</div><div class="tool-name">MongoDB</div></div>
+      <div class="tool-card"><div class="tool-badge">RN</div><div class="tool-name">React Native</div></div>
+      <div class="tool-card"><div class="tool-badge">ELC</div><div class="tool-name">Electron</div></div>
+      <div class="tool-card"><div class="tool-badge">API</div><div class="tool-name">REST APIs</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Metodología de trabajo</div>
+        <h2 class="section-title">Cómo encaro<br>un sistema nuevo</h2>
+      </div>
+      <p>El mismo proceso que usé en los sistemas de supermercado, inmobiliaria y sindicato.</p>
+    </div>
+
+    <div class="process-stack reveal" id="processStack">
+      <div class="proc-card">
+        <div class="proc-inner">
+          <span class="proc-num">01</span>
+          <div class="proc-content">
+            <h4>Relevamiento</h4>
+            <p>Entender el problema real del negocio, los usuarios y los objetivos del sistema antes de tocar código.</p>
           </div>
         </div>
       </div>
-      <div class="team-card reveal reveal-delay-1">
-        <div class="card-inner">
-          <div class="avatar-wrap"><div class="avatar-circle"><div class="avatar-initials">MR</div></div></div>
-          <div class="member-name">María Rodríguez</div>
-          <div class="member-role">Frontend Engineer</div>
-          <div class="member-specialty">React & TypeScript</div>
-          <div class="expand-info">
-            <div class="hud-header">⟡ PERFIL TÉCNICO ⟡</div>
-            <div class="bio-text">Experta en interfaces modernas y reactivas, optimización de performance y accesibilidad web. Lidera la capa visual de productos complejos.</div>
-            <div class="exp-row"><span>⚡ Experiencia</span><span>6+ años</span></div>
-            <div class="tech-badge-list"><span class="tech-badge">React</span><span class="tech-badge">Next.js</span><span class="tech-badge">TypeScript</span><span class="tech-badge">Tailwind</span><span class="tech-badge">Redux</span></div>
-            <div class="level-row">Semi Senior +<div class="level-bar-bg"><div class="level-fill" style="--level-width:88%"></div></div></div>
-            <div><span class="participation-item">Dashboard Bancaria</span><span class="participation-item">Portal clientes</span></div>
+      <div class="proc-card">
+        <div class="proc-inner">
+          <span class="proc-num">02</span>
+          <div class="proc-content">
+            <h4>Análisis</h4>
+            <p>Definir arquitectura, modelo de datos, integraciones necesarias y alcance técnico del proyecto.</p>
           </div>
         </div>
       </div>
-      <div class="team-card reveal reveal-delay-2">
-        <div class="card-inner">
-          <div class="avatar-wrap"><div class="avatar-circle"><div class="avatar-initials">LS</div></div></div>
-          <div class="member-name">Lucas Sosa</div>
-          <div class="member-role">Mobile Developer</div>
-          <div class="member-specialty">Flutter & React Native</div>
-          <div class="expand-info">
-            <div class="hud-header">⟡ PERFIL TÉCNICO ⟡</div>
-            <div class="bio-text">Experto en desarrollo cross‑platform, integración nativa y experiencias móviles fluidas para iOS y Android con una sola base de código.</div>
-            <div class="exp-row"><span>⚡ Experiencia</span><span>5+ años</span></div>
-            <div class="tech-badge-list"><span class="tech-badge">Flutter</span><span class="tech-badge">Dart</span><span class="tech-badge">React Native</span><span class="tech-badge">Firebase</span></div>
-            <div class="level-row">Semi Senior<div class="level-bar-bg"><div class="level-fill" style="--level-width:82%"></div></div></div>
-            <div><span class="participation-item">DLicias App</span><span class="participation-item">La Bancaria</span></div>
+      <div class="proc-card">
+        <div class="proc-inner">
+          <span class="proc-num">03</span>
+          <div class="proc-content">
+            <h4>Desarrollo</h4>
+            <p>Construcción modular por etapas, código limpio y control de versiones desde el primer commit.</p>
           </div>
         </div>
       </div>
-      <div class="team-card reveal reveal-delay-3">
-        <div class="card-inner">
-          <div class="avatar-wrap"><div class="avatar-circle"><div class="avatar-initials">SM</div></div></div>
-          <div class="member-name">Sofía Martínez</div>
-          <div class="member-role">DevOps Engineer</div>
-          <div class="member-specialty">Cloud & Infraestructura</div>
-          <div class="expand-info">
-            <div class="hud-header">⟡ PERFIL TÉCNICO ⟡</div>
-            <div class="bio-text">Automatización, despliegues continuos y arquitecturas cloud. Asegura alta disponibilidad y monitoreo proactivo para todos los proyectos.</div>
-            <div class="exp-row"><span>⚡ Experiencia</span><span>7+ años</span></div>
-            <div class="tech-badge-list"><span class="tech-badge">Docker</span><span class="tech-badge">AWS</span><span class="tech-badge">Linux</span><span class="tech-badge">CI/CD</span><span class="tech-badge">Nginx</span></div>
-            <div class="level-row">Senior<div class="level-bar-bg"><div class="level-fill" style="--level-width:95%"></div></div></div>
-            <div><span class="participation-item">Infra Bienenhaus</span><span class="participation-item">Cluster DLicias</span></div>
+      <div class="proc-card">
+        <div class="proc-inner">
+          <span class="proc-num">04</span>
+          <div class="proc-content">
+            <h4>Testing</h4>
+            <p>Pruebas funcionales, ajustes según feedback real de uso y corrección de casos borde.</p>
+          </div>
+        </div>
+      </div>
+      <div class="proc-card">
+        <div class="proc-inner">
+          <span class="proc-num">05</span>
+          <div class="proc-content">
+            <h4>Despliegue</h4>
+            <p>Puesta en producción, documentación y acompañamiento post-lanzamiento.</p>
           </div>
         </div>
       </div>
     </div>
+    <p class="process-hint reveal">Pasá el mouse (o tocá) cada tarjeta para ver el detalle de la fase →</p>
   </div>
 </section>
 
-<!-- RESULTADOS CON GRÁFICO -->
-<section id="resultados">
-  <div class="section-label reveal">Métricas</div>
-  <h2 class="section-title reveal reveal-delay-1">Resultados que generan impacto</h2>
-  <div class="results-grid">
-    <div class="result-card reveal"><div class="result-number" id="result-1">0</div><div class="result-label">Proyectos entregados</div></div>
-    <div class="result-card reveal reveal-delay-1"><div class="result-number" id="result-2">0</div><div class="result-label">Clientes satisfechos</div></div>
-    <div class="result-card reveal reveal-delay-2"><div class="result-number" id="result-3">0</div><div class="result-label">Horas ahorradas</div></div>
-    <div class="result-card reveal reveal-delay-3"><div class="result-number" id="result-4">99.9<span style="font-size:32px">%</span></div><div class="result-label">Disponibilidad</div></div>
-    <div class="result-card reveal reveal-delay-4"><div class="result-number" id="result-5">0</div><div class="result-label">Eventos procesados</div></div>
-  </div>
-  <div class="chart-container reveal reveal-delay-2">
-    <h3 style="font-family: 'Space Grotesk'; margin-bottom: 24px; text-align: center;">Evolución de proyectos (2021-2026)</h3>
-    <canvas id="projectsChart"></canvas>
-  </div>
-</section>
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="contact-orb orb-1"></div>
+  <div class="contact-orb orb-2"></div>
+  <div class="contact-orb orb-3"></div>
+  <div class="contact-scanline"></div>
 
-<!-- CALCULADORA MEJORADA -->
-<section id="calculadora">
-  <div class="section-label reveal">Presupuesto</div>
-  <h2 class="section-title reveal reveal-delay-1">Estimá tu proyecto</h2>
-  <div class="calculator-wrap">
-    <div class="calc-options">
-      <div class="calc-group">
-        <label>Tipo de proyecto</label>
-        <div class="calc-type">
-          <div class="calc-type-btn active" data-type="landing" data-base="400"><i class="fas fa-globe"></i> Landing Page</div>
-          <div class="calc-type-btn" data-type="web" data-base="2500"><i class="fas fa-laptop-code"></i> Sistema Web</div>
-          <div class="calc-type-btn" data-type="app" data-base="3500"><i class="fas fa-mobile-alt"></i> App Móvil</div>
-          <div class="calc-type-btn" data-type="saas" data-base="6000"><i class="fas fa-cloud"></i> Plataforma SaaS</div>
-        </div>
-        <div class="price-range">
-          <span>💰 Landing: $300-$800</span>
-          <span>💻 Web: $1,500-$5,000</span>
-          <span>📱 App: $2,500-$7,000</span>
-          <span>☁️ SaaS: $4,000-$12,000</span>
-        </div>
-      </div>
-      
-      <div class="calc-group">
-        <label>Complejidad del proyecto</label>
-        <div class="calc-type">
-          <div class="calc-complexity active" data-complexity="1.0"><i class="fas fa-seedling"></i> Baja</div>
-          <div class="calc-complexity" data-complexity="1.3"><i class="fas fa-chart-line"></i> Media</div>
-          <div class="calc-complexity" data-complexity="1.6"><i class="fas fa-rocket"></i> Alta</div>
-        </div>
-      </div>
-      
-      <div class="calc-group">
-        <label>Plazo de entrega</label>
-        <div class="calc-type">
-          <div class="calc-deadline active" data-deadline="1.0"><i class="fas fa-calendar-alt"></i> Normal (4-8 semanas)</div>
-          <div class="calc-deadline" data-deadline="1.2"><i class="fas fa-bolt"></i> Express (2-3 semanas, +20%)</div>
-        </div>
-      </div>
-      
-      <div class="calc-group">
-        <label>Usuarios estimados: <span id="user-value">1,000</span></label>
-        <input type="range" class="calc-slider" id="user-slider" min="10" max="100000" step="10" value="1000">
-        <div class="slider-labels">
-          <span>10</span><span>1K</span><span>10K</span><span>100K</span>
-        </div>
-      </div>
-      
-      <div class="calc-group">
-        <label>Módulos adicionales</label>
-        <div class="calc-modules-grid" id="modulesGrid">
-          <label class="calc-module" data-category="core">
-            <input type="checkbox" value="login" data-cost="150">
-            <i class="fas fa-sign-in-alt"></i>
-            <span>Login / Autenticación</span>
-          </label>
-          <label class="calc-module" data-category="core">
-            <input type="checkbox" value="dashboard" data-cost="300">
-            <i class="fas fa-chart-pie"></i>
-            <span>Dashboard / Analytics</span>
-          </label>
-          <label class="calc-module" data-category="core">
-            <input type="checkbox" value="reportes" data-cost="200">
-            <i class="fas fa-file-alt"></i>
-            <span>Reportes avanzados</span>
-          </label>
-          <label class="calc-module" data-category="integrations">
-            <input type="checkbox" value="integraciones" data-cost="500">
-            <i class="fas fa-plug"></i>
-            <span>Integraciones (API, WhatsApp)</span>
-          </label>
-          <label class="calc-module" data-category="ai">
-            <input type="checkbox" value="ia" data-cost="800">
-            <i class="fas fa-brain"></i>
-            <span>Inteligencia Artificial</span>
-          </label>
-          <label class="calc-module" data-category="enterprise">
-            <input type="checkbox" value="multitenant" data-cost="1000">
-            <i class="fas fa-building"></i>
-            <span>Multitenencia / Multiempresa</span>
-          </label>
-          <label class="calc-module" data-category="mobile" id="mobileModule">
-            <input type="checkbox" value="mobile" data-cost="1500">
-            <i class="fas fa-mobile-alt"></i>
-            <span>Versión móvil nativa adicional</span>
-          </label>
-        </div>
-      </div>
+  <div class="wrap">
+    <div class="status-badge reveal">
+      <span class="status-ping"><span class="ping-core"></span><span class="ping-ring"></span></span>
+      Disponible para nuevos proyectos
     </div>
-    
-    <div class="calc-result" id="calcResult">
-      <div class="calc-price">
-        <span class="currency">USD</span>
-        <span id="calc-price" class="price">400</span>
-      </div>
-      <div class="calc-breakdown">
-        <div class="breakdown-item">
-          <span>💰 Base</span>
-          <span id="calc-base">$400</span>
-        </div>
-        <div class="breakdown-item">
-          <span>📦 Módulos</span>
-          <span id="calc-modules">$0</span>
-        </div>
-        <div class="breakdown-item">
-          <span>📈 Escala</span>
-          <span id="calc-scale">$0</span>
-        </div>
-        <div class="breakdown-total">
-          <span>TOTAL</span>
-          <span id="calc-total">$400</span>
-        </div>
-      </div>
-      <div class="calc-note">
-        <i class="fas fa-info-circle"></i> Incluye: desarrollo, testing, deploy y 1 mes de soporte<br>
-        <span class="highlight">Presupuesto final gratuito sin compromiso</span>
-      </div>
-      <button id="downloadPDF" class="btn-pdf">
-        <i class="fas fa-file-pdf"></i> Descargar presupuesto PDF
-      </button>
-      <a href="#cta" class="calc-submit">Solicitar presupuesto →</a>
-    </div>
-  </div>
-</section>
 
-<!-- BLOG -->
-<section id="blog">
-  <div class="section-label reveal">Blog</div>
-  <h2 class="section-title reveal reveal-delay-1">Últimos artículos</h2>
-  <div class="blog-grid">
-    <div class="blog-card reveal">
-      <div class="blog-image">🤖</div>
-      <div class="blog-content">
-        <div class="blog-date">15 Mar 2026</div>
-        <h3 class="blog-title">Cómo la IA está transformando los sistemas empresariales</h3>
-        <p class="blog-excerpt">La inteligencia artificial ya no es futurista: hoy está revolucionando la gestión de empresas...</p>
-        <a href="#" class="blog-link">Leer más →</a>
-      </div>
-    </div>
-    <div class="blog-card reveal reveal-delay-1">
-      <div class="blog-image">📱</div>
-      <div class="blog-content">
-        <div class="blog-date">28 Feb 2026</div>
-        <h3 class="blog-title">React Native vs Flutter: ¿cuál elegir en 2026?</h3>
-        <p class="blog-excerpt">Ambos frameworks dominan el desarrollo móvil. Te contamos sus fortalezas y cuál se adapta a tu proyecto...</p>
-        <a href="#" class="blog-link">Leer más →</a>
-      </div>
-    </div>
-    <div class="blog-card reveal reveal-delay-2">
-      <div class="blog-image">⚡</div>
-      <div class="blog-content">
-        <div class="blog-date">10 Feb 2026</div>
-        <h3 class="blog-title">Automatización de procesos: ahorra 500+ horas al año</h3>
-        <p class="blog-excerpt">Descubre cómo la automatización puede liberar a tu equipo de tareas repetitivas...</p>
-        <a href="#" class="blog-link">Leer más →</a>
-      </div>
-    </div>
-  </div>
-</section>
+    <h2 class="contact-title" id="contactTitle">
+      <span class="title-line">
+        <span class="w-mask"><span class="w">¿Necesitás</span></span> <span class="w-mask"><span class="w">un</span></span> <span class="w-mask"><span class="w">sistema</span></span>
+      </span>
+      <span class="title-line">
+        <span class="w-mask"><span class="w">que</span></span> <span class="w-mask"><span class="w">funcione</span></span> <span class="w-mask"><span class="w">de</span></span> <span class="w-mask"><span class="w">verdad?</span></span>
+      </span>
+    </h2>
 
-<!-- FAQ -->
-<section id="faq">
-  <div class="section-label reveal">Preguntas</div>
-  <h2 class="section-title reveal reveal-delay-1">Preguntas frecuentes</h2>
-  <div class="faq-grid">
-    <div class="faq-item reveal"><div class="faq-question">¿Cuánto cuesta una web o sistema? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Depende de la complejidad. Desde $400 USD para landing pages hasta $6,000+ USD para sistemas empresariales completos. Usá nuestra calculadora para una estimación.</div></div>
-    <div class="faq-item reveal reveal-delay-1"><div class="faq-question">¿Cuánto tarda un proyecto? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Landing pages: 1-2 semanas. Sistemas web: 4-8 semanas. Apps móviles: 6-10 semanas. Proyectos complejos: 12+ semanas.</div></div>
-    <div class="faq-item reveal reveal-delay-2"><div class="faq-question">¿Trabajan para todo el mundo? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Sí, trabajamos 100% remoto para clientes de todo el mundo. Reuniones por videollamada, entregas digitales y soporte remoto.</div></div>
-    <div class="faq-item reveal reveal-delay-3"><div class="faq-question">¿Incluye hosting y soporte? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Sí. Hosting incluido durante 1 mes. Planes de soporte continuo disponibles a partir de $100 USD/mes.</div></div>
-    <div class="faq-item reveal reveal-delay-4"><div class="faq-question">¿Pueden mejorar sistemas existentes? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Absolutamente. Hacemos auditorías, refactorizaciones y mejoras de sistemas legacy.</div></div>
-  </div>
-</section>
+    <div class="contact-rotator">
+      <span class="rotator-prompt">$ construyo:</span>
+      <span id="rotatorText"></span><span class="cursor"></span>
+    </div>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="section-label reveal">Clientes</div>
-  <h2 class="section-title reveal reveal-delay-1">Lo que dicen<br>de nosotros</h2>
-  <div class="testimonials-grid">
-    <div class="testi-card reveal"><div class="testi-quote">"</div><p class="testi-text">Facundo entregó el sistema completo en tiempo y forma. La aplicación superó todas nuestras expectativas y el soporte post-entrega fue excelente.</p><div class="testi-author"><div class="testi-avatar">MG</div><div><div class="testi-name">María García</div><div class="testi-role">Directora · Bienenhaus Propiedades</div></div></div></div>
-    <div class="testi-card reveal reveal-delay-1"><div class="testi-quote">"</div><p class="testi-text">La app para los repartidores transformó completamente nuestra operación. Ahora los pedidos fluyen solos y los errores bajaron a cero.</p><div class="testi-author"><div class="testi-avatar">RL</div><div><div class="testi-name">Roberto López</div><div class="testi-role">Dueño · DLicias Distribuidora</div></div></div></div>
-    <div class="testi-card reveal reveal-delay-2"><div class="testi-quote">"</div><p class="testi-text">Profesionalismo y calidad técnica. El sistema de credenciales digitales fue un antes y después para nuestra organización. Muy recomendable.</p><div class="testi-author"><div class="testi-avatar">CP</div><div><div class="testi-name">Carlos Pereyra</div><div class="testi-role">Presidente · Seccional La Bancaria</div></div></div></div>
-  </div>
-</section>
+    <p class="contact-sub reveal">Hablemos por WhatsApp o email y contame qué problema tenés que resolver.</p>
 
-<!-- CTA -->
-<section id="cta">
-  <div class="cta-glow"></div>
-  <div class="section-label reveal" style="justify-content:center">Contacto</div>
-  <h2 class="cta-title reveal reveal-delay-1">¿Tenés un<br><span style="color:var(--red-vivid)">proyecto</span> en mente?</h2>
-  <p class="cta-sub reveal reveal-delay-2">Contanos qué necesitás y te respondemos en menos de 24hs.</p>
-  <form id="contactForm" class="cta-form reveal reveal-delay-3">
-    <input type="email" id="emailInput" class="cta-input" placeholder="tu@email.com" required>
-    <button type="submit" class="btn-primary">Enviar →</button>
-  </form>
-  <div class="cta-contact reveal reveal-delay-4">
-    <a href="mailto:contacto@osisdev.com">📧 contacto@osisdev.com</a>
-    <a href="https://wa.me/549123456789" target="_blank">💬 WhatsApp</a>
+    <div class="contact-actions reveal">
+      <a class="btn btn-primary magnetic" href="https://wa.me/543874023845" target="_blank" rel="noopener">
+        <span class="btn-icon">↳</span> WhatsApp: +54 387 402-3845
+      </a>
+      <a class="btn btn-outline magnetic" href="mailto:hfacundo45@gmail.com">
+        hfacundo45@gmail.com
+      </a>
+    </div>
+
+    <div class="contact-note reveal">Aún no tengo CV en PDF — escribime y te paso el detalle de mi experiencia directamente.</div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-logo"><div class="nav-logo-dot"></div>OsisDev</div>
-  <div class="footer-copy">© 2026 OsisDev · Software House · Córdoba, Argentina</div>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;width:100%;">
+    <p>© 2026 Facundo Herrera · Analista de Sistemas</p>
+    <div class="footer-links">
+      <a href="mailto:hfacundo45@gmail.com">Email</a>
+      <a href="https://wa.me/543874023845" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="#inicio">Volver arriba ↑</a>
+    </div>
+  </div>
 </footer>
 
-<!-- WHATSAPP FLOTANTE - SIEMPRE VISIBLE -->
-<div class="whatsapp-float">
-  <a href="https://wa.me/549123456789" target="_blank" class="whatsapp-link">
-    <i class="fab fa-whatsapp whatsapp-icon"></i>
-    <span class="whatsapp-text">¿Hablamos?</span>
-  </a>
-</div>
-
-<!-- COOKIE BANNER -->
-<div id="cookieBanner" class="cookie-banner">
-  <span class="cookie-text">🍪 Usamos cookies para mejorar tu experiencia. <a href="#">Más información</a></span>
-  <button id="acceptCookies" class="cookie-btn">Aceptar</button>
-</div>
-
-<!-- TOAST -->
-<div id="toast" class="toast"></div>
-
 <script>
-// ========================================
-// FUNCIONES DE COMPARTIR
-// ========================================
-function shareOnLinkedIn(projectName) {
-  const url = encodeURIComponent(window.location.href);
-  window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
-}
-function shareOnTwitter(projectName) {
-  const url = encodeURIComponent(window.location.href);
-  const text = encodeURIComponent(`Mira este proyecto: ${projectName} de OsisDev`);
-  window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
-}
-function shareOnWhatsApp(projectName) {
-  const url = encodeURIComponent(window.location.href);
-  const text = encodeURIComponent(`Mira este proyecto: ${projectName} de OsisDev: `);
-  window.open(`https://wa.me/?text=${text}${url}`, '_blank');
-}
+  // Fade in once loaded
+  window.addEventListener('load', () => document.body.classList.add('loaded'));
+  // Fallback in case 'load' already fired or is slow
+  requestAnimationFrame(() => document.body.classList.add('loaded'));
 
-// ========================================
-// COOKIE BANNER
-// ========================================
-const cookieBanner = document.getElementById('cookieBanner');
-const acceptCookiesBtn = document.getElementById('acceptCookies');
-
-if (!localStorage.getItem('cookiesAccepted')) {
-  cookieBanner.classList.add('show');
-}
-acceptCookiesBtn.addEventListener('click', () => {
-  localStorage.setItem('cookiesAccepted', 'true');
-  cookieBanner.classList.remove('show');
-});
-
-// ========================================
-// MENÚ HAMBURGUESA
-// ========================================
-const hamburger = document.querySelector('.hamburger');
-const mobileMenu = document.querySelector('.mobile-menu');
-
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  mobileMenu.classList.toggle('active');
-  document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-});
-document.querySelectorAll('.mobile-menu a').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    mobileMenu.classList.remove('active');
-    document.body.style.overflow = '';
+  // Mobile menu toggle
+  const burger = document.getElementById('burger');
+  const navLinks = document.querySelector('.nav-links');
+  burger.addEventListener('click', () => {
+    const open = navLinks.style.display === 'flex';
+    burger.classList.toggle('open', !open);
+    navLinks.style.display = open ? 'none' : 'flex';
+    navLinks.style.cssText += open ? '' : 'position:fixed;top:64px;left:0;right:0;background:#0a0a0a;flex-direction:column;padding:24px 32px;border-bottom:1px solid #242424;gap:18px;';
   });
-});
-
-// ========================================
-// CURSOR (solo desktop)
-// ========================================
-if (window.innerWidth > 768) {
-  const cur = document.getElementById('cursor');
-  const ring = document.getElementById('cursor-ring');
-  let mx = 0, my = 0, rx = 0, ry = 0, dotX = 0, dotY = 0;
-
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  document.addEventListener('mousedown', () => document.body.classList.add('clicking'));
-  document.addEventListener('mouseup', () => document.body.classList.remove('clicking'));
-
-  function cursorLoop() {
-    dotX += (mx - dotX) * 0.85;
-    dotY += (my - dotY) * 0.85;
-    cur.style.transform = `translate3d(${dotX - 5}px, ${dotY - 5}px, 0)`;
-    rx += (mx - rx) * 0.14;
-    ry += (my - ry) * 0.14;
-    ring.style.transform = `translate3d(${rx - 17}px, ${ry - 17}px, 0)`;
-    requestAnimationFrame(cursorLoop);
-  }
-  cursorLoop();
-
-  document.querySelectorAll('a, button, .service-card, .team-card, .work-card, .calc-type-btn, .calc-complexity, .calc-deadline, .calc-module, .faq-question').forEach(el => {
-    if (el) {
-      el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    if (window.innerWidth <= 900) {
+      navLinks.style.display = 'none';
+      burger.classList.remove('open');
     }
-  });
-}
+  }));
 
-// ========================================
-// CANVAS PARTICLES (solo desktop)
-// ========================================
-if (window.innerWidth > 768) {
-  const canvas = document.getElementById('canvas-bg');
-  const ctx = canvas.getContext('2d');
+  // Header state + scroll progress + back-to-top, all on one scroll listener
+  const headerEl = document.querySelector('header');
+  const progressEl = document.getElementById('scrollProgress');
+  const toTopEl = document.getElementById('toTop');
+  const navAnchors = document.querySelectorAll('.nav-links a');
+  const sections = [...navAnchors].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
+  function onScroll() {
+    const scrollY = window.scrollY;
+    headerEl.classList.toggle('scrolled', scrollY > 20);
+    toTopEl.classList.toggle('visible', scrollY > 600);
 
-  const particles = [];
-  for (let i = 0; i < 80; i++) {
-    particles.push({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      r: Math.random() * 1.5 + 0.3,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      a: Math.random() * 0.6 + 0.1
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progressEl.style.width = docHeight > 0 ? `${(scrollY / docHeight) * 100}%` : '0%';
+
+    let currentIndex = 0;
+    sections.forEach((sec, idx) => {
+      if (scrollY >= sec.offsetTop - 140) currentIndex = idx;
     });
+    navAnchors.forEach((a, idx) => a.classList.toggle('active', idx === currentIndex));
   }
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
-  function drawParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0) p.x = canvas.width;
-      if (p.x > canvas.width) p.x = 0;
-      if (p.y < 0) p.y = canvas.height;
-      if (p.y > canvas.height) p.y = 0;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(204, 22, 22, ${p.a})`;
-      ctx.fill();
-    });
-    for (let i = 0; i < 80; i++) {
-      for (let j = i + 1; j < 80; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const d = Math.hypot(dx, dy);
-        if (d < 120) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(204, 22, 22, ${(1 - d / 120) * 0.15})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
-    }
-    requestAnimationFrame(drawParticles);
-  }
-  drawParticles();
-
-  // GRID CANVAS
-  const cgrid = document.getElementById('canvas-grid');
-  const gctx = cgrid.getContext('2d');
-  const heroEl = document.getElementById('hero');
-
-  function resizeGrid() {
-    cgrid.width = heroEl.offsetWidth || window.innerWidth;
-    cgrid.height = heroEl.offsetHeight || window.innerHeight;
-  }
-  resizeGrid();
-  window.addEventListener('resize', resizeGrid);
-
-  let gTime = 0;
-  const CELL = 80;
-
-  function drawGrid() {
-    gctx.clearRect(0, 0, cgrid.width, cgrid.height);
-    const cols = Math.ceil(cgrid.width / CELL) + 1;
-    const rows = Math.ceil(cgrid.height / CELL) + 1;
-    gTime += 0.008;
-
-    for (let c = 0; c <= cols; c++) {
-      const x = c * CELL;
-      const phase = c * 0.28 + gTime;
-      const brightness = (Math.sin(phase) * 0.5 + 0.5);
-      const alpha = 0.022 + brightness * 0.048;
-      gctx.beginPath();
-      gctx.moveTo(x, 0);
-      gctx.lineTo(x, cgrid.height);
-      gctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
-      gctx.lineWidth = 1;
-      gctx.stroke();
-      if (brightness > 0.92) {
-        const segY = ((c * 137.5 + gTime * 40) % cgrid.height);
-        const segLen = 40 + Math.sin(gTime * 3 + c) * 20;
-        const grad = gctx.createLinearGradient(x, segY, x, segY + segLen);
-        grad.addColorStop(0, 'rgba(204, 22, 22, 0)');
-        grad.addColorStop(0.5, `rgba(204, 22, 22, ${(brightness - 0.92) * 3})`);
-        grad.addColorStop(1, 'rgba(204, 22, 22, 0)');
-        gctx.beginPath();
-        gctx.moveTo(x, segY);
-        gctx.lineTo(x, segY + segLen);
-        gctx.strokeStyle = grad;
-        gctx.lineWidth = 1.5;
-        gctx.stroke();
-      }
-    }
-
-    for (let r = 0; r <= rows; r++) {
-      const y = r * CELL;
-      const phase = r * 0.35 + gTime * 0.7;
-      const brightness = (Math.sin(phase) * 0.5 + 0.5);
-      const alpha = 0.018 + brightness * 0.038;
-      gctx.beginPath();
-      gctx.moveTo(0, y);
-      gctx.lineTo(cgrid.width, y);
-      gctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
-      gctx.lineWidth = 1;
-      gctx.stroke();
-      if (brightness > 0.94) {
-        const segX = ((r * 173.1 + gTime * 30) % cgrid.width);
-        const segLen = 50 + Math.cos(gTime * 2 + r) * 25;
-        const grad = gctx.createLinearGradient(segX, y, segX + segLen, y);
-        grad.addColorStop(0, 'rgba(204, 22, 22, 0)');
-        grad.addColorStop(0.5, `rgba(204, 22, 22, ${(brightness - 0.94) * 4})`);
-        grad.addColorStop(1, 'rgba(204, 22, 22, 0)');
-        gctx.beginPath();
-        gctx.moveTo(segX, y);
-        gctx.lineTo(segX + segLen, y);
-        gctx.strokeStyle = grad;
-        gctx.lineWidth = 1.5;
-        gctx.stroke();
-      }
-    }
-
-    for (let c = 0; c <= cols; c++) {
-      for (let r = 0; r <= rows; r++) {
-        const b = Math.sin(c * 0.28 + r * 0.35 + gTime) * 0.5 + 0.5;
-        if (b > 0.85) {
-          gctx.beginPath();
-          gctx.arc(c * CELL, r * CELL, 1.5, 0, Math.PI * 2);
-          gctx.fillStyle = `rgba(204, 22, 22, ${(b - 0.85) * 0.5})`;
-          gctx.fill();
-        }
-      }
-    }
-    requestAnimationFrame(drawGrid);
-  }
-  drawGrid();
-}
-
-// ========================================
-// REVEAL OBSERVER
-// ========================================
-const reveals = document.querySelectorAll('.reveal');
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-reveals.forEach(el => revealObserver.observe(el));
-
-// ========================================
-// HERO COUNTERS
-// ========================================
-function animCounter(el, target, suffix) {
-  let start = 0;
-  const dur = 1800;
-  const step = (timestamp) => {
-    if (!start) start = timestamp;
-    const p = Math.min((timestamp - start) / dur, 1);
-    const ease = 1 - Math.pow(1 - p, 4);
-    el.innerHTML = Math.floor(ease * target) + '<span class="plus">' + suffix + '</span>';
-    if (p < 1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-}
-
-const heroCounterObs = new IntersectionObserver((entries) => {
-  if (entries[0].isIntersecting) {
-    setTimeout(() => animCounter(document.getElementById('counter-1'), 30, '+'), 200);
-    setTimeout(() => animCounter(document.getElementById('counter-2'), 20, '+'), 400);
-    setTimeout(() => animCounter(document.getElementById('counter-3'), 5, '+'), 600);
-    heroCounterObs.disconnect();
-  }
-}, { threshold: 0.5 });
-heroCounterObs.observe(document.getElementById('hero'));
-
-// ========================================
-// RESULTADOS COUNTERS Y GRÁFICO
-// ========================================
-function animResult(id, target, suffix = '') {
-  let start = 0;
-  const dur = 2000;
-  const el = document.getElementById(id);
-  const step = (timestamp) => {
-    if (!start) start = timestamp;
-    const p = Math.min((timestamp - start) / dur, 1);
-    const ease = 1 - Math.pow(1 - p, 4);
-    if (suffix === '%') {
-      el.innerHTML = Math.floor(ease * target) + suffix;
-    } else {
-      el.innerHTML = Math.floor(ease * target);
-    }
-    if (p < 1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
-}
-
-const resultObserver = new IntersectionObserver((entries) => {
-  if (entries[0].isIntersecting) {
-    setTimeout(() => animResult('result-1', 30), 200);
-    setTimeout(() => animResult('result-2', 20), 400);
-    setTimeout(() => animResult('result-3', 520), 600);
-    setTimeout(() => { document.getElementById('result-4').innerHTML = '99.9%'; }, 800);
-    setTimeout(() => animResult('result-5', 1250), 1000);
-    
-    // Crear gráfico
-    const ctx = document.getElementById('projectsChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['2021', '2022', '2023', '2024', '2025', '2026'],
-        datasets: [{
-          label: 'Proyectos entregados',
-          data: [3, 7, 12, 18, 24, 30],
-          borderColor: '#CC1616',
-          backgroundColor: 'rgba(204, 22, 22, 0.1)',
-          tension: 0.4,
-          fill: true,
-          pointBackgroundColor: '#FF2222',
-          pointBorderColor: '#fff',
-          pointRadius: 5,
-          pointHoverRadius: 8
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        plugins: {
-          legend: {
-            labels: { color: getComputedStyle(document.body).getPropertyValue('--text-muted') }
-          }
-        },
-        scales: {
-          y: {
-            grid: { color: 'rgba(255,255,255,0.05)' },
-            ticks: { color: getComputedStyle(document.body).getPropertyValue('--text-muted') }
-          },
-          x: {
-            grid: { display: false },
-            ticks: { color: getComputedStyle(document.body).getPropertyValue('--text-muted') }
-          }
-        }
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
       }
     });
-    
-    resultObserver.disconnect();
-  }
-}, { threshold: 0.5 });
-resultObserver.observe(document.getElementById('resultados'));
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
 
-// ========================================
-// TIMELINE OBSERVER
-// ========================================
-const timelineItems = document.querySelectorAll('.timeline-item');
-const timelineObs = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.3 });
-timelineItems.forEach(el => timelineObs.observe(el));
+  // Terminal typing effect
+  const lines = [
+    { p: '$ whoami', o: '> Facundo Herrera' },
+    { p: '$ rol', o: '> Analista de Sistemas' },
+    { p: '$ estado', o: '> DISPONIBLE — Argentina' },
+    { p: '$ experiencia', o: '> 2+ años · 5 proyectos completados' },
+    { p: '$ stack --list', o: '> React · Node.js · Django · SQL/NoSQL' }
+  ];
+  const body = document.getElementById('terminalBody');
 
-// ========================================
-// FAQ ACCORDION
-// ========================================
-document.querySelectorAll('.faq-question').forEach(q => {
-  q.addEventListener('click', () => {
-    const item = q.parentElement;
-    item.classList.toggle('open');
-    const icon = q.querySelector('i');
-    if (icon) {
-      icon.style.transform = item.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0)';
+  function typeLine(lineIndex) {
+    if (lineIndex >= lines.length) {
+      const cur = document.createElement('span');
+      cur.className = 'cursor';
+      body.appendChild(cur);
+      return;
     }
-  });
-});
-
-// ========================================
-// CALCULADORA MEJORADA
-// ========================================
-const typeBtns = document.querySelectorAll('.calc-type-btn');
-const complexityBtns = document.querySelectorAll('.calc-complexity');
-const deadlineBtns = document.querySelectorAll('.calc-deadline');
-const userSlider = document.getElementById('user-slider');
-const userVal = document.getElementById('user-value');
-const calcPrice = document.getElementById('calc-price');
-const calcBaseSpan = document.getElementById('calc-base');
-const calcModulesSpan = document.getElementById('calc-modules');
-const calcScaleSpan = document.getElementById('calc-scale');
-const calcTotalSpan = document.getElementById('calc-total');
-
-let currentType = 'landing';
-let currentBase = 400;
-let currentComplexity = 1.0;
-let currentDeadline = 1.0;
-let modulesCost = 0;
-let moduleCheckboxes = {};
-
-// Recomendaciones de módulos por tipo de proyecto
-const moduleRecommendations = {
-  landing: ['login', 'integraciones'],
-  web: ['login', 'dashboard', 'reportes', 'integraciones'],
-  app: ['login', 'dashboard', 'integraciones', 'mobile'],
-  saas: ['login', 'dashboard', 'reportes', 'integraciones', 'multitenant', 'ia']
-};
-
-// Módulos que NO aplican para cada tipo
-const moduleExclusions = {
-  landing: ['multitenant', 'ia', 'reportes', 'mobile'],
-  web: ['mobile'],
-  app: ['multitenant', 'reportes'],
-  saas: []
-};
-
-// Inicializar referencia a checkboxes
-document.querySelectorAll('.calc-module input').forEach(cb => {
-  moduleCheckboxes[cb.value] = cb;
-  cb.addEventListener('change', () => updateModulesAndPrice());
-});
-
-// Tipo de proyecto
-typeBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    typeBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentType = btn.dataset.type;
-    currentBase = parseInt(btn.dataset.base);
-    updateModulesByType();
-    updatePrice();
-  });
-});
-
-// Complejidad
-complexityBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    complexityBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentComplexity = parseFloat(btn.dataset.complexity);
-    updatePrice();
-  });
-});
-
-// Plazo
-deadlineBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    deadlineBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentDeadline = parseFloat(btn.dataset.deadline);
-    updatePrice();
-  });
-});
-
-// Slider de usuarios
-userSlider.addEventListener('input', () => {
-  let val = parseInt(userSlider.value);
-  userVal.innerText = val.toLocaleString();
-  updatePrice();
-});
-
-// Función para actualizar módulos según el tipo de proyecto
-function updateModulesByType() {
-  const exclusions = moduleExclusions[currentType] || [];
-  const recommendations = moduleRecommendations[currentType] || [];
-  
-  document.querySelectorAll('.calc-module').forEach(module => {
-    const input = module.querySelector('input');
-    const moduleValue = input.value;
-    const moduleLabel = module;
-    
-    // Deshabilitar módulos que no aplican
-    if (exclusions.includes(moduleValue)) {
-      moduleLabel.classList.add('disabled');
-      input.disabled = true;
-      if (input.checked) {
-        input.checked = false;
-        modulesCost -= parseInt(input.dataset.cost);
-      }
-    } else {
-      moduleLabel.classList.remove('disabled');
-      input.disabled = false;
-    }
-    
-    // Agregar badge "recomendado" si aplica
-    let badge = moduleLabel.querySelector('.recommended');
-    if (recommendations.includes(moduleValue) && !exclusions.includes(moduleValue)) {
-      if (!badge) {
-        badge = document.createElement('span');
-        badge.className = 'recommended';
-        badge.textContent = 'recomendado';
-        moduleLabel.appendChild(badge);
-      }
-    } else if (badge) {
-      badge.remove();
-    }
-  });
-  
-  // Resetear módulos costos
-  modulesCost = 0;
-  document.querySelectorAll('.calc-module input:checked:not(:disabled)').forEach(cb => {
-    modulesCost += parseInt(cb.dataset.cost);
-  });
-}
-
-function updateModulesAndPrice() {
-  modulesCost = 0;
-  document.querySelectorAll('.calc-module input:checked:not(:disabled)').forEach(cb => {
-    modulesCost += parseInt(cb.dataset.cost);
-  });
-  updatePrice();
-}
-
-function updatePrice() {
-  let users = parseInt(userSlider.value);
-  let scaleFactor = 1 + (Math.log10(Math.max(users, 10)) - 1) * 0.1;
-  scaleFactor = Math.min(scaleFactor, 1.25);
-  
-  let basePrice = currentBase * currentComplexity * currentDeadline;
-  let scaleCost = basePrice * (scaleFactor - 1);
-  let total = basePrice + modulesCost + scaleCost;
-  
-  calcBaseSpan.innerText = `$${Math.round(basePrice).toLocaleString()}`;
-  calcModulesSpan.innerText = `$${modulesCost.toLocaleString()}`;
-  calcScaleSpan.innerText = `$${Math.round(scaleCost).toLocaleString()}`;
-  calcTotalSpan.innerText = `$${Math.round(total).toLocaleString()}`;
-  calcPrice.innerText = Math.round(total).toLocaleString();
-}
-
-// Inicializar módulos según tipo
-updateModulesByType();
-updatePrice();
-
-// ========================================
-// PDF GENERATOR
-// ========================================
-document.getElementById('downloadPDF').addEventListener('click', async () => {
-  const element = document.getElementById('calcResult');
-  if (!element) return;
-  const opt = {
-    margin: [0.5, 0.5, 0.5, 0.5],
-    filename: `presupuesto_osisdev_${new Date().toISOString().slice(0,10)}.pdf`,
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-  };
-  try {
-    await html2pdf().set(opt).from(element).save();
-    showToast('Presupuesto descargado correctamente', 'success');
-  } catch (error) {
-    showToast('Error al generar el PDF', 'error');
-  }
-});
-
-// ========================================
-// FORMULARIO
-// ========================================
-const contactForm = document.getElementById('contactForm');
-const emailInput = document.getElementById('emailInput');
-const toast = document.getElementById('toast');
-
-function showToast(message, type = 'success') {
-  toast.textContent = message;
-  toast.className = `toast ${type}`;
-  toast.classList.add('show');
-  setTimeout(() => {
-    toast.classList.remove('show');
-  }, 4000);
-}
-
-contactForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const email = emailInput.value.trim();
-  
-  if (!email || !email.includes('@')) {
-    showToast('Por favor, ingresa un email válido', 'error');
-    return;
-  }
-  
-  const submitBtn = contactForm.querySelector('button');
-  const originalText = submitBtn.textContent;
-  submitBtn.textContent = 'Enviando...';
-  submitBtn.disabled = true;
-  
-  try {
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    showToast('¡Gracias! Te contactaremos pronto', 'success');
-    emailInput.value = '';
-  } catch (error) {
-    showToast('Error al enviar. Por favor, escribinos directamente a contacto@osisdev.com', 'error');
-  }
-  
-  submitBtn.textContent = originalText;
-  submitBtn.disabled = false;
-});
-
-// ========================================
-// HERO TITLE ANIMATION
-// ========================================
-const words = document.querySelectorAll('.hero-title .word');
-words.forEach((w, i) => {
-  w.style.opacity = '0';
-  w.style.transform = 'translateY(60px)';
-  w.style.display = 'inline-block';
-  w.style.transition = `opacity 0.8s ${i * 0.15 + 0.4}s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s ${i * 0.15 + 0.4}s cubic-bezier(0.16, 1, 0.3, 1)`;
-  setTimeout(() => {
-    w.style.opacity = '1';
-    w.style.transform = 'translateY(0)';
-  }, 100);
-});
-
-// ========================================
-// NAVBAR SCROLL
-// ========================================
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('nav');
-  if (nav) {
-    nav.style.background = window.scrollY > 60 ? 'rgba(8, 8, 8, 0.95)' : 'rgba(8, 8, 8, 0.8)';
-  }
-});
-
-// ========================================
-// MINIJUEGOS DE TECNOLOGÍAS
-// ========================================
-const gameModal = document.getElementById('gameModal');
-const gameContainer = document.getElementById('gameContainer');
-const gameModalClose = document.getElementById('gameModalClose');
-
-const techGames = {
-  react: {
-    title: '⚛️ React — Estado y Renderizado',
-    desc: 'Simula el concepto de estado en React: actualiza el contador y observa cómo se refleja en la UI.',
-    html: `
-      <div id="reactGame">
-        <div class="game-row">
-          <button class="game-btn" id="reactDec">-</button>
-          <span id="reactCount" class="game-score" style="font-size:48px;">0</span>
-          <button class="game-btn" id="reactInc">+</button>
-        </div>
-        <div class="game-row">
-          <label><input type="checkbox" id="reactToggle"> Mostrar mensaje</label>
-        </div>
-        <div id="reactMsg" style="display:none; background:var(--red-dim); padding:12px; border-radius:8px; margin-top:8px;">
-          <i class="fas fa-info-circle"></i> El estado cambió → el componente se re-renderiza.
-        </div>
-        <div class="game-message">💡 El estado es la memoria del componente. Cada cambio dispara un nuevo renderizado.</div>
-      </div>
-    `,
-    init: function() {
-      let count = 0;
-      const el = document.getElementById('reactCount');
-      const inc = document.getElementById('reactInc');
-      const dec = document.getElementById('reactDec');
-      const toggle = document.getElementById('reactToggle');
-      const msg = document.getElementById('reactMsg');
-      inc.addEventListener('click', () => { count++; el.textContent = count; });
-      dec.addEventListener('click', () => { count--; el.textContent = count; });
-      toggle.addEventListener('change', () => {
-        msg.style.display = toggle.checked ? 'block' : 'none';
-      });
-    }
-  },
-  reactnative: {
-    title: '📱 React Native — Interacción táctil',
-    desc: 'Simula una app móvil: toca el botón grande para ver animaciones y contar interacciones.',
-    html: `
-      <div id="rnGame" style="text-align:center;">
-        <button id="rnBtn" style="background:var(--red); border:none; border-radius:60px; padding:20px 40px; font-size:24px; color:#fff; cursor:pointer; transition:all 0.15s;">
-          👆 Tócame
-        </button>
-        <div style="margin-top:20px;">
-          <span class="game-score" id="rnCount">0</span> toques
-        </div>
-        <div class="game-message">📱 Los gestos táctiles son el corazón de React Native.</div>
-      </div>
-    `,
-    init: function() {
-      let count = 0;
-      const btn = document.getElementById('rnBtn');
-      const el = document.getElementById('rnCount');
-      btn.addEventListener('click', () => {
-        count++;
-        el.textContent = count;
-        btn.style.transform = 'scale(0.9)';
-        btn.style.background = `hsl(${Math.random()*360}, 70%, 50%)`;
-        setTimeout(() => btn.style.transform = 'scale(1)', 150);
-      });
-    }
-  },
-  django: {
-    title: '🐍 Django — Panel de Administración',
-    desc: 'CRUD sencillo: agrega y elimina elementos, como en el admin de Django.',
-    html: `
-      <div id="djangoGame">
-        <div class="game-row">
-          <input class="game-input" id="djangoInput" placeholder="Nuevo elemento..." style="flex:1;">
-          <button class="game-btn" id="djangoAdd">Agregar</button>
-        </div>
-        <ul class="game-list" id="djangoList">
-          <li>Producto A <span class="del" data-id="0">✕</span></li>
-          <li>Producto B <span class="del" data-id="1">✕</span></li>
-        </ul>
-        <div class="game-message">📋 El admin de Django permite gestionar modelos sin escribir código adicional.</div>
-      </div>
-    `,
-    init: function() {
-      let items = ['Producto A', 'Producto B'];
-      const list = document.getElementById('djangoList');
-      const input = document.getElementById('djangoInput');
-      const addBtn = document.getElementById('djangoAdd');
-
-      function render() {
-        list.innerHTML = items.map((text, i) =>
-          `<li>${text} <span class="del" data-id="${i}">✕</span></li>`
-        ).join('');
-        list.querySelectorAll('.del').forEach(span => {
-          span.addEventListener('click', () => {
-            const idx = parseInt(span.dataset.id);
-            items.splice(idx, 1);
-            render();
-          });
-        });
-      }
-
-      addBtn.addEventListener('click', () => {
-        const val = input.value.trim();
-        if (val) { items.push(val); input.value = ''; render(); }
-      });
-      render();
-    }
-  },
-  nodejs: {
-    title: '🟢 Node.js — Event Loop',
-    desc: 'Simula tareas asíncronas: haz clic en "Ejecutar" y observa el orden de finalización.',
-    html: `
-      <div id="nodeGame">
-        <button class="game-btn" id="nodeRun">▶ Ejecutar tareas</button>
-        <div class="game-progress" style="margin:16px 0;">
-          <div class="fill" id="nodeProgress" style="width:0%;"></div>
-        </div>
-        <div id="nodeLog" style="background:var(--bg3); padding:12px; border-radius:8px; font-family:monospace; font-size:12px; max-height:120px; overflow-y:auto; color:var(--text-muted);">
-          <div>⚡ Listo para ejecutar...</div>
-        </div>
-        <div class="game-message">🔄 Node.js maneja múltiples operaciones sin bloquear el hilo principal.</div>
-      </div>
-    `,
-    init: function() {
-      const runBtn = document.getElementById('nodeRun');
-      const log = document.getElementById('nodeLog');
-      const prog = document.getElementById('nodeProgress');
-      let running = false;
-
-      runBtn.addEventListener('click', () => {
-        if (running) return;
-        running = true;
-        runBtn.disabled = true;
-        log.innerHTML = '<div>⏳ Iniciando tareas...</div>';
-        prog.style.width = '0%';
-
-        const tasks = [
-          { time: 1000, msg: '✅ Tarea 1 completada (1s)' },
-          { time: 2000, msg: '✅ Tarea 2 completada (2s)' },
-          { time: 500, msg: '✅ Tarea 3 completada (0.5s)' }
-        ];
-
-        let done = 0;
-        tasks.forEach((t, i) => {
-          setTimeout(() => {
-            log.innerHTML += `<div>${t.msg}</div>`;
-            done++;
-            prog.style.width = `${(done / tasks.length) * 100}%`;
-            if (done === tasks.length) {
-              log.innerHTML += `<div style="color:var(--red-vivid);">🏁 Todas las tareas finalizadas (orden asíncrono)</div>`;
-              running = false;
-              runBtn.disabled = false;
+    const { p, o } = lines[lineIndex];
+    const pEl = document.createElement('div');
+    pEl.className = 'line prompt';
+    body.appendChild(pEl);
+    let i = 0;
+    const typeP = setInterval(() => {
+      pEl.textContent = p.slice(0, i + 1);
+      i++;
+      if (i >= p.length) {
+        clearInterval(typeP);
+        setTimeout(() => {
+          const oEl = document.createElement('div');
+          oEl.className = 'line out';
+          body.appendChild(oEl);
+          let j = 0;
+          const typeO = setInterval(() => {
+            oEl.textContent = o.slice(0, j + 1);
+            j++;
+            if (j >= o.length) {
+              clearInterval(typeO);
+              setTimeout(() => typeLine(lineIndex + 1), 260);
             }
-          }, t.time);
-        });
-      });
-    }
-  },
-  postgresql: {
-    title: '🐘 PostgreSQL — Consulta SQL',
-    desc: 'Elige las palabras clave en el orden correcto para formar una consulta SQL válida.',
-    html: `
-      <div id="postgresGame">
-        <div style="margin-bottom:12px; font-size:14px; color:var(--text-muted);">
-          Arma una consulta que obtenga <strong>nombre y edad</strong> de la tabla <strong>usuarios</strong> donde la edad sea mayor a 18.
-        </div>
-        <div class="game-row" id="sqlOptions">
-          <span class="game-tag" data-sql="SELECT">SELECT</span>
-          <span class="game-tag" data-sql="FROM">FROM</span>
-          <span class="game-tag" data-sql="WHERE">WHERE</span>
-          <span class="game-tag" data-sql="nombre, edad">nombre, edad</span>
-          <span class="game-tag" data-sql="usuarios">usuarios</span>
-          <span class="game-tag" data-sql="edad > 18">edad > 18</span>
-        </div>
-        <div style="margin:12px 0;">
-          <span style="color:var(--text-muted);">Tu consulta: </span>
-          <span id="sqlBuild" style="font-family:monospace; background:var(--bg3); padding:4px 12px; border-radius:6px;">⬅️ haz clic en las palabras</span>
-        </div>
-        <button class="game-btn" id="sqlCheck">Verificar</button>
-        <div id="sqlResult" style="margin-top:12px; font-size:14px;"></div>
-        <div class="game-message">📊 PostgreSQL es potente para consultas complejas y análisis de datos.</div>
-      </div>
-    `,
-    init: function() {
-      const build = document.getElementById('sqlBuild');
-      const result = document.getElementById('sqlResult');
-      const checkBtn = document.getElementById('sqlCheck');
-      let selected = [];
-
-      document.querySelectorAll('#sqlOptions .game-tag').forEach(tag => {
-        tag.addEventListener('click', () => {
-          selected.push(tag.dataset.sql);
-          build.textContent = selected.join(' ');
-          tag.style.opacity = '0.4';
-          tag.style.pointerEvents = 'none';
-        });
-      });
-
-      checkBtn.addEventListener('click', () => {
-        const correct = ['SELECT', 'nombre, edad', 'FROM', 'usuarios', 'WHERE', 'edad > 18'];
-        const user = selected.join(' ');
-        const expected = correct.join(' ');
-        if (user === expected) {
-          result.innerHTML = '✅ ¡Correcto! Consulta válida.';
-          result.style.color = '#44ff44';
-        } else {
-          result.innerHTML = `❌ Casi. Recordá el orden: SELECT columnas FROM tabla WHERE condición.`;
-          result.style.color = '#ff4444';
-        }
-      });
-    }
-  },
-  mongodb: {
-    title: '🍃 MongoDB — Documentos JSON',
-    desc: 'Agrupa los documentos según su categoría (colección).',
-    html: `
-      <div id="mongoGame">
-        <div class="game-row">
-          <span style="color:var(--text-muted);">📄 Documentos:</span>
-          <span class="game-tag" data-collection="users">{"name":"Ana","age":25}</span>
-          <span class="game-tag" data-collection="products">{"name":"Laptop","price":1200}</span>
-          <span class="game-tag" data-collection="users">{"name":"Luis","age":30}</span>
-          <span class="game-tag" data-collection="products">{"name":"Mouse","price":25}</span>
-        </div>
-        <div style="display:flex; gap:20px; margin:16px 0;">
-          <div style="flex:1; background:var(--bg3); border-radius:12px; padding:12px;">
-            <strong>📂 users</strong>
-            <div id="mongoUsers" style="margin-top:8px;"></div>
-          </div>
-          <div style="flex:1; background:var(--bg3); border-radius:12px; padding:12px;">
-            <strong>📂 products</strong>
-            <div id="mongoProducts" style="margin-top:8px;"></div>
-          </div>
-        </div>
-        <button class="game-btn" id="mongoReset">Reiniciar</button>
-        <div class="game-message">🍃 MongoDB almacena datos en documentos JSON flexibles.</div>
-      </div>
-    `,
-    init: function() {
-      const docs = [
-        { text: '{"name":"Ana","age":25}', coll: 'users' },
-        { text: '{"name":"Laptop","price":1200}', coll: 'products' },
-        { text: '{"name":"Luis","age":30}', coll: 'users' },
-        { text: '{"name":"Mouse","price":25}', coll: 'products' }
-      ];
-      const usersDiv = document.getElementById('mongoUsers');
-      const productsDiv = document.getElementById('mongoProducts');
-      const resetBtn = document.getElementById('mongoReset');
-
-      function render() {
-        usersDiv.innerHTML = docs.filter(d => d.coll === 'users').map(d => `<div style="background:var(--bg); padding:6px 12px; border-radius:6px; margin-bottom:4px; font-size:12px;">${d.text}</div>`).join('');
-        productsDiv.innerHTML = docs.filter(d => d.coll === 'products').map(d => `<div style="background:var(--bg); padding:6px 12px; border-radius:6px; margin-bottom:4px; font-size:12px;">${d.text}</div>`).join('');
+          }, 14);
+        }, 180);
       }
-
-      // Drag & drop simple: al hacer clic en un tag, se mueve a la otra colección
-      document.querySelectorAll('#mongoGame .game-tag').forEach(tag => {
-        tag.addEventListener('click', () => {
-          const text = tag.textContent;
-          const doc = docs.find(d => d.text === text);
-          if (!doc) return;
-          doc.coll = doc.coll === 'users' ? 'products' : 'users';
-          render();
-        });
-      });
-
-      resetBtn.addEventListener('click', () => {
-        docs[0].coll = 'users'; docs[1].coll = 'products'; docs[2].coll = 'users'; docs[3].coll = 'products';
-        render();
-      });
-
-      render();
-    }
-  },
-  flutter: {
-    title: '🐦 Flutter — Construye widgets',
-    desc: 'Selecciona los widgets en el orden correcto para construir una interfaz: Column → Row → Text.',
-    html: `
-      <div id="flutterGame">
-        <div class="game-row">
-          <span class="game-tag" data-widget="Column">Column</span>
-          <span class="game-tag" data-widget="Row">Row</span>
-          <span class="game-tag" data-widget="Text">Text</span>
-          <span class="game-tag" data-widget="Container">Container</span>
-        </div>
-        <div style="margin:12px 0;">
-          <span style="color:var(--text-muted);">Tu árbol de widgets: </span>
-          <span id="flutterTree" style="font-family:monospace; background:var(--bg3); padding:4px 12px; border-radius:6px;">⬅️ haz clic</span>
-        </div>
-        <button class="game-btn" id="flutterCheck">Verificar</button>
-        <div id="flutterResult" style="margin-top:12px;"></div>
-        <div class="game-message">🐦 Flutter usa un árbol de widgets para construir la UI de forma declarativa.</div>
-      </div>
-    `,
-    init: function() {
-      const tree = document.getElementById('flutterTree');
-      const result = document.getElementById('flutterResult');
-      const checkBtn = document.getElementById('flutterCheck');
-      let selected = [];
-
-      document.querySelectorAll('#flutterGame .game-tag').forEach(tag => {
-        tag.addEventListener('click', () => {
-          selected.push(tag.dataset.widget);
-          tree.textContent = selected.join(' → ');
-          tag.style.opacity = '0.4';
-          tag.style.pointerEvents = 'none';
-        });
-      });
-
-      checkBtn.addEventListener('click', () => {
-        // Orden correcto: Column (padre) → Row (hijo) → Text (nieto)
-        const correct = ['Column', 'Row', 'Text'];
-        const user = selected.join(' → ');
-        const expected = correct.join(' → ');
-        if (user === expected) {
-          result.innerHTML = '✅ ¡Correcto! Column → Row → Text es una estructura típica.';
-          result.style.color = '#44ff44';
-        } else {
-          result.innerHTML = `❌ Intentá de nuevo. Recordá que Column y Row son contenedores, Text es hoja.`;
-          result.style.color = '#ff4444';
-        }
-      });
-    }
-  },
-  typescript: {
-    title: '⚡ TypeScript — Tipado estático',
-    desc: 'Elige el tipo correcto para cada variable.',
-    html: `
-      <div id="tsGame">
-        <div style="margin-bottom:12px;">
-          <div style="background:var(--bg3); padding:8px 12px; border-radius:8px; font-family:monospace; margin-bottom:8px;">
-            let name = "Juan"; <span style="color:var(--text-muted);">// ¿qué tipo?</span>
-          </div>
-          <div class="game-row">
-            <span class="game-tag" data-ts="string">string</span>
-            <span class="game-tag" data-ts="number">number</span>
-            <span class="game-tag" data-ts="boolean">boolean</span>
-            <span class="game-tag" data-ts="any">any</span>
-          </div>
-          <div style="margin-top:12px;">
-            <span style="color:var(--text-muted);">Tu elección: </span>
-            <span id="tsChoice" style="font-family:monospace; background:var(--bg3); padding:4px 12px; border-radius:6px;">⬅️ elige</span>
-          </div>
-        </div>
-        <button class="game-btn" id="tsCheck">Verificar</button>
-        <div id="tsResult" style="margin-top:12px;"></div>
-        <div class="game-message">⚡ TypeScript añade tipos para detectar errores en tiempo de desarrollo.</div>
-      </div>
-    `,
-    init: function() {
-      const choice = document.getElementById('tsChoice');
-      const result = document.getElementById('tsResult');
-      const checkBtn = document.getElementById('tsCheck');
-      let selected = null;
-
-      document.querySelectorAll('#tsGame .game-tag').forEach(tag => {
-        tag.addEventListener('click', () => {
-          selected = tag.dataset.ts;
-          choice.textContent = selected;
-          document.querySelectorAll('#tsGame .game-tag').forEach(t => t.classList.remove('selected'));
-          tag.classList.add('selected');
-        });
-      });
-
-      checkBtn.addEventListener('click', () => {
-        if (selected === 'string') {
-          result.innerHTML = '✅ Correcto! "Juan" es un string.';
-          result.style.color = '#44ff44';
-        } else {
-          result.innerHTML = `❌ No. "Juan" está entre comillas, es un string.`;
-          result.style.color = '#ff4444';
-        }
-      });
-    }
-  },
-  docker: {
-    title: '🐳 Docker — Ordena las capas',
-    desc: 'Ordena las instrucciones de un Dockerfile para construir una imagen correctamente.',
-    html: `
-      <div id="dockerGame">
-        <div class="game-row" style="flex-wrap:wrap;">
-          <span class="game-tag" data-layer="FROM">FROM ubuntu:20.04</span>
-          <span class="game-tag" data-layer="RUN">RUN apt update</span>
-          <span class="game-tag" data-layer="COPY">COPY . /app</span>
-          <span class="game-tag" data-layer="CMD">CMD ["python", "app.py"]</span>
-        </div>
-        <div style="margin:12px 0;">
-          <span style="color:var(--text-muted);">Orden actual: </span>
-          <span id="dockerOrder" style="font-family:monospace; background:var(--bg3); padding:4px 12px; border-radius:6px;">⬅️ haz clic</span>
-        </div>
-        <button class="game-btn" id="dockerCheck">Verificar</button>
-        <div id="dockerResult" style="margin-top:12px;"></div>
-        <div class="game-message">🐳 Cada capa en Docker se almacena en caché para construir imágenes rápidamente.</div>
-      </div>
-    `,
-    init: function() {
-      const order = document.getElementById('dockerOrder');
-      const result = document.getElementById('dockerResult');
-      const checkBtn = document.getElementById('dockerCheck');
-      let selected = [];
-
-      document.querySelectorAll('#dockerGame .game-tag').forEach(tag => {
-        tag.addEventListener('click', () => {
-          selected.push(tag.dataset.layer);
-          order.textContent = selected.join(' → ');
-          tag.style.opacity = '0.4';
-          tag.style.pointerEvents = 'none';
-        });
-      });
-
-      checkBtn.addEventListener('click', () => {
-        const correct = ['FROM', 'RUN', 'COPY', 'CMD'];
-        const user = selected.join(' → ');
-        const expected = correct.join(' → ');
-        if (user === expected) {
-          result.innerHTML = '✅ ¡Correcto! FROM → RUN → COPY → CMD es el orden óptimo.';
-          result.style.color = '#44ff44';
-        } else {
-          result.innerHTML = `❌ Recordá que FROM va primero, luego RUN, COPY, y al final CMD.`;
-          result.style.color = '#ff4444';
-        }
-      });
-    }
-  },
-  aws: {
-    title: '☁️ AWS / Render — Escala automática',
-    desc: 'Ajusta el número de instancias según la carga para mantener el rendimiento.',
-    html: `
-      <div id="awsGame">
-        <div style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
-          <span style="color:var(--text-muted);">Instancias:</span>
-          <input type="range" id="awsSlider" min="1" max="10" value="3" style="flex:1; height:6px; background:var(--border); border-radius:4px; appearance:none;">
-          <span id="awsCount" style="font-size:24px; font-weight:700; color:var(--red-vivid);">3</span>
-        </div>
-        <div style="margin:12px 0; background:var(--bg3); padding:12px; border-radius:8px;">
-          <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text-muted);">
-            <span>📊 Carga: <span id="awsLoad">60%</span></span>
-            <span>⚡ Respuesta: <span id="awsResp">180ms</span></span>
-          </div>
-        </div>
-        <div class="game-message">☁️ Escalar instancias automáticamente mantiene la aplicación rápida y disponible.</div>
-      </div>
-    `,
-    init: function() {
-      const slider = document.getElementById('awsSlider');
-      const count = document.getElementById('awsCount');
-      const load = document.getElementById('awsLoad');
-      const resp = document.getElementById('awsResp');
-
-      slider.addEventListener('input', () => {
-        const val = parseInt(slider.value);
-        count.textContent = val;
-        const loadVal = Math.max(10, 100 - val * 8);
-        load.textContent = loadVal + '%';
-        const respVal = Math.max(50, 300 - val * 25);
-        resp.textContent = respVal + 'ms';
-      });
-      slider.dispatchEvent(new Event('input'));
-    }
+    }, 28);
   }
-};
 
-// Abrir juego
-document.querySelectorAll('.tech-item[data-game]').forEach(item => {
-  item.addEventListener('click', () => {
-    const gameId = item.dataset.game;
-    const game = techGames[gameId];
-    if (!game) return;
-    gameContainer.innerHTML = `
-      <div class="game-modal-title">${game.title}</div>
-      <div class="game-modal-sub">${game.desc}</div>
-      ${game.html}
-    `;
-    gameModal.classList.add('open');
-    if (game.init) game.init();
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        typeLine(0);
+        heroObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  heroObserver.observe(document.querySelector('.terminal'));
+
+  // Animated stat counters
+  const statNums = document.querySelectorAll('.stat-num');
+  const statTargets = [2, 5, null]; // null = skip (AR text)
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        statNums.forEach((el, idx) => {
+          const target = statTargets[idx];
+          if (target === null) return;
+          let cur = 0;
+          const step = () => {
+            cur++;
+            el.innerHTML = cur >= target ? (idx === 0 ? '2<span>+</span>' : target) : cur;
+            if (cur < target) requestAnimationFrame(step);
+          };
+          step();
+        });
+        statObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  statObserver.observe(document.querySelector('.hero-stats'));
+
+  // Tarjetas superpuestas del proceso: hover atenúa las demás + soporte táctil
+  const procCards = document.querySelectorAll('.proc-card');
+  procCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      procCards.forEach(c => { if (c !== card) c.classList.add('dimmed'); });
+    });
+    card.addEventListener('mouseleave', () => {
+      procCards.forEach(c => c.classList.remove('dimmed'));
+    });
+    card.addEventListener('click', () => {
+      const wasActive = card.classList.contains('active');
+      procCards.forEach(c => c.classList.remove('active'));
+      if (!wasActive) card.classList.add('active');
+    });
   });
-});
 
-// Cerrar modal
-gameModalClose.addEventListener('click', () => {
-  gameModal.classList.remove('open');
-});
-gameModal.addEventListener('click', (e) => {
-  if (e.target === gameModal) gameModal.classList.remove('open');
-});
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') gameModal.classList.remove('open');
-});
+  // Tilt magnético sutil en las tarjetas de proyectos (solo desktop)
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.project').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = `translateX(4px) perspective(800px) rotateX(${(-y * 2.2).toFixed(2)}deg) rotateY(${(x * 2.2).toFixed(2)}deg)`;
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+  }
 
-// ========================================
-// CHAT EN VIVO (CRISP) - Descomentar y poner ID
-// ========================================
-// window.$crisp = [];
-// window.CRISP_WEBSITE_ID = "YOUR_CRISP_WEBSITE_ID";
-// (function() {
-//   d = document;
-//   s = d.createElement("script");
-//   s.src = "https://client.crisp.chat/l.js";
-//   s.async = 1;
-//   d.getElementsByTagName("head")[0].appendChild(s);
-// })();
+  // ===== CONTACTO: reveal de palabras (efecto cortina) =====
+  const contactTitle = document.getElementById('contactTitle');
+  const titleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const masks = contactTitle.querySelectorAll('.w-mask');
+        masks.forEach((mask, i) => {
+          mask.style.transitionDelay = `${i * 55}ms`;
+          setTimeout(() => mask.classList.add('in-view'), 10);
+        });
+        titleObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  titleObserver.observe(contactTitle);
+
+  // ===== CONTACTO: rotador tipo terminal (typewriter en loop) =====
+  const rotatorPhrases = [
+    'sistemas de gestión',
+    'paneles administrativos',
+    'integraciones con APIs',
+    'apps móviles y de escritorio',
+    'plataformas seguras'
+  ];
+  const rotatorEl = document.getElementById('rotatorText');
+  let rPhrase = 0, rChar = 0, rDeleting = false;
+
+  function tickRotator() {
+    const current = rotatorPhrases[rPhrase];
+    if (!rDeleting) {
+      rChar++;
+      rotatorEl.textContent = current.slice(0, rChar);
+      if (rChar === current.length) {
+        rDeleting = true;
+        setTimeout(tickRotator, 1500);
+        return;
+      }
+    } else {
+      rChar--;
+      rotatorEl.textContent = current.slice(0, rChar);
+      if (rChar === 0) {
+        rDeleting = false;
+        rPhrase = (rPhrase + 1) % rotatorPhrases.length;
+      }
+    }
+    setTimeout(tickRotator, rDeleting ? 26 : 55);
+  }
+  const rotatorObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        tickRotator();
+        rotatorObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  rotatorObserver.observe(document.querySelector('.contact-rotator'));
+
+  // ===== CONTACTO: botones magnéticos + ripple al click =====
+  const magneticBtns = document.querySelectorAll('.magnetic');
+  if (window.matchMedia('(hover: hover)').matches) {
+    magneticBtns.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width / 2) * 0.35;
+        const y = (e.clientY - r.top - r.height / 2) * 0.5;
+        btn.style.transform = `translate(${x}px, ${y - 3}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  }
+  magneticBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const r = btn.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      const size = Math.max(r.width, r.height);
+      ripple.className = 'ripple';
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - r.left - size / 2) + 'px';
+      ripple.style.top = (e.clientY - r.top - size / 2) + 'px';
+      btn.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 650);
+    });
+  });
 </script>
+
 </body>
 </html>
